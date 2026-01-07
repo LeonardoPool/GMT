@@ -101,45 +101,7 @@
             </div>
         </div>
 
-        <!-- Logos de partners -->
-        <div class="partners-section">
-            <!-- Trello -->
-            <svg class="partner-logo" viewBox="0 0 100 60" width="180" height="100" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10" y="10" width="25" height="40" fill="#0079BF" rx="4"/>
-                <rect x="40" y="15" width="25" height="35" fill="#00A3E0" rx="4"/>
-                <rect x="70" y="12" width="20" height="38" fill="#026AA7" rx="4"/>
-                <text x="50" y="55" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">Trello</text>
-            </svg>
-            
-            <!-- Afterpay -->
-            <svg class="partner-logo" viewBox="0 0 121 23" width="220" height="50" xmlns="http://www.w3.org/2000/svg">
-                <text x="60" y="30" font-family="Arial, sans-serif" font-weight="bold" font-size="26" fill="#000" text-anchor="middle">afterpay</text>
-            </svg>
-            
-            <!-- CodeCademy -->
-            <svg class="partner-logo" viewBox="0 0 100 60" width="180" height="100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 20 15 L 30 25 L 20 35 L 15 30 Z" fill="#1F2937"/>
-                <path d="M 40 15 L 50 25 L 40 35 L 35 30 Z" fill="#3B82F6"/>
-                <path d="M 60 15 L 70 25 L 60 35 L 55 30 Z" fill="#1F2937"/>
-                <text x="50" y="58" font-family="Arial, sans-serif" font-size="11" fill="#333" text-anchor="middle">CodeCademy</text>
-            </svg>
-            
-            <!-- Monday.com -->
-            <svg class="partner-logo" viewBox="0 0 100 60" width="180" height="100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="25" r="8" fill="#FF6B35"/>
-                <circle cx="35" cy="25" r="8" fill="#004E89"/>
-                <circle cx="50" cy="25" r="8" fill="#1B998B"/>
-                <circle cx="65" cy="25" r="8" fill="#FF6B35"/>
-                <circle cx="80" cy="25" r="8" fill="#004E89"/>
-                <text x="50" y="58" font-family="Arial, sans-serif" font-size="11" fill="#333" text-anchor="middle">monday.com</text>
-            </svg>
-            
-            <!-- GumRoad -->
-            <svg class="partner-logo" viewBox="0 0 100 60" width="180" height="100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 30 15 Q 50 10 70 15 Q 70 30 50 38 Q 30 30 30 15 Z" fill="#FF0000" opacity="0.8"/>
-                <text x="50" y="58" font-family="Arial, sans-serif" font-size="11" fill="#333" text-anchor="middle">Gumroad</text>
-            </svg>
-        </div>
+        <!-- Logos de partners eliminados para liberar espacio debajo del hero -->
     </div>
 
     <!-- Explore the World Section -->
