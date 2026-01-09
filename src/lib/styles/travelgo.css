@@ -114,6 +114,58 @@ body {
     cursor: pointer;
 }
 
+.dropdown-container {
+    position: relative;
+}
+
+.nav-link-btn {
+    background: none;
+    border: none;
+    color: rgba(8, 8, 8, 0.80);
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-transform: capitalize;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+}
+
+.dropdown-arrow {
+    font-size: 12px;
+    transition: transform 0.2s;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    min-width: 240px;
+    padding: 8px 0;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 12px 16px;
+    color: #080808;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+    background: #F5F5F5;
+}
+
 /* Hero Section */
 .hero-section {
     width: 100%;
@@ -505,7 +557,7 @@ body {
 }
 
 .journey-text {
-    width: 475px;
+    width: 600px;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -919,6 +971,33 @@ body {
     font-weight: 400;
 }
 
+.journey-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.btn-link {
+    padding: 10px 18px;
+    border-radius: 46px;
+    border: 1px solid #E0E0E0;
+    background: #E7F3FF;
+    color: #080808;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-link.secondary {
+    background: #ffffff;
+    border-color: #D1D5DB;
+}
+
 .footer-contact {
     justify-content: center;
     align-items: center;
@@ -1236,6 +1315,28 @@ body {
     
     .review-right-text {
         width: 100% !important;
+    }
+
+    .journey-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .btn-link {
+        width: 100%;
+    }
+    
+    .dropdown-menu {
+        position: fixed;
+        top: auto;
+        right: 16px;
+        left: 16px;
+        margin-top: 8px;
+    }
+    
+    .nav-links {
+        width: 100%;
+        justify-content: space-around;
     }
     
     .review-count {

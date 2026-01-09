@@ -23,6 +23,16 @@
 
     const heroImagesLeft = [camp, cen, chia, cr, gua, hon];
     const heroImagesRight = [may, mer, pal, pr, tul, yuc];
+
+    let showRegistroDropdown = false;
+
+    function toggleRegistroDropdown() {
+        showRegistroDropdown = !showRegistroDropdown;
+    }
+
+    function closeDropdown() {
+        showRegistroDropdown = false;
+    }
 </script>
 
 <div class="main-wrapper">
@@ -32,9 +42,9 @@
             <div class="logo">Grand Mayan Travel</div>
             
             <div class="nav-pills">
-                <div class="nav-pill blue">
+                <a class="nav-pill blue" href="#plataforma">
                     <div class="nav-pill-text">Soluciones</div>
-                </div>
+                </a>
                 <div class="nav-pill red">
                     <div class="nav-pill-text">FAQ</div>
                 </div>
@@ -48,7 +58,18 @@
             
             <div class="nav-links">
                 <div class="nav-link">Contacto</div>
-                <div class="nav-link">Login</div>
+                <div class="nav-link dropdown-container">
+                    <button class="nav-link-btn" on:click={toggleRegistroDropdown}>
+                        Registrarse
+                        <span class="dropdown-arrow">▾</span>
+                    </button>
+                    {#if showRegistroDropdown}
+                        <div class="dropdown-menu" role="menu">
+                            <a href="https://search-engine-gmt.vercel.app/screens/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Registro Agencia de viajes</a>
+                            <a href="https://gmt-mayorista-pbuc.vercel.app/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Registro Operador de viaje</a>
+                        </div>
+                    {/if}
+                </div>
             </div>
         </div>
 
@@ -74,11 +95,10 @@
                 
                 <div class="search-container">
                     <div class="search-box">
-                        <div class="search-placeholder">Ofrecemos una nueva oportunidad de crecimiento</div>
+                        <div class="search-placeholder">Plataforma B2B para operadores de tours y agencias de viaje que buscan vender más, gestionar mejor y escalar su operación desde un solo lugar.</div>
                     </div>
                     
                     <div class="tags-container">
-                        <div class="tag"><div class="tag-text">Agencias de viaje</div></div>
                         <div class="tag"><div class="tag-text">Hoteles</div></div>
                         <div class="tag"><div class="tag-text">Tours</div></div>
                         <div class="tag"><div class="tag-text">Transporte</div></div>
@@ -109,7 +129,7 @@
         <div class="explore-row">
             <div class="explore-text">
                 <div class="explore-title">Explora un mundo de posibilidades</div>
-                <div class="explore-description">En GMT Mayorista ofrecemos una nueva y atractiva oportunidad de negocio mediante nuestra plataforma en línea pensada para operadores turísticos, DMC´s y redes de agencias. Brindamos una solución completa que cubre todas las necesidades de viaje en una sola gestión. Como aliados tecnológicos de empresas de turismo, ocio y viajes, nuestro modelo está pensado para adaptarse a cualquier tipo de negocio dentro del sector.</div>
+                <div class="explore-description">En GMT Mayorista ofrecemos una plataforma diseñada para operadores turísticos, DMC’s y agencias de viaje que buscan simplificar su operación y ampliar su alcance comercial. Centraliza tours, traslados, hoteles y servicios en un solo sistema, optimizando la gestión, la venta y el control de tu negocio turístico. Somos tu aliado tecnológico para crecer, automatizar procesos y adaptarte a las nuevas demandas del mercado.</div>
             </div>
             <div class="explore-images">
                 <img class="explore-img" style="width: 435px; height: 249px;" src={art} alt="Explore Art" />
@@ -123,13 +143,13 @@
             </div>
             <div class="explore-text" style="width: 446px;">
                 <div class="explore-title" style="font-size: 24px; line-height: 33.60px; width: 100%;">Eleva el alcance de tu negocio!</div>
-                <div class="explore-description" style="width: 100%;">GMT no solo es una mayorista de viajes sino una plataforma que elevará el alcance de tu negocio para que puedas ofrecer una grán catálogo de servicios. Ponemos a tu disposición una amplia variedad de servicios y beneficios adicionales, lo que nos posiciona como mucho más que un proveedor. Somos impulsores de oportunidades y el socio estratégico que necesitas para asegurar el éxito y el crecimiento de tu empresa.</div>
+                <div class="explore-description" style="width: 100%;">GMT no es solo una mayorista de viajes, es una plataforma que impulsa el crecimiento de tu negocio turístico. Accede a un catálogo amplio de servicios, mejora tu capacidad de venta y gestiona cada operación con mayor control y visibilidad. Más que un proveedor, somos tu socio estratégico para escalar de forma ordenada y rentable.</div>
             </div>
         </div>
     </div>
 
     <!-- Making Your Travel Dreams Section -->
-    <div class="dreams-section">
+    <div class="dreams-section" id="plataforma">
         <div class="dreams-header">
             <div class="dreams-title-section">
                 <div class="dreams-title">Conoce nuestra Plataforma</div>
@@ -150,7 +170,7 @@
                 <video class="card-image" src={interfaceVid} autoplay loop muted playsinline></video>
                 <div class="card-content">
                     <div class="card-title">Nueva experiencia de usuario</div>
-                    <div class="card-description">Ahorra tiempo y reserva viajes personalizados con hasta 100 servicios en un solo pago. Multi-dispositivo. Crea, planea, presupuesta y reserva.</div>
+                    <div class="card-description">Ahorra tiempo gestionando tours y servicios desde una sola plataforma. Cotiza, crea itinerarios y confirma reservas de forma ágil y desde cualquier dispositivo.</div>
                 </div>
             </div>
 
@@ -158,7 +178,7 @@
                 <video class="card-image" src={fasterVid} autoplay loop muted playsinline></video>
                 <div class="card-content">
                     <div class="card-title">Automatización inteligente</div>
-                    <div class="card-description">Flujos asistidos por IA para cotizar, comparar y confirmar más rápido. Menos fricción, más cierres.</div>
+                    <div class="card-description">Flujos asistidos para cotizar, comparar y confirmar servicios más rápido. Menos procesos manuales, más cierres efectivos.</div>
                 </div>
             </div>
 
@@ -166,7 +186,7 @@
                 <video class="card-image" src={productividadVid} autoplay loop muted playsinline></video>
                 <div class="card-content">
                     <div class="card-title">Catálogo unificado</div>
-                    <div class="card-description">Integra hoteles, vuelos, traslados y actividades en una sola experiencia de compra con reglas de negocio flexibles.</div>
+                    <div class="card-description">Integra tours, traslados, hoteles y actividades en un solo sistema con reglas de negocio flexibles para tu operación.</div>
                 </div>
             </div>
 
@@ -174,7 +194,7 @@
                 <video class="card-image" src={supportVid} autoplay loop muted playsinline></video>
                 <div class="card-content">
                     <div class="card-title">Reportes y control</div>
-                    <div class="card-description">Presupuestos, órdenes y facturas ordenadas con trazabilidad. Analiza desempeño y optimiza tus márgenes.</div>
+                    <div class="card-description">Controla presupuestos, órdenes y facturación con trazabilidad completa. Analiza tu desempeño y mejora tus márgenes.</div>
                 </div>
             </div>
         </div>
@@ -186,7 +206,12 @@
             <div class="journey-title">TIENES ALGÚN NEGOCIO TURÍSTICO?</div>
             <div class="journey-text">
                 <div class="journey-subtitle">Inicia tu registro en GMT</div>
-                <div class="journey-description">Da el primer paso a una nueva oportunidad, estamos seguros de que nuestra plataforma </div>
+                <div class="journey-description">GMT está diseñado para operadores de tours, agencias de viaje minoristas y DMC’s que buscan una solución profesional para gestionar y vender sus servicios turísticos. Ya sea que operes experiencias locales, tours privados o servicios especializados, nuestra plataforma se adapta a tu modelo de negocio.</div>
+
+                <div class="journey-actions">
+                    <a class="btn-link" href="https://search-engine-gmt.vercel.app/screens/registro" target="_blank" rel="noreferrer">Registro Agencia de viajes</a>
+                    <a class="btn-link secondary" href="https://gmt-mayorista-pbuc.vercel.app/registro" target="_blank" rel="noreferrer">Registro Operador de viaje</a>
+                </div>
             </div>
         </div>
 
@@ -197,26 +222,26 @@
 
             <div class="events-container">
                 <div class="event-card">
-                    <div class="event-month">May</div>
+                    <div class="event-month">Publica tus tours</div>
                     <div class="event-info">
-                        <div class="event-title">Ball Spirit Festival 2023</div>
-                        <div class="event-description" style="width: 233px;">your ultimate guide to the mesmetizing bali Spirit festival 20-22 may 2023</div>
+                        <div class="event-title">📢</div>
+                        <div class="event-description" style="width: 233px;">Crea y administra tus experiencias turísticas con precios, disponibilidad y reglas claras en un solo sistema.</div>
                     </div>
                 </div>
 
                 <div class="event-card center">
-                    <div class="event-month">June</div>
+                    <div class="event-month">Cotiza y confirma rápido</div>
                     <div class="event-info center">
-                        <div class="event-title">Java Jazz Festival</div>
-                        <div class="event-description" style="width: 288px;">your ultimate travel companion to the echanting Jakarta Java Jazz Fesetival 12-15 June 2023</div>
+                        <div class="event-title">🔥</div>
+                        <div class="event-description" style="width: 288px;">Reduce tiempos operativos con flujos inteligentes para cotizar, comparar y confirmar servicios sin procesos manuales.</div>
                     </div>
                 </div>
 
                 <div class="event-card right">
-                    <div class="event-month">July</div>
+                    <div class="event-month">Controla tu operación</div>
                     <div class="event-info right">
-                        <div class="event-title">Flower & Fruits Festival</div>
-                        <div class="event-description" style="width: 227px;">your ultimate travel guide to the captivating Bunga dan Buah Festival 10-20 July 2023</div>
+                        <div class="event-title">🎖️</div>
+                        <div class="event-description" style="width: 227px;">Visualiza ventas, reservas y reportes en tiempo real para tomar mejores decisiones de negocio.</div>
                     </div>
                 </div>
             </div>
@@ -226,7 +251,7 @@
             </div>
         </div>
 
-        <div class="journey-watermark">Grand Mayan Travel</div>
+        <div class="journey-watermark">GMT</div>
     </div>
 
     <!-- Reviews Section -->
@@ -261,7 +286,7 @@
 
         <div class="review-right">
             <div class="review-right-content">
-                <div class="review-right-title">What They Say About Us</div>
+                <div class="review-right-title">Inicia tu registro en GMT</div>
                 <div class="review-right-text">The world is full of incredible places just waiting to be explored. Let us help you choose your next destination and plan an itinerary that's perfectly suited to your travel style.</div>
             </div>
 
