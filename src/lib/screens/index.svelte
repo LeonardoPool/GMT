@@ -20,6 +20,7 @@
     import fasterVid from '$lib/assets/images/faster.mp4';
     import productividadVid from '$lib/assets/images/Productividad.mp4';
     import supportVid from '$lib/assets/images/supportvid.mp4';
+    import image from '$lib/assets/images/image.png';
 
     const heroImagesLeft = [camp, cen, chia, cr, gua, hon];
     const heroImagesRight = [may, mer, pal, pr, tul, yuc];
@@ -35,19 +36,35 @@
     }
 </script>
 
+<style>
+    :global(a.logo) {
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    :global(.nav-pill) {
+        text-decoration: none;
+    }
+
+    :global(.nav-pill a) {
+        text-decoration: none;
+    }
+</style>
+
 <div class="main-wrapper">
     <div class="content-wrapper">
         <!-- Navegación -->
         <div class="nav-container">
-            <div class="logo">Grand Mayan Travel</div>
+            <a class="logo" href="/">Grand Mayan Travel</a>
             
             <div class="nav-pills">
                 <a class="nav-pill blue" href="#plataforma">
                     <div class="nav-pill-text">Soluciones</div>
                 </a>
-                <div class="nav-pill red">
+                <a class="nav-pill red" href="/faq">
                     <div class="nav-pill-text">FAQ</div>
-                </div>
+                </a>
                 <div class="nav-pill purple">
                     <div class="nav-pill-text">Sobre Nosotros</div>
                 </div>
@@ -66,7 +83,7 @@
                     {#if showRegistroDropdown}
                         <div class="dropdown-menu" role="menu">
                             <a href="https://search-engine-gmt.vercel.app/screens/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Registro Agencia de viajes</a>
-                            <a href="https://gmt-mayorista-pbuc.vercel.app/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Registro Operador de viaje</a>
+                            <a href="https://operadores.gmtmayorista.com/" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Registro Operador de viaje</a>
                         </div>
                     {/if}
                 </div>
@@ -125,7 +142,7 @@
     </div>
 
     <!-- Explore the World Section -->
-    <div class="explore-section" style="margin-top: 100px;">
+    <div class="explore-section" style="margin-top: 100px;" >
         <div class="explore-row">
             <div class="explore-text">
                 <div class="explore-title">Explora un mundo de posibilidades</div>
@@ -210,7 +227,7 @@
 
                 <div class="journey-actions">
                     <a class="btn-link" href="https://search-engine-gmt.vercel.app/screens/registro" target="_blank" rel="noreferrer">Registro Agencia de viajes</a>
-                    <a class="btn-link secondary" href="https://gmt-mayorista-pbuc.vercel.app/registro" target="_blank" rel="noreferrer">Registro Operador de viaje</a>
+                    <a class="btn-link secondary" href="https://operadores.gmtmayorista.com/" target="_blank" rel="noreferrer">Registro Operador de viaje</a>
                 </div>
             </div>
         </div>
@@ -257,89 +274,35 @@
     <!-- Reviews Section -->
     <div class="reviews-section">
         <div class="review-left">
-            <img class="review-image" src="https://placehold.co/341x472" alt="Traveler" />
-            
-            <div class="review-content-wrapper">
-                <div class="review-header">
-                    <div class="review-count">(4/2041) Reviews</div>
-                    <div class="review-stars">
-                        <div class="stars-container">
-                            <div class="star"><div class="star-fill"></div></div>
-                            <div class="star"><div class="star-fill"></div></div>
-                            <div class="star"><div class="star-fill"></div></div>
-                            <div class="star"><div class="star-fill"></div></div>
-                            <div class="star"><div class="star-fill"></div></div>
-                        </div>
-                        <div class="review-score">4.7/5.0</div>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="review-text">i've always dreamed of exploring the hidden gems of Europe, and this travel agency made it happen. The personalized travel plan was perfect, and every destination was more breathtaking than the last. Thank you for an incredible journey!</div>
-                    <div class="review-author">
-                        <div class="author-name">Mark Timberlake.</div>
-                        <div class="author-title">Word Traveller, UK</div>
-                    </div>
-                </div>
+            <div class="review-right-content">
+                <div class="review-right-title">Inicia tu registro en GMT</div>
+                <div class="review-right-text">Gracias por confiar en GMT. Nos alegra que estés aquí. Al crear tu cuenta, podrás acceder a una plataforma diseñada para ayudarte a gestionar tus servicios de forma clara, eficiente y segura. Estamos listos para acompañarte en cada paso del proceso.</div>
+                <a class="btn-link" href="https://operadores.gmtmayorista.com/" target="_blank" rel="noreferrer" style="margin-top: 20px;">Iniciar registro</a>
             </div>
         </div>
 
         <div class="review-right">
-            <div class="review-right-content">
-                <div class="review-right-title">Inicia tu registro en GMT</div>
-                <div class="review-right-text">The world is full of incredible places just waiting to be explored. Let us help you choose your next destination and plan an itinerary that's perfectly suited to your travel style.</div>
-            </div>
-
-            <div class="review-nav">
-                <div class="nav-arrow">
-                    <div style="width: 32px; height: 32px;"></div>
-                </div>
-                <div class="nav-arrow active rotated">
-                    <div style="width: 32px; height: 32px;"></div>
-                </div>
-            </div>
+            <img class="review-image" src={image} alt="Traveler" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
     </div>
 
     <!-- Footer Section -->
-    <div class="footer-section">
-        <div class="footer-top">
-            <div class="footer-left">
-                <div class="footer-title">Tailored Travel Experiences Just for You</div>
-                <div class="footer-nav">
-                    <div class="footer-nav-item">
-                        <div class="footer-nav-text">Nuestras soluciones</div>
-                    </div>
-                    <div class="footer-nav-item">
-                        <div class="footer-nav-text">Sobre Nosotros</div>
-                    </div>
-                    <div class="footer-nav-item">
-                        <div class="footer-nav-text">Ventas</div>
-                    </div>
-                    <div class="footer-nav-item">
-                        <div class="footer-nav-text">contacto</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-right">
-                <div class="footer-right-content">
-                    <div class="footer-description">Every traveler is unique, and so are our travel plans. We listen to your needs and preferences to create personalized itineraries that provide enriching and unforgettable experiences.</div>
-                    <div class="cta-button">
-                        <div class="cta-text">Go Traveling</div>
-                        <div style="width: 20px; height: 20px;"></div>
-                    </div>
-                </div>
-
-                <div class="footer-contact">
+    <div class="footer-section" style="padding: 20px 0; min-height: auto;">
+        <div class="footer-top" style="padding: 0; margin: 0;">
+            <div class="footer-right" style="display: flex !important; flex-direction: row !important; gap: 40px; align-items: center; justify-content: center;">
+                <div class="footer-contact" style="margin: 0;">
                     <div class="email-icon">
                         <div class="email-icon-fill"></div>
                     </div>
                     <div class="email-text">contacto@gmtmayorista.com</div>
                 </div>
+                <div class="footer-contact" style="margin: 0;">
+                    <div class="email-icon">
+                        <div class="email-icon-fill"></div>
+                    </div>
+                    <div class="email-text">9993886600</div>
+                </div>
             </div>
         </div>
-
-        <div class="footer-logo">Grand Mayan Travel</div>
     </div>
 </div>
