@@ -21,9 +21,33 @@
     import productividadVid from '$lib/assets/images/Productividad.mp4';
     import supportVid from '$lib/assets/images/supportvid.mp4';
     import image from '$lib/assets/images/image.png';
+    import gmtLogo from '$lib/assets/images/GMT LOGO.jpeg';
 
     const heroImagesLeft = [camp, cen, chia, cr, gua, hon];
     const heroImagesRight = [may, mer, pal, pr, tul, yuc];
+
+    // Carrusel de destinos
+    const destinations = [
+        { name: 'Yucatán',      img: yuc,  label: 'YUCATÁN' },
+        { name: 'Campeche',     img: camp, label: 'CAMPECHE' },
+        { name: 'Quintana Roo', img: tul,  label: 'QUINTANA ROO' },
+        { name: 'Chiapas',      img: chia, label: 'CHIAPAS' },
+        { name: 'Tabasco',      img: pal,  label: 'TABASCO' },
+        { name: 'Guatemala',    img: gua,  label: 'GUATEMALA' },
+        { name: 'Belice',       img: cr,   label: 'BELICE' },
+        { name: 'Honduras',     img: hon,  label: 'HONDURAS' },
+        { name: 'El Salvador',  img: may,  label: 'EL SALVADOR' },
+    ];
+
+    let carouselIndex = $state(0);
+    const visibleCards = 4;
+
+    function prevSlide() {
+        carouselIndex = Math.max(0, carouselIndex - 1);
+    }
+    function nextSlide() {
+        carouselIndex = Math.min(destinations.length - visibleCards, carouselIndex + 1);
+    }
 
     let showRegistroDropdown = false;
 
@@ -60,16 +84,16 @@
             
             <div class="nav-pills">
                 <a class="nav-pill blue" href="#plataforma">
-                    <div class="nav-pill-text">Soluciones</div>
+                    <div class="nav-pill-text">¿Quienes Somos?</div>
                 </a>
                 <a class="nav-pill red" href="/faq">
-                    <div class="nav-pill-text">FAQ</div>
+                    <div class="nav-pill-text">Blog</div>
                 </a>
                 <div class="nav-pill purple">
-                    <div class="nav-pill-text">Sobre Nosotros</div>
+                    <div class="nav-pill-text">Contacto</div>
                 </div>
                 <div class="nav-pill green">
-                    <div class="nav-pill-text">Ventas</div>
+                    <div class="nav-pill-text">Nuestros socios</div>
                 </div>
             </div>
             
@@ -108,18 +132,21 @@
             
             <!-- Contenido central -->
             <div class="hero-content">
-                <h1 class="hero-title">Tu próximo negocio empieza aquí.</h1>
-                
-                <div class="search-container">
-                    <div class="search-box">
-                        <div class="search-placeholder">Plataforma B2B para operadores de tours y agencias de viaje que buscan vender más, gestionar mejor y escalar su operación desde un solo lugar.</div>
-                    </div>
-                    
-                    <div class="tags-container">
-                        <div class="tag"><div class="tag-text">Hoteles</div></div>
-                        <div class="tag"><div class="tag-text">Tours</div></div>
-                        <div class="tag"><div class="tag-text">Transporte</div></div>
-                    </div>
+                <div class="orbit-system">
+                    <!-- Logo central -->
+                    <img src={gmtLogo} alt="GMT Logo" class="hero-logo-circle" />
+
+                    <!-- Texto curvo animado que rodea el logo -->
+                    <svg class="orbit-svg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs>
+                            <path id="circle-text-path" d="M 210,68 A 142,142 0 1,1 209.9,68" />
+                        </defs>
+                        <text class="orbit-text-svg">
+                            <textPath href="#circle-text-path" startOffset="0%">
+                                Hoteles &bull; Tours &bull; Transporte &bull; Villas &bull; Circuitos &bull; Hoteles &bull; Tours &bull; Transporte &bull; Villas &bull; Circuitos &bull;
+                            </textPath>
+                        </text>
+                    </svg>
                 </div>
             </div>
             
@@ -139,6 +166,31 @@
         </div>
 
         <!-- Logos de partners eliminados para liberar espacio debajo del hero -->
+    </div>
+
+    <!-- Sección Destinos Carrusel -->
+    <div class="destinations-section">
+        <div class="destinations-header">
+            <div class="destinations-header-left">
+                <h2 class="destinations-title">5 países, 9 Incríbles destinos  del mundo maya</h2>
+                <p class="destinations-subtitle">MÉXICO &nbsp;Yucatán &nbsp;Campeche &nbsp;Quintana Roo &nbsp;Chiapas &nbsp;Tabasco &nbsp;&nbsp;CENTROAMÉRICA &nbsp;Guatemala &nbsp;Belice &nbsp;Honduras &nbsp;El Salvador</p>
+            </div>
+            <div class="destinations-nav">
+                <button class="dest-nav-btn" on:click={prevSlide} disabled={carouselIndex === 0} aria-label="Anterior">&#8249;</button>
+                <button class="dest-nav-btn dest-nav-btn--active" on:click={nextSlide} disabled={carouselIndex >= destinations.length - visibleCards} aria-label="Siguiente">&#8250;</button>
+            </div>
+        </div>
+
+        <div class="destinations-carousel">
+            <div class="destinations-track" style="transform: translateX(calc(-{carouselIndex} * (280px + 16px)))">  
+                {#each destinations as dest}
+                    <div class="dest-card">
+                        <img class="dest-card-img" src={dest.img} alt={dest.name} />
+                        <div class="dest-card-label">{dest.label}</div>
+                    </div>
+                {/each}
+            </div>
+        </div>
     </div>
 
     <!-- Explore the World Section -->
