@@ -5,15 +5,7 @@ export default defineConfig({
 	plugins: [sveltekit()],
 	build: {
 		// Optimizaciones de build
-		minify: 'terser',
-		// Code splitting
-		rollupOptions: {
-			output: {
-				manualChunks: {
-					'vendor': ['@sveltejs/kit']
-				}
-			}
-		},
+		minify: 'esbuild',
 		// Otros optimizaciones
 		cssCodeSplit: true,
 		sourcemap: false,
