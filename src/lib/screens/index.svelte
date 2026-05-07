@@ -1,5 +1,7 @@
 <script lang="ts">
     import '../../lib/styles/travelgo.css';
+    import LazyImage from '$lib/components/LazyImage.svelte';
+    import LazyVideo from '$lib/components/LazyVideo.svelte';
     import camp from '$lib/assets/images/camp.jpg';
     import pr from '$lib/assets/images/PR.jpg';
     import yuc from '$lib/assets/images/yuc.jpg';
@@ -164,7 +166,7 @@
         <!-- Navegación -->
         <div class="nav-container">
             <a class="brand-link" href="/">
-                <img class="brand-logo" src={gmtLogo} alt="Grand Mayan Travel" loading="eager" decoding="async" />
+                <LazyImage class="brand-logo" src={gmtLogo} alt="Grand Mayan Travel" priority={true} />
                 <span class="logo">Grand Mayan Travel</span>
             </a>
             
@@ -234,14 +236,14 @@
             <!-- Galería izquierda -->
             <div class="gallery">
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[0]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[1]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[2]} alt="" loading="lazy" decoding="async" />
+                    <LazyImage class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[0]} alt="" />
+                    <LazyImage class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[1]} alt="" />
+                    <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[2]} alt="" />
                 </div>
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[3]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[4]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[5]} alt="" loading="lazy" decoding="async" />
+                    <LazyImage class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[3]} alt="" />
+                    <LazyImage class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[4]} alt="" />
+                    <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[5]} alt="" />
                 </div>
             </div>
             
@@ -249,7 +251,7 @@
             <div class="hero-content">
                 <div class="orbit-system">
                     <!-- Logo central -->
-                    <img src={gmtLogo} alt="GMT Logo" class="hero-logo-circle" />
+                    <LazyImage src={gmtLogo} alt="GMT Logo" class="hero-logo-circle" priority={true} />
 
                     <!-- Texto curvo animado que rodea el logo -->
                     <svg class="orbit-svg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -268,14 +270,14 @@
             <!-- Galería derecha (espejo) -->
             <div class="gallery mirrored">
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[2]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[1]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" loading="lazy" decoding="async" />
+                    <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[2]} alt="" />
+                    <LazyImage class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[1]} alt="" />
+                    <LazyImage class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" />
                 </div>
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[5]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[4]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" loading="lazy" decoding="async" />
+                    <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[5]} alt="" />
+                    <LazyImage class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[4]} alt="" />
+                    <LazyImage class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" />
                 </div>
             </div>
         </div>
@@ -313,7 +315,7 @@
             <div class="featured-track">
                 {#each activeDestinationCards as dest}
                     <article class="featured-card">
-                        <img class="featured-card-image" src={dest.img} alt={dest.name} loading="lazy" decoding="async" />
+                        <LazyImage class="featured-card-image" src={dest.img} alt={dest.name} />
                         <div class="featured-card-shade"></div>
                         {#if dest.badge}
                             <div class="featured-badge">{dest.badge}</div>
@@ -370,14 +372,14 @@
                 <div class="explore-description">En GMT Mayorista ofrecemos una plataforma diseñada para operadores turísticos, DMC’s y agencias de viaje que buscan simplificar su operación y ampliar su alcance comercial. Centraliza tours, traslados, hoteles y servicios en un solo sistema, optimizando la gestión, la venta y el control de tu negocio turístico. Somos tu aliado tecnológico para crecer, automatizar procesos y adaptarte a las nuevas demandas del mercado.</div>
             </div>
             <div class="explore-images">
-                <img class="explore-img" style="width: 435px; height: 249px;" src={art} alt="Explore Art" loading="lazy" decoding="async" />
-                <img class="explore-img" style="width: 346px; height: 249px;" src={ai} alt="Explore AI" loading="lazy" decoding="async" />
+                <LazyImage class="explore-img" style="width: 435px; height: 249px;" src={art} alt="Explore Art" />
+                <LazyImage class="explore-img" style="width: 346px; height: 249px;" src={ai} alt="Explore AI" />
             </div>
         </div>
         <div class="explore-row">
             <div class="explore-images">
-                <img class="explore-img" style="width: 511px; height: 249px;" src={tech} alt="Explore Tech" loading="lazy" decoding="async" />
-                <img class="explore-img" style="width: 303px; height: 249px;" src={concept} alt="Explore Concept" loading="lazy" decoding="async" />
+                <LazyImage class="explore-img" style="width: 511px; height: 249px;" src={tech} alt="Explore Tech" />
+                <LazyImage class="explore-img" style="width: 303px; height: 249px;" src={concept} alt="Explore Concept" />
             </div>
             <div class="explore-text" style="width: 446px;">
                 <div class="explore-title" style="font-size: 24px; line-height: 33.60px; width: 100%;">Eleva el alcance de tu negocio!</div>
@@ -405,7 +407,7 @@
         <!-- Cards Grid -->
         <div class="cards-grid feature-cards">
             <div class="destination-card">
-                <video class="card-image" src={interfaceVid} autoplay loop muted playsinline></video>
+                <LazyVideo class="card-image" src={interfaceVid} autoplay={true} loop={true} muted={true} playsinline={true} />
                 <div class="card-content">
                     <div class="card-title">Nueva experiencia de usuario</div>
                     <div class="card-description">Ahorra tiempo gestionando tours y servicios desde una sola plataforma. Cotiza, crea itinerarios y confirma reservas de forma ágil y desde cualquier dispositivo.</div>
@@ -413,7 +415,7 @@
             </div>
 
             <div class="destination-card">
-                <video class="card-image" src={fasterVid} autoplay loop muted playsinline></video>
+                <LazyVideo class="card-image" src={fasterVid} autoplay={true} loop={true} muted={true} playsinline={true} />
                 <div class="card-content">
                     <div class="card-title">Automatización inteligente</div>
                     <div class="card-description">Flujos asistidos para cotizar, comparar y confirmar servicios más rápido. Menos procesos manuales, más cierres efectivos.</div>
@@ -421,7 +423,7 @@
             </div>
 
             <div class="destination-card">
-                <video class="card-image" src={productividadVid} autoplay loop muted playsinline></video>
+                <LazyVideo class="card-image" src={productividadVid} autoplay={true} loop={true} muted={true} playsinline={true} />
                 <div class="card-content">
                     <div class="card-title">Catálogo unificado</div>
                     <div class="card-description">Integra tours, traslados, hoteles y actividades en un solo sistema con reglas de negocio flexibles para tu operación.</div>
@@ -429,7 +431,7 @@
             </div>
 
             <div class="destination-card">
-                <video class="card-image" src={supportVid} autoplay loop muted playsinline></video>
+                <LazyVideo class="card-image" src={supportVid} autoplay={true} loop={true} muted={true} playsinline={true} />
                 <div class="card-content">
                     <div class="card-title">Reportes y control</div>
                     <div class="card-description">Controla presupuestos, órdenes y facturación con trazabilidad completa. Analiza tu desempeño y mejora tus márgenes.</div>
@@ -503,7 +505,7 @@
         </div>
 
         <div class="review-right">
-            <img class="review-image" src={image} alt="Traveler" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" />
+            <LazyImage class="review-image" src={image} alt="Traveler" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
     </div>
 
