@@ -172,7 +172,7 @@
     <div class="destinations-section">
         <div class="destinations-header">
             <div class="destinations-header-left">
-                <h2 class="destinations-title">5 países, 9 Incríbles destinos  del mundo maya</h2>
+                <h2 class="destinations-title">5 países, 9 destinos increíbles  del mundo maya</h2>
                 <p class="destinations-subtitle">MÉXICO &nbsp;Yucatán &nbsp;Campeche &nbsp;Quintana Roo &nbsp;Chiapas &nbsp;Tabasco &nbsp;&nbsp;CENTROAMÉRICA &nbsp;Guatemala &nbsp;Belice &nbsp;Honduras &nbsp;El Salvador</p>
             </div>
             <div class="destinations-nav">
