@@ -237,7 +237,7 @@
         <!-- Texto descriptivo centrado debajo del hero -->
         <div style="text-align: center; padding: 24px 20px 40px; margin-top: 0;">
             <p style="font-size: 22px; color: #666; font-family: 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.2px; line-height: 1.35;">
-                La plataforma B2B especializada en el Mundo Maya y México
+                La plataforma B2B especializada en el Mundo Maya y México. 
             </p>
         </div>
     </div>
