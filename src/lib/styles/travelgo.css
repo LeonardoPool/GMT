@@ -53,6 +53,7 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .logo {
@@ -70,6 +71,8 @@ body {
     gap: 16px;
     flex-wrap: wrap;
     margin: 10px 0;
+    order: 3;
+    width: 100%;
 }
 
 .nav-pill {
@@ -107,6 +110,7 @@ body {
 .nav-links {
     display: flex;
     gap: 32px;
+    order: 2;
 }
 
 .nav-link {
@@ -309,6 +313,7 @@ body {
     width: 420px;
     height: 420px;
     margin: 0 auto;
+    min-width: 300px;
 }
 
 .hero-logo-circle {
@@ -1623,5 +1628,934 @@ body {
     padding: 6px 16px;
     border-radius: 999px;
     white-space: nowrap;
+}
+
+/* ============================
+   ENHANCED RESPONSIVE DESIGN
+   ============================ */
+
+/* Tablet - Large (1025px to 1280px) */
+@media (max-width: 1280px) {
+    .content-wrapper {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    .nav-pills {
+        gap: 12px;
+    }
+    
+    .nav-pill-text {
+        font-size: 16px;
+    }
+    
+    .explore-section,
+    .dreams-section,
+    .reviews-section,
+    .footer-section {
+        padding: 0 20px !important;
+    }
+    
+    .explore-row {
+        gap: 40px;
+    }
+}
+
+/* Tablet - Medium (769px to 1024px) */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .explore-title,
+    .journey-title,
+    .dreams-title {
+        font-size: 42px;
+    }
+    
+    .hero-section::before {
+        font-size: 300px;
+        top: 40%;
+    }
+    
+    .gallery {
+        width: 80% !important;
+        max-width: 400px !important;
+    }
+    
+    .orbit-system {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .hero-logo-circle {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .explore-section {
+        padding: 0 20px !important;
+    }
+    
+    .explore-row {
+        gap: 40px;
+    }
+    
+    .explore-images {
+        max-width: 600px;
+    }
+    
+    .explore-img {
+        max-width: 100% !important;
+    }
+    
+    .nav-container {
+        padding: 20px 16px;
+    }
+}
+
+/* Mobile - Large (481px to 768px) */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 20px 12px;
+        gap: 15px;
+    }
+    
+    .logo {
+        font-size: 20px;
+        order: 1;
+        width: 100%;
+        flex-basis: 100%;
+    }
+    
+    .nav-pills {
+        order: 3;
+        width: 100%;
+        gap: 10px;
+        justify-content: space-between;
+    }
+    
+    .nav-pill {
+        padding: 6px 12px;
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .nav-pill-text {
+        font-size: 14px;
+    }
+    
+    .nav-links {
+        order: 2;
+        width: 100%;
+        flex-basis: 100%;
+        gap: 16px;
+        justify-content: space-between;
+        font-size: 14px;
+    }
+    
+    .nav-link {
+        font-size: 14px;
+    }
+    
+    .nav-link-btn {
+        font-size: 14px;
+    }
+    
+    .hero-section::before {
+        font-size: 200px;
+        top: 45%;
+    }
+    
+    .gallery {
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 12px;
+    }
+    
+    .gallery-row {
+        gap: 12px;
+    }
+    
+    .gallery-img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1;
+    }
+    
+    .gallery-img:nth-child(1) { max-width: 140px; }
+    .gallery-img:nth-child(2) { max-width: 110px; }
+    .gallery-img:nth-child(3) { max-width: 70px; }
+    
+    .orbit-system {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .hero-logo-circle {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .orbit-text-svg {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+    
+    .hero-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 16px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+    
+    .search-box {
+        width: 100%;
+        padding: 12px 16px;
+    }
+    
+    .destinations-section {
+        padding: 0 16px;
+        margin: 60px auto 0;
+    }
+    
+    .destinations-header {
+        margin-bottom: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .destinations-title {
+        font-size: 24px;
+    }
+    
+    .destinations-subtitle {
+        font-size: 12px;
+    }
+    
+    .destinations-nav {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .dest-nav-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+    
+    .dest-card {
+        flex: 0 0 220px;
+        height: 160px;
+    }
+    
+    .explore-section {
+        padding: 0 16px !important;
+        margin-top: 60px;
+        gap: 40px;
+    }
+    
+    .explore-row {
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .explore-title {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    
+    .explore-description {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .explore-images {
+        width: 100%;
+        flex-direction: column;
+        gap: 14px;
+    }
+    
+    .explore-img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+    }
+    
+    .dreams-section {
+        padding: 0 16px !important;
+        margin: 60px auto 0;
+        gap: 35px;
+    }
+    
+    .dreams-title {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    
+    .dreams-subtitle {
+        font-size: 13px;
+    }
+    
+    .dreams-tags {
+        gap: 12px;
+    }
+    
+    .tag {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .cards-grid {
+        gap: 16px;
+    }
+    
+    .destination-card {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+    }
+    
+    .card-image {
+        height: 160px;
+    }
+    
+    .card-title {
+        font-size: 16px;
+    }
+    
+    .card-description {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .journey-section {
+        margin: 40px auto;
+        padding: 20px 16px !important;
+        gap: 30px;
+    }
+    
+    .journey-title {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+    
+    .journey-subtitle {
+        font-size: 18px;
+    }
+    
+    .journey-description {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    
+    .events-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .event-card {
+        width: 100% !important;
+    }
+    
+    .event-month {
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .event-description {
+        font-size: 13px;
+    }
+    
+    .reviews-section {
+        padding: 0 16px !important;
+        margin: 60px auto;
+    }
+    
+    .review-right-title {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    
+    .review-right-text {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    
+    .footer-section {
+        padding: 0 16px !important;
+        margin: 40px auto;
+    }
+    
+    .footer-title {
+        font-size: 26px;
+        line-height: 1.2;
+    }
+    
+    .dropdown-menu {
+        position: fixed;
+        right: 12px;
+        left: 12px;
+        min-width: calc(100% - 24px);
+    }
+}
+
+/* Mobile - Small (321px to 480px) */
+@media (max-width: 480px) {
+    .content-wrapper {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .nav-container {
+        padding: 16px 12px;
+        gap: 12px;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
+    
+    .nav-pills {
+        width: 100%;
+        gap: 8px;
+        flex-direction: column;
+    }
+    
+    .nav-pill {
+        padding: 8px 12px;
+        width: 100%;
+        justify-content: center;
+        border-radius: 20px;
+    }
+    
+    .nav-pill-text {
+        font-size: 13px;
+    }
+    
+    .nav-links {
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .nav-link {
+        font-size: 13px;
+    }
+    
+    .hero-section::before {
+        font-size: 100px;
+        top: 50%;
+    }
+    
+    .gallery {
+        width: 100% !important;
+    }
+    
+    .gallery-row {
+        gap: 8px;
+    }
+    
+    .gallery-img {
+        aspect-ratio: 1;
+    }
+    
+    .gallery-img:nth-child(1) { max-width: 100px; }
+    .gallery-img:nth-child(2) { max-width: 75px; }
+    .gallery-img:nth-child(3) { max-width: 50px; }
+    
+    .orbit-system {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .hero-logo-circle {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .orbit-text-svg {
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+    
+    .hero-title {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+    
+    .search-placeholder {
+        font-size: 14px;
+    }
+    
+    .destinations-section {
+        padding: 0 12px;
+        margin: 40px auto 0;
+    }
+    
+    .destinations-header {
+        margin-bottom: 16px;
+    }
+    
+    .destinations-title {
+        font-size: 20px;
+    }
+    
+    .destinations-subtitle {
+        font-size: 11px;
+    }
+    
+    .dest-card {
+        flex: 0 0 180px;
+        height: 140px;
+    }
+    
+    .dest-card-label {
+        font-size: 10px;
+        padding: 4px 12px;
+    }
+    
+    .explore-section {
+        padding: 0 12px !important;
+        margin-top: 40px;
+        gap: 30px;
+    }
+    
+    .explore-title {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+    
+    .explore-description {
+        font-size: 13px;
+    }
+    
+    .explore-images {
+        gap: 10px;
+    }
+    
+    .dreams-section {
+        padding: 0 12px !important;
+        margin: 40px auto 0;
+        gap: 30px;
+    }
+    
+    .dreams-header {
+        gap: 24px;
+    }
+    
+    .dreams-title {
+        font-size: 22px;
+    }
+    
+    .dreams-subtitle {
+        font-size: 12px;
+    }
+    
+    .dreams-tags {
+        gap: 8px;
+        justify-content: center;
+    }
+    
+    .tag {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    
+    .tag-text {
+        font-size: 12px;
+    }
+    
+    .destination-card {
+        padding: 10px;
+    }
+    
+    .card-image {
+        height: 140px;
+    }
+    
+    .card-title {
+        font-size: 14px;
+    }
+    
+    .card-description {
+        font-size: 12px;
+    }
+    
+    .journey-section {
+        margin: 30px auto;
+        padding: 16px 12px !important;
+        gap: 24px;
+    }
+    
+    .journey-header {
+        gap: 12px;
+    }
+    
+    .journey-title {
+        font-size: 20px;
+    }
+    
+    .journey-subtitle {
+        font-size: 16px;
+    }
+    
+    .journey-description {
+        font-size: 12px;
+    }
+    
+    .event-card {
+        gap: 12px;
+    }
+    
+    .event-month {
+        font-size: 18px;
+    }
+    
+    .event-title {
+        font-size: 16px;
+    }
+    
+    .event-description {
+        font-size: 12px;
+    }
+    
+    .journey-watermark {
+        font-size: 80px !important;
+    }
+    
+    .reviews-section {
+        padding: 0 12px !important;
+        margin: 40px auto;
+    }
+    
+    .review-right-title {
+        font-size: 22px;
+    }
+    
+    .review-right-text {
+        font-size: 12px;
+    }
+    
+    .footer-section {
+        padding: 0 12px !important;
+        margin: 30px auto;
+    }
+    
+    .footer-top {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .footer-title {
+        font-size: 22px;
+    }
+    
+    .footer-contact {
+        width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    
+    .email-text {
+        font-size: 14px;
+    }
+    
+    .footer-logo {
+        font-size: 60px;
+    }
+    
+    .btn-link {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+    
+    .dropdown-menu {
+        right: 8px;
+        left: 8px;
+    }
+}
+
+/* Ultra-small devices (less than 320px) */
+@media (max-width: 320px) {
+    .logo {
+        font-size: 16px;
+    }
+    
+    .nav-pill-text {
+        font-size: 12px;
+    }
+    
+    .hero-title {
+        font-size: 18px;
+    }
+    
+    .explore-title,
+    .dreams-title,
+    .journey-title,
+    .footer-title {
+        font-size: 20px;
+    }
+    
+    .gallery-img:nth-child(1) { max-width: 80px; }
+    .gallery-img:nth-child(2) { max-width: 60px; }
+    .gallery-img:nth-child(3) { max-width: 40px; }
+    
+    .orbit-system {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .hero-logo-circle {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .destinations-title {
+        font-size: 18px;
+    }
+    
+    .explore-description,
+    .dreams-subtitle,
+    .event-description,
+    .review-right-text {
+        font-size: 11px;
+    }
+}
+
+/* Fix inline styles for responsive behavior */
+@media (max-width: 768px) {
+    /* Override inline width/height for gallery images */
+    .gallery-img[style*="180px"] {
+        width: auto !important;
+        height: auto !important;
+        max-width: 120px;
+    }
+    
+    .gallery-img[style*="137px"] {
+        width: auto !important;
+        height: auto !important;
+        max-width: 90px;
+    }
+    
+    .gallery-img[style*="96px"] {
+        width: auto !important;
+        height: auto !important;
+        max-width: 60px;
+    }
+    
+    /* Explore section images */
+    .explore-img[style*="435px"],
+    .explore-img[style*="346px"],
+    .explore-img[style*="511px"],
+    .explore-img[style*="303px"] {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* FAQSection responsive styles */
+    .faq-section {
+        padding: 40px 16px !important;
+    }
+    
+    .faq-header {
+        margin-bottom: 30px;
+    }
+    
+    .faq-header h1 {
+        font-size: 28px !important;
+    }
+    
+    .faq-header p {
+        font-size: 14px !important;
+    }
+    
+    .faq-question {
+        font-size: 14px !important;
+        padding: 16px !important;
+    }
+    
+    .faq-answer {
+        font-size: 13px !important;
+        padding: 16px !important;
+        line-height: 1.5;
+    }
+}
+
+/* ============================
+   FAQ Page Specific Responsive
+   ============================ */
+
+.faq-section {
+    padding: 60px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.faq-header p {
+    font-size: 18px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.faq-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f9f9f9;
+}
+
+.faq-question:focus {
+    outline: 2px solid #A5C89E;
+    outline-offset: 2px;
+}
+
+.faq-answer {
+    padding: 0 20px 20px 20px;
+    background-color: #fafafa;
+    color: #555;
+    line-height: 1.6;
+    font-size: 15px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 500px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .faq-section {
+        padding: 50px 30px;
+    }
+    
+    .faq-header h1 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 40px 20px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .faq-header {
+        margin-bottom: 35px;
+    }
+    
+    .faq-header h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+    
+    .faq-header p {
+        font-size: 15px;
+    }
+    
+    .faq-question {
+        padding: 16px;
+        font-size: 15px;
+        gap: 10px;
+    }
+    
+    .faq-answer {
+        padding: 0 16px 16px 16px;
+        font-size: 14px;
+    }
+    
+    .faq-item {
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-section {
+        padding: 30px 16px;
+    }
+    
+    .faq-header {
+        margin-bottom: 25px;
+    }
+    
+    .faq-header h1 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    
+    .faq-header p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .faq-question {
+        padding: 14px;
+        font-size: 14px;
+    }
+    
+    .faq-answer {
+        padding: 0 14px 14px 14px;
+        font-size: 13px;
+    }
+    
+    .faq-item {
+        margin-bottom: 10px;
+        border-radius: 6px;
+    }
 }
 
