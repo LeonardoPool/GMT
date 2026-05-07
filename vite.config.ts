@@ -6,18 +6,11 @@ export default defineConfig({
 	build: {
 		// Optimizaciones de build
 		minify: 'terser',
-		terserOptions: {
-			compress: {
-				drop_console: false,
-				drop_debugger: true
-			}
-		},
 		// Code splitting
 		rollupOptions: {
 			output: {
 				manualChunks: {
-					'vendor': ['@sveltejs/kit'],
-					'components': ['./src/lib/components/']
+					'vendor': ['@sveltejs/kit']
 				}
 			}
 		},

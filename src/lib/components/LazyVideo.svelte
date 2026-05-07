@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { tick } from 'svelte';
+
 	interface Props {
 		src: string;
 		class?: string;
@@ -7,73 +9,72 @@
 		loop?: boolean;
 		muted?: boolean;
 		playsinline?: boolean;
+		controls?: boolean;
 	}
 
-	let { src, class: className, style, autoplay = true, loop = true, muted = true, playsinline = true }: Props = $props();
+	let { src, class: className, style, autoplay = true, loop = true, muted = true, playsinline = true, controls = false }: Props = $props();
 
-	let isInView = $state(false);
-	let videoRef: HTMLVideoElement | undefined;
-	let hasLoaded = $state(false);
+	let videoElement: HTMLVideoElement;
+	let hasPrepared = false;
+	let shouldPlay = false;
 
-	$effect(() => {
-		if (!videoRef) return;
+	function waitForCanPlay() {
+		return new Promise<void>((resolve) => {
+			if (!videoElement || videoElement.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+				resolve();
+				return;
+			}
 
-		if ('IntersectionObserver' in window) {
-			const observer = new IntersectionObserver(
-				(entries) => {
-					const entry = entries[0];
-					isInView = entry.isIntersecting;
+			videoElement.addEventListener('canplay', () => resolve(), { once: true });
+		});
+	}
 
-					if (entry.isIntersecting && !hasLoaded && videoRef) {
-						videoRef.src = src;
-						hasLoaded = true;
-						if (autoplay) {
-							videoRef.play().catch(() => {
-								// El navegador puede no permitir autoplay
-							});
-						}
-						observer.unobserve(videoRef);
-					}
-				},
-				{ rootMargin: '100px' }
-			);
+	async function playVideoOnHover() {
+		shouldPlay = true;
+		await tick();
+		if (!autoplay || !videoElement) return;
 
-			observer.observe(videoRef);
-
-			return () => observer.disconnect();
-		} else {
-			// Fallback para navegadores sin IntersectionObserver
-			videoRef.src = src;
-			hasLoaded = true;
+		if (!hasPrepared) {
+			hasPrepared = true;
+			videoElement.preload = 'auto';
+			videoElement.load();
 		}
-	});
 
-	function handleIntersection() {
-		if (isInView && autoplay && videoRef) {
-			videoRef.play().catch(() => {
-				// El navegador puede no permitir autoplay
-			});
-		}
+		await waitForCanPlay();
+		if (!shouldPlay || !videoElement) return;
+
+		videoElement.play().catch(() => {
+			// Autoplay can be blocked by the browser; keep the video ready without surfacing an error.
+		});
+	}
+
+	function pauseVideo() {
+		shouldPlay = false;
+		if (!videoElement) return;
+		videoElement.pause();
 	}
 </script>
 
 <video
-	bind:this={videoRef}
-	class={`lazy-video ${className || ''}`}
+	bind:this={videoElement}
+	{src}
+	class={className || ''}
 	{style}
-	{autoplay}
 	{loop}
 	{muted}
 	{playsinline}
+	{controls}
 	preload="metadata"
-	onvisibilitychange={handleIntersection}
+	onpointerenter={() => void playVideoOnHover()}
+	onpointerleave={pauseVideo}
+	onfocus={() => void playVideoOnHover()}
+	onblur={pauseVideo}
 >
-	<track kind="captions" />
-	Your browser does not support the video tag.
+	Tu navegador no soporta videos HTML5.
 </video>
 
 <style>
-	.lazy-video {
+	video {
 		width: 100%;
 		height: auto;
 		display: block;

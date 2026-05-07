@@ -28,99 +28,39 @@
     const heroImagesLeft = [camp, cen, chia, cr, gua, hon];
     const heroImagesRight = [camp, cen, chia, cr, gua, hon];
 
-    type DestinationGroup = 'Mexico' | 'Centroamerica';
     type DestinationCard = {
         name: string;
-        property: string;
         img: string;
-        badge?: string;
-        features: string[];
     };
 
-    const destinationTabs: Array<{ key: DestinationGroup; label: string }> = [
-        { key: 'Mexico', label: 'Mexico' },
-        { key: 'Centroamerica', label: 'Centroamérica' }
+    const destinationCards: DestinationCard[] = [
+        { name: 'Yucatán', img: yuc },
+        { name: 'Guatemala', img: gua },
+        { name: 'Campeche', img: camp },
+        { name: 'Honduras', img: hon },
+        { name: 'Quintana Roo', img: tul },
+        { name: 'Belice', img: cr },
+        { name: 'Chiapas', img: chia },
+        { name: 'El Salvador', img: may },
+        { name: 'Tabasco', img: pal },
     ];
 
-    const destinationGroups: Record<DestinationGroup, DestinationCard[]> = {
-        Mexico: [
-            {
-                name: 'Yucatán',
-                property: 'Chablé Yucatán',
-                img: yuc,
-                badge: 'Free night',
-                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
-            },
-            {
-                name: 'Campeche',
-                property: 'Hacienda Puerta Campeche',
-                img: camp,
-                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
-            },
-            {
-                name: 'Quintana Roo',
-                property: 'NIZUC Resort & Spa',
-                img: tul,
-                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
-            },
-            {
-                name: 'Chiapas',
-                property: 'Casa del Alma',
-                img: chia,
-                badge: 'Free night',
-                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
-            },
-            {
-                name: 'Tabasco',
-                property: 'Hampton by Hilton Villahermosa',
-                img: pal,
-                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
-            }
-        ],
-        Centroamerica: [
-            {
-                name: 'Guatemala',
-                property: 'Casa Santo Domingo',
-                img: gua,
-                badge: 'Free night',
-                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
-            },
-            {
-                name: 'Honduras',
-                property: 'Indura Beach & Golf Resort',
-                img: hon,
-                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
-            },
-            {
-                name: 'Belice',
-                property: 'Itz’ana Resort',
-                img: cr,
-                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
-            },
-            {
-                name: 'El Salvador',
-                property: 'Barceló San Salvador',
-                img: may,
-                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
-            }
-        ]
-    };
+    const featuredCarouselCards = [...destinationCards, ...destinationCards];
+    const operatorRegisterUrl = 'https://operadores.gmtmayorista.com/registro';
+    const agencyRegisterUrl = 'https://search-engine-gmt.vercel.app/screens/registro';
+    const operatorLoginUrl = 'https://operadores.gmtmayorista.com/';
+    const platformLoginUrl = 'https://search-engine-gmt.vercel.app/screens/login';
 
-    let activeDestinationGroup = $state<DestinationGroup>('Mexico');
-    const activeDestinationCards = $derived(destinationGroups[activeDestinationGroup]);
+    type DropdownMode = 'login' | 'register';
 
-    function setDestinationGroup(group: DestinationGroup) {
-        activeDestinationGroup = group;
-    }
+    let activeDropdown = $state<DropdownMode | null>(null);
 
-    let showRegistroDropdown = $state(false);
-
-    function toggleRegistroDropdown() {
-        showRegistroDropdown = !showRegistroDropdown;
+    function toggleDropdown(mode: DropdownMode) {
+        activeDropdown = activeDropdown === mode ? null : mode;
     }
 
     function closeDropdown() {
-        showRegistroDropdown = false;
+        activeDropdown = null;
     }
 </script>
 
@@ -171,10 +111,10 @@
             </a>
             
             <div class="nav-pills">
-                <a class="nav-pill blue" href="#plataforma">
+                <a class="nav-pill blue" href="/faq">
                     <div class="nav-pill-text">¿Quienes Somos?</div>
                 </a>
-                <a class="nav-pill red" href="/faq">
+                <a class="nav-pill red" href="#blog">
                     <div class="nav-pill-text">Blog</div>
                 </a>
                 <div class="nav-pill purple">
@@ -192,12 +132,26 @@
                         class="nav-link-btn"
                         onclick={(event) => {
                             event.stopPropagation();
-                            toggleRegistroDropdown();
+                            toggleDropdown('login');
                         }}
                     >
                         Iniciar Sesión
                         <span class="dropdown-arrow">▾</span>
                     </button>
+                    <div class="dropdown-menu dropdown-menu--compact" class:open={activeDropdown === 'login'}>
+                        <div style="padding:5px 12px; font-weight:700; font-size:13px;">Operador de viajes</div>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operador de circuitos</a>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de villas</a>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de autos</a>
+
+                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Agencia de viajes</div>
+                        <a href={platformLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Agencia de viaje</a>
+
+                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operadora mayorista</div>
+                        <a href={platformLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operadora mayorista</a>
+                    </div>
                 </div>
                 <div class="nav-link dropdown-container">
                     <button
@@ -205,29 +159,27 @@
                         class="nav-link-btn"
                         onclick={(event) => {
                             event.stopPropagation();
-                            toggleRegistroDropdown();
+                            toggleDropdown('register');
                         }}
                     >
                         Registrarse
                         <span class="dropdown-arrow">▾</span>
                     </button>
-                </div>
-                {#if showRegistroDropdown}
-                    <div class="dropdown-menu dropdown-menu--compact">
+                    <div class="dropdown-menu dropdown-menu--compact" class:open={activeDropdown === 'register'}>
                         <div style="padding:5px 12px; font-weight:700; font-size:13px;">Operador de viajes</div>
-                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
-                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
-                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operador de circuitos</a>
-                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de villas</a>
-                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de autos</a>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operador de circuitos</a>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de villas</a>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de autos</a>
 
                         <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Agencia de viajes</div>
-                        <div class="dropdown-item" style="opacity:0.65; cursor:default; padding-top:8px; padding-bottom:8px;">Agencia de viaje</div>
+                        <a href={agencyRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Agencia de viaje</a>
 
-                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operador Mayorista</div>
-                        <div class="dropdown-item" style="opacity:0.65; cursor:default; padding-top:8px; padding-bottom:8px;">Operador Mayorista</div>
+                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operadora mayorista</div>
+                        <div class="dropdown-item" style="opacity:0.65; cursor:default; padding-top:8px; padding-bottom:8px;">Operadora mayorista</div>
                     </div>
-                {/if}
+                </div>
             </div>
         </div>
 
@@ -256,11 +208,11 @@
                     <!-- Texto curvo animado que rodea el logo -->
                     <svg class="orbit-svg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <defs>
-                            <path id="circle-text-path" d="M 210,68 A 142,142 0 1,1 209.9,68" />
+                            <path id="circle-text-path" d="M 210,40 A 170,170 0 1,1 209.9,40" />
                         </defs>
                         <text class="orbit-text-svg">
-                            <textPath href="#circle-text-path" startOffset="0%">
-                                Hoteles &bull; Tours &bull; Transporte &bull; Villas &bull; Circuitos &bull; Hoteles &bull; Tours &bull; Transporte &bull; Villas &bull; Circuitos &bull;
+                            <textPath href="#circle-text-path" startOffset="0%" text-anchor="start">
+                                Hoteles &nbsp;&bull;&nbsp; Tours &nbsp;&bull;&nbsp; Transporte &nbsp;&bull;&nbsp; Villas &nbsp;&bull;&nbsp; Circuitos &nbsp;&bull;&nbsp; Hoteles &nbsp;&bull;&nbsp; Tours &nbsp;&bull;&nbsp; Transporte &nbsp;&bull;&nbsp; Villas &nbsp;&bull;&nbsp; Circuitos &nbsp;&bull;&nbsp; Hoteles &nbsp;&bull;&nbsp; Tours &nbsp;&bull;&nbsp; Transporte &nbsp;&bull;&nbsp; Villas &nbsp;&bull;&nbsp; Circuitos &nbsp;&bull;&nbsp;
                             </textPath>
                         </text>
                     </svg>
@@ -272,69 +224,42 @@
                 <div class="gallery-row">
                     <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[2]} alt="" />
                     <LazyImage class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[1]} alt="" />
-                    <LazyImage class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" />
+                    <LazyImage class="gallery-img gallery-img--top-right" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" />
                 </div>
                 <div class="gallery-row">
                     <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[5]} alt="" />
                     <LazyImage class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[4]} alt="" />
-                    <LazyImage class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" />
+                    <LazyImage class="gallery-img gallery-img--bottom-right" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" />
                 </div>
             </div>
         </div>
 
-        <!-- Logos de partners eliminados para liberar espacio debajo del hero -->
+        <!-- Texto descriptivo centrado debajo del hero -->
+        <div style="text-align: center; padding: 24px 20px 40px; margin-top: 0;">
+            <p style="font-size: 22px; color: #666; font-family: 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.2px; line-height: 1.35;">
+                La plataforma B2B especializada en el Mundo Maya y México
+            </p>
+        </div>
     </div>
 
     <!-- Sección Destinos -->
     <div class="featured-section" id="destinos">
         <div class="featured-header">
             <div class="featured-header-left">
-                <h2 class="featured-title"><span class="featured-title-accent">Destinos</span> destacados</h2>
-                <p class="featured-subtitle">Explora nuestras regiones principales con una presentación limpia, directa y lista para vender, igual al estilo de la referencia.</p>
+                <h2 class="featured-title"><span class="featured-title-accent">5 Países, 9</span> Destinos increíbles del mundo maya</h2>
+                <p class="featured-subtitle">Explora las regiones principales del mundo maya.</p>
             </div>
-            <a class="featured-action" href="#destinos">
-                Ver destinos
-                <span aria-hidden="true">→</span>
-            </a>
+
         </div>
 
-        <div class="featured-tabs" role="tablist" aria-label="Clasificación de destinos">
-            {#each destinationTabs as tab}
-                <button
-                    type="button"
-                    class="featured-tab"
-                    class:active={activeDestinationGroup === tab.key}
-                        onclick={() => setDestinationGroup(tab.key)}
-                >
-                    {tab.label}
-                </button>
-            {/each}
-        </div>
-
-        <div class="featured-carousel" aria-live="polite">
-            <div class="featured-track">
-                {#each activeDestinationCards as dest}
+        <div class="featured-carousel featured-carousel--auto" aria-live="polite">
+            <div class="featured-track featured-track--auto">
+                {#each featuredCarouselCards as dest}
                     <article class="featured-card">
                         <LazyImage class="featured-card-image" src={dest.img} alt={dest.name} />
                         <div class="featured-card-shade"></div>
-                        {#if dest.badge}
-                            <div class="featured-badge">{dest.badge}</div>
-                        {/if}
-                        <div class="featured-card-overlay">
+                        <div class="featured-card-overlay featured-card-overlay--minimal">
                             <div class="featured-card-location">{dest.name}</div>
-                            <div class="featured-card-property">{dest.property}</div>
-                            <ul class="featured-card-benefits">
-                                {#each dest.features as feature}
-                                    <li>
-                                        <span class="benefit-icon">↗</span>
-                                        {feature}
-                                    </li>
-                                {/each}
-                                <li>
-                                    <span class="benefit-icon">◌</span>
-                                    +2 more
-                                </li>
-                            </ul>
                         </div>
                     </article>
                 {/each}
@@ -355,12 +280,7 @@
         </div>
 
         <div class="featured-partners" id="partners">
-            <div class="featured-partner">IHG<br />Luxury &amp; Lifestyle</div>
-            <div class="featured-partner">COUTURE<br />BY LANGHAM</div>
-            <div class="featured-partner">FOUR SEASONS<br />Preferred Hotels</div>
-            <div class="featured-partner">HYATT<br />PRIVÉ</div>
-            <div class="featured-partner">BELMOND<br />BELLINI CLUB</div>
-            <div class="featured-partner">ROCCO FORTE<br />KNIGHTS</div>
+            <div class="featured-partner">Kavia Hotels</div>
         </div>
     </div>
 
