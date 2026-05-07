@@ -68,6 +68,24 @@ body {
     text-transform: capitalize;
 }
 
+.brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    flex-shrink: 0;
+}
+
+.brand-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    flex-shrink: 0;
+}
+
 .nav-pills {
     display: flex;
     justify-content: flex-start;
@@ -1876,6 +1894,11 @@ body {
     .nav-container {
         padding: 20px 16px;
     }
+
+    .brand-logo {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 /* Mobile - Large (481px to 768px) */
@@ -1890,6 +1913,16 @@ body {
         order: 1;
         width: 100%;
         flex-basis: 100%;
+    }
+
+    .brand-link {
+        width: 100%;
+        flex-basis: 100%;
+    }
+
+    .brand-logo {
+        width: 28px;
+        height: 28px;
     }
     
     .nav-pills {
@@ -2184,6 +2217,11 @@ body {
     
     .logo {
         font-size: 18px;
+    }
+
+    .brand-logo {
+        width: 26px;
+        height: 26px;
     }
     
     .nav-pills {

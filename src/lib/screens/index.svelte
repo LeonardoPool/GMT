@@ -24,7 +24,6 @@
     import gmtLogo from '$lib/assets/images/GMT LOGO.jpeg';
 
     const heroImagesLeft = [camp, cen, chia, cr, gua, hon];
-    // Usar el mismo orden a la derecha para mantener simetría visual
     const heroImagesRight = [camp, cen, chia, cr, gua, hon];
 
     type DestinationGroup = 'Mexico' | 'Centroamerica';
@@ -164,7 +163,10 @@
     <div class="content-wrapper">
         <!-- Navegación -->
         <div class="nav-container">
-            <a class="logo" href="/">Grand Mayan Travel</a>
+            <a class="brand-link" href="/">
+                <img class="brand-logo" src={gmtLogo} alt="Grand Mayan Travel" loading="eager" decoding="async" />
+                <span class="logo">Grand Mayan Travel</span>
+            </a>
             
             <div class="nav-pills">
                 <a class="nav-pill blue" href="#plataforma">
@@ -266,14 +268,14 @@
             <!-- Galería derecha (espejo) -->
             <div class="gallery mirrored">
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[1]} alt="" loading="lazy" decoding="async" />
                     <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[2]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[1]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" loading="lazy" decoding="async" />
                 </div>
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" loading="lazy" decoding="async" />
-                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[4]} alt="" loading="lazy" decoding="async" />
                     <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[5]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[4]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" loading="lazy" decoding="async" />
                 </div>
             </div>
         </div>
