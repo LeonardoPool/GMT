@@ -69,14 +69,24 @@
             <div class="nav-links">
                 <div class="nav-link">Contacto</div>
                 <div class="nav-link dropdown-container">
-                    <button class="nav-link-btn" on:click={toggleRegistroDropdown}>
+                    <button type="button" class="nav-link-btn" on:click|stopPropagation={toggleRegistroDropdown}>
                         Registrarse
                         <span class="dropdown-arrow">▾</span>
                     </button>
                     {#if showRegistroDropdown}
-                        <div class="dropdown-menu" role="menu">
-                            <a href="https://search-engine-gmt.vercel.app/screens/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Registro Agencia de viajes</a>
-                            <a href="https://operadores.gmtmayorista.com/" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Registro Operador de viaje</a>
+                        <div class="dropdown-menu" role="menu" on:click|stopPropagation>
+                            <div style="padding:6px 12px; font-weight:700;">Operador de viajes</div>
+                            <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Hotelero</a>
+                            <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Tour Operador</a>
+                            <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Operador de circuitos</a>
+                            <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Renta de villas</a>
+                            <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Renta de autos</a>
+
+                            <div style="padding:6px 12px; font-weight:700; margin-top:8px;">Agencia de viajes</div>
+                            <div class="dropdown-item" style="opacity:0.65; cursor:default;">Agencia de viaje</div>
+
+                            <div style="padding:6px 12px; font-weight:700; margin-top:8px;">Operador Mayorista</div>
+                            <div class="dropdown-item" style="opacity:0.65; cursor:default;">Operador Mayorista</div>
                         </div>
                     {/if}
                 </div>

@@ -24,32 +24,95 @@
     import gmtLogo from '$lib/assets/images/GMT LOGO.jpeg';
 
     const heroImagesLeft = [camp, cen, chia, cr, gua, hon];
-    const heroImagesRight = [may, mer, pal, pr, tul, yuc];
+    // Usar el mismo orden a la derecha para mantener simetría visual
+    const heroImagesRight = [camp, cen, chia, cr, gua, hon];
 
-    // Carrusel de destinos
-    const destinations = [
-        { name: 'Yucatán',      img: yuc,  label: 'YUCATÁN' },
-        { name: 'Campeche',     img: camp, label: 'CAMPECHE' },
-        { name: 'Quintana Roo', img: tul,  label: 'QUINTANA ROO' },
-        { name: 'Chiapas',      img: chia, label: 'CHIAPAS' },
-        { name: 'Tabasco',      img: pal,  label: 'TABASCO' },
-        { name: 'Guatemala',    img: gua,  label: 'GUATEMALA' },
-        { name: 'Belice',       img: cr,   label: 'BELICE' },
-        { name: 'Honduras',     img: hon,  label: 'HONDURAS' },
-        { name: 'El Salvador',  img: may,  label: 'EL SALVADOR' },
+    type DestinationGroup = 'Mexico' | 'Centroamerica';
+    type DestinationCard = {
+        name: string;
+        property: string;
+        img: string;
+        badge?: string;
+        features: string[];
+    };
+
+    const destinationTabs: Array<{ key: DestinationGroup; label: string }> = [
+        { key: 'Mexico', label: 'Mexico' },
+        { key: 'Centroamerica', label: 'Centroamérica' }
     ];
 
-    let carouselIndex = $state(0);
-    const visibleCards = 4;
+    const destinationGroups: Record<DestinationGroup, DestinationCard[]> = {
+        Mexico: [
+            {
+                name: 'Yucatán',
+                property: 'Chablé Yucatán',
+                img: yuc,
+                badge: 'Free night',
+                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
+            },
+            {
+                name: 'Campeche',
+                property: 'Hacienda Puerta Campeche',
+                img: camp,
+                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
+            },
+            {
+                name: 'Quintana Roo',
+                property: 'NIZUC Resort & Spa',
+                img: tul,
+                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
+            },
+            {
+                name: 'Chiapas',
+                property: 'Casa del Alma',
+                img: chia,
+                badge: 'Free night',
+                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
+            },
+            {
+                name: 'Tabasco',
+                property: 'Hampton by Hilton Villahermosa',
+                img: pal,
+                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
+            }
+        ],
+        Centroamerica: [
+            {
+                name: 'Guatemala',
+                property: 'Casa Santo Domingo',
+                img: gua,
+                badge: 'Free night',
+                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
+            },
+            {
+                name: 'Honduras',
+                property: 'Indura Beach & Golf Resort',
+                img: hon,
+                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
+            },
+            {
+                name: 'Belice',
+                property: 'Itz’ana Resort',
+                img: cr,
+                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
+            },
+            {
+                name: 'El Salvador',
+                property: 'Barceló San Salvador',
+                img: may,
+                features: ['Upgrade on arrival', 'Food & Beverage or Spa Credit', 'Complimentary Wi‑Fi']
+            }
+        ]
+    };
 
-    function prevSlide() {
-        carouselIndex = Math.max(0, carouselIndex - 1);
-    }
-    function nextSlide() {
-        carouselIndex = Math.min(destinations.length - visibleCards, carouselIndex + 1);
+    let activeDestinationGroup = $state<DestinationGroup>('Mexico');
+    const activeDestinationCards = $derived(destinationGroups[activeDestinationGroup]);
+
+    function setDestinationGroup(group: DestinationGroup) {
+        activeDestinationGroup = group;
     }
 
-    let showRegistroDropdown = false;
+    let showRegistroDropdown = $state(false);
 
     function toggleRegistroDropdown() {
         showRegistroDropdown = !showRegistroDropdown;
@@ -73,6 +136,27 @@
 
     :global(.nav-pill a) {
         text-decoration: none;
+    }
+
+    :global(.nav-container) {
+        position: relative;
+        z-index: 60;
+        overflow: visible;
+    }
+
+    :global(.nav-links) {
+        position: relative;
+        z-index: 61;
+        overflow: visible;
+    }
+
+    :global(.dropdown-container) {
+        z-index: 62;
+    }
+
+    :global(.dropdown-menu) {
+        width: max-content;
+        max-width: min(320px, calc(100vw - 24px));
     }
 </style>
 
@@ -98,19 +182,48 @@
             </div>
             
             <div class="nav-links">
-                <div class="nav-link">Contacto</div>
                 <div class="nav-link dropdown-container">
-                    <button class="nav-link-btn" on:click={toggleRegistroDropdown}>
+                    <button
+                        type="button"
+                        class="nav-link-btn"
+                        onclick={(event) => {
+                            event.stopPropagation();
+                            toggleRegistroDropdown();
+                        }}
+                    >
+                        Iniciar Sesión
+                        <span class="dropdown-arrow">▾</span>
+                    </button>
+                </div>
+                <div class="nav-link dropdown-container">
+                    <button
+                        type="button"
+                        class="nav-link-btn"
+                        onclick={(event) => {
+                            event.stopPropagation();
+                            toggleRegistroDropdown();
+                        }}
+                    >
                         Registrarse
                         <span class="dropdown-arrow">▾</span>
                     </button>
-                    {#if showRegistroDropdown}
-                        <div class="dropdown-menu" role="menu">
-                            <a href="https://search-engine-gmt.vercel.app/screens/registro" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Registro Agencia de viajes</a>
-                            <a href="https://operadores.gmtmayorista.com/" target="_blank" rel="noreferrer" class="dropdown-item" on:click={closeDropdown}>Registro Operador de viaje</a>
-                        </div>
-                    {/if}
                 </div>
+                {#if showRegistroDropdown}
+                    <div class="dropdown-menu dropdown-menu--compact">
+                        <div style="padding:5px 12px; font-weight:700; font-size:13px;">Operador de viajes</div>
+                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
+                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
+                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operador de circuitos</a>
+                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de villas</a>
+                        <a href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de autos</a>
+
+                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Agencia de viajes</div>
+                        <div class="dropdown-item" style="opacity:0.65; cursor:default; padding-top:8px; padding-bottom:8px;">Agencia de viaje</div>
+
+                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operador Mayorista</div>
+                        <div class="dropdown-item" style="opacity:0.65; cursor:default; padding-top:8px; padding-bottom:8px;">Operador Mayorista</div>
+                    </div>
+                {/if}
             </div>
         </div>
 
@@ -119,14 +232,14 @@
             <!-- Galería izquierda -->
             <div class="gallery">
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[0]} alt="" />
-                    <img class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[1]} alt="" />
-                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[2]} alt="" />
+                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[0]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[1]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[2]} alt="" loading="lazy" decoding="async" />
                 </div>
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[3]} alt="" />
-                    <img class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[4]} alt="" />
-                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[5]} alt="" />
+                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[3]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[4]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[5]} alt="" loading="lazy" decoding="async" />
                 </div>
             </div>
             
@@ -153,14 +266,14 @@
             <!-- Galería derecha (espejo) -->
             <div class="gallery mirrored">
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" />
-                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[1]} alt="" />
-                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[2]} alt="" />
+                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[1]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[2]} alt="" loading="lazy" decoding="async" />
                 </div>
                 <div class="gallery-row">
-                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" />
-                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[4]} alt="" />
-                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[5]} alt="" />
+                    <img class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[4]} alt="" loading="lazy" decoding="async" />
+                    <img class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[5]} alt="" loading="lazy" decoding="async" />
                 </div>
             </div>
         </div>
@@ -168,28 +281,82 @@
         <!-- Logos de partners eliminados para liberar espacio debajo del hero -->
     </div>
 
-    <!-- Sección Destinos Carrusel -->
-    <div class="destinations-section">
-        <div class="destinations-header">
-            <div class="destinations-header-left">
-                <h2 class="destinations-title">5 países, 9 destinos increíbles  del mundo maya</h2>
-                <p class="destinations-subtitle">MÉXICO &nbsp;Yucatán &nbsp;Campeche &nbsp;Quintana Roo &nbsp;Chiapas &nbsp;Tabasco &nbsp;&nbsp;CENTROAMÉRICA &nbsp;Guatemala &nbsp;Belice &nbsp;Honduras &nbsp;El Salvador</p>
+    <!-- Sección Destinos -->
+    <div class="featured-section" id="destinos">
+        <div class="featured-header">
+            <div class="featured-header-left">
+                <h2 class="featured-title"><span class="featured-title-accent">Destinos</span> destacados</h2>
+                <p class="featured-subtitle">Explora nuestras regiones principales con una presentación limpia, directa y lista para vender, igual al estilo de la referencia.</p>
             </div>
-            <div class="destinations-nav">
-                <button class="dest-nav-btn" on:click={prevSlide} disabled={carouselIndex === 0} aria-label="Anterior">&#8249;</button>
-                <button class="dest-nav-btn dest-nav-btn--active" on:click={nextSlide} disabled={carouselIndex >= destinations.length - visibleCards} aria-label="Siguiente">&#8250;</button>
+            <a class="featured-action" href="#destinos">
+                Ver destinos
+                <span aria-hidden="true">→</span>
+            </a>
+        </div>
+
+        <div class="featured-tabs" role="tablist" aria-label="Clasificación de destinos">
+            {#each destinationTabs as tab}
+                <button
+                    type="button"
+                    class="featured-tab"
+                    class:active={activeDestinationGroup === tab.key}
+                        onclick={() => setDestinationGroup(tab.key)}
+                >
+                    {tab.label}
+                </button>
+            {/each}
+        </div>
+
+        <div class="featured-carousel" aria-live="polite">
+            <div class="featured-track">
+                {#each activeDestinationCards as dest}
+                    <article class="featured-card">
+                        <img class="featured-card-image" src={dest.img} alt={dest.name} loading="lazy" decoding="async" />
+                        <div class="featured-card-shade"></div>
+                        {#if dest.badge}
+                            <div class="featured-badge">{dest.badge}</div>
+                        {/if}
+                        <div class="featured-card-overlay">
+                            <div class="featured-card-location">{dest.name}</div>
+                            <div class="featured-card-property">{dest.property}</div>
+                            <ul class="featured-card-benefits">
+                                {#each dest.features as feature}
+                                    <li>
+                                        <span class="benefit-icon">↗</span>
+                                        {feature}
+                                    </li>
+                                {/each}
+                                <li>
+                                    <span class="benefit-icon">◌</span>
+                                    +2 more
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                {/each}
             </div>
         </div>
 
-        <div class="destinations-carousel">
-            <div class="destinations-track" style="transform: translateX(calc(-{carouselIndex} * (280px + 16px)))">  
-                {#each destinations as dest}
-                    <div class="dest-card">
-                        <img class="dest-card-img" src={dest.img} alt={dest.name} />
-                        <div class="dest-card-label">{dest.label}</div>
-                    </div>
-                {/each}
-            </div>
+        <div class="featured-pagination" aria-hidden="true">
+            <span class="active"></span>
+            <span></span>
+        </div>
+
+        <div class="featured-footer">
+            <div class="featured-partners-label">Our property partners</div>
+            <a class="featured-partners-link" href="#partners">
+                View all partners
+                <span aria-hidden="true">›</span>
+            </a>
+        </div>
+
+        <div class="featured-partners" id="partners">
+            <div class="featured-partner">IHG<br />Luxury &amp; Lifestyle</div>
+            <div class="featured-partner">COUTURE<br />BY LANGHAM</div>
+            <div class="featured-partner">FOUR SEASONS<br />Preferred Hotels</div>
+            <div class="featured-partner">HYATT<br />PRIVÉ</div>
+            <div class="featured-partner">BELMOND<br />BELLINI CLUB</div>
+            <div class="featured-partner">ROCCO FORTE<br />KNIGHTS</div>
         </div>
     </div>
 
@@ -201,14 +368,14 @@
                 <div class="explore-description">En GMT Mayorista ofrecemos una plataforma diseñada para operadores turísticos, DMC’s y agencias de viaje que buscan simplificar su operación y ampliar su alcance comercial. Centraliza tours, traslados, hoteles y servicios en un solo sistema, optimizando la gestión, la venta y el control de tu negocio turístico. Somos tu aliado tecnológico para crecer, automatizar procesos y adaptarte a las nuevas demandas del mercado.</div>
             </div>
             <div class="explore-images">
-                <img class="explore-img" style="width: 435px; height: 249px;" src={art} alt="Explore Art" />
-                <img class="explore-img" style="width: 346px; height: 249px;" src={ai} alt="Explore AI" />
+                <img class="explore-img" style="width: 435px; height: 249px;" src={art} alt="Explore Art" loading="lazy" decoding="async" />
+                <img class="explore-img" style="width: 346px; height: 249px;" src={ai} alt="Explore AI" loading="lazy" decoding="async" />
             </div>
         </div>
         <div class="explore-row">
             <div class="explore-images">
-                <img class="explore-img" style="width: 511px; height: 249px;" src={tech} alt="Explore Tech" />
-                <img class="explore-img" style="width: 303px; height: 249px;" src={concept} alt="Explore Concept" />
+                <img class="explore-img" style="width: 511px; height: 249px;" src={tech} alt="Explore Tech" loading="lazy" decoding="async" />
+                <img class="explore-img" style="width: 303px; height: 249px;" src={concept} alt="Explore Concept" loading="lazy" decoding="async" />
             </div>
             <div class="explore-text" style="width: 446px;">
                 <div class="explore-title" style="font-size: 24px; line-height: 33.60px; width: 100%;">Eleva el alcance de tu negocio!</div>
@@ -278,8 +445,8 @@
                 <div class="journey-description">GMT está diseñado para operadores de tours, agencias de viaje minoristas y DMC’s que buscan una solución profesional para gestionar y vender sus servicios turísticos. Ya sea que operes experiencias locales, tours privados o servicios especializados, nuestra plataforma se adapta a tu modelo de negocio.</div>
 
                 <div class="journey-actions">
-                    <a class="btn-link" href="https://search-engine-gmt.vercel.app/screens/registro" target="_blank" rel="noreferrer">Registro Agencia de viajes</a>
-                    <a class="btn-link secondary" href="https://operadores.gmtmayorista.com/" target="_blank" rel="noreferrer">Registro Operador de viaje</a>
+                    <button type="button" class="btn-link" onclick={closeDropdown} aria-disabled="true" style="opacity:0.85; cursor:default;">Registro Agencia de viajes</button>
+                    <a class="btn-link secondary" href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer">Registro Operador de viaje</a>
                 </div>
             </div>
         </div>
@@ -329,12 +496,12 @@
             <div class="review-right-content">
                 <div class="review-right-title">Inicia tu registro en GMT</div>
                 <div class="review-right-text">Gracias por confiar en GMT. Nos alegra que estés aquí. Al crear tu cuenta, podrás acceder a una plataforma diseñada para ayudarte a gestionar tus servicios de forma clara, eficiente y segura. Estamos listos para acompañarte en cada paso del proceso.</div>
-                <a class="btn-link" href="https://operadores.gmtmayorista.com/" target="_blank" rel="noreferrer" style="margin-top: 20px;">Iniciar registro</a>
+                <a class="btn-link" href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" style="margin-top: 20px;">Iniciar registro</a>
             </div>
         </div>
 
         <div class="review-right">
-            <img class="review-image" src={image} alt="Traveler" style="width: 100%; height: 100%; object-fit: cover;" />
+            <img class="review-image" src={image} alt="Traveler" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" />
         </div>
     </div>
 
