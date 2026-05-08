@@ -22,7 +22,8 @@
     import productividadVid from '$lib/assets/images/Productividad.mp4';
     import supportVid from '$lib/assets/images/supportvid.mp4';
     import image from '$lib/assets/images/image.png';
-    import gmtLogo from '$lib/assets/images/GMT LOGO.jpeg';
+    import headerLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
+    import heroLogo from '$lib/assets/Logos/LOGOCONLETRAS.jpeg';
 
     const heroImagesLeft = [camp, cen, chia, cr, gua, hon];
     const heroImagesRight = [camp, cen, chia, cr, gua, hon];
@@ -105,7 +106,7 @@
         <!-- Navegación -->
         <div class="nav-container">
             <a class="brand-link" href="/">
-                <LazyImage class="brand-logo" src={gmtLogo} alt="Grand Mayan Travel" priority={true} />
+                <LazyImage class="brand-logo" src={headerLogo} alt="Grand Mayan Travel" priority={true} />
                 <span class="logo">Grand Mayan Travel</span>
             </a>
             
@@ -116,9 +117,9 @@
                 <a class="nav-pill red" href="/blog">
                     <div class="nav-pill-text">Blog</div>
                 </a>
-                <div class="nav-pill purple">
+                <a class="nav-pill purple" href="/contacto">
                     <div class="nav-pill-text">Contacto</div>
-                </div>
+                </a>
                 <div class="nav-pill green">
                     <div class="nav-pill-text">Nuestros socios</div>
                 </div>
@@ -210,7 +211,7 @@
             <div class="hero-content">
                 <div class="orbit-system">
                     <!-- Logo central -->
-                    <LazyImage src={gmtLogo} alt="GMT Logo" class="hero-logo-circle" priority={true} />
+                    <LazyImage src={heroLogo} alt="GMT Logo" class="hero-logo-circle" priority={true} />
 
                     <!-- Texto curvo animado que rodea el logo -->
                     <svg class="orbit-svg" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

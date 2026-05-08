@@ -1,5 +1,5 @@
 <script lang="ts">
-    import gmtLogo from '$lib/assets/images/GMT LOGO.jpeg';
+    import gmtLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
 </script>
 
 <footer class="global-footer">
@@ -16,7 +16,7 @@
                 </p>
                 <div class="contact-info">
                     <p>contacto@gmtmayorista.com</p>
-                    <p>9993886600</p>
+                    <p>+52 9993886600</p>
                 </div>
             </div>
 
@@ -84,8 +84,8 @@
 <style>
     .global-footer {
         width: 100%;
-        background-color: #0b1c14; /* Color verde oscuro elegante */
-        color: #d1d9d6;
+        background-color: #2E6F5E; /* Color de las pills */
+        color: #EDEDED;
         padding: 60px 0 30px;
         margin-top: auto;
         font-family: 'Inter', sans-serif;
@@ -118,29 +118,30 @@
         height: 32px;
         border-radius: 50%;
         object-fit: cover;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .brand-name {
         font-family: 'Poppins', sans-serif;
         font-size: 20px;
         font-weight: 600;
-        color: #4ED27C; /* Verde acento que usaban antes, o blanco */
+        color: #EDEDED;
         letter-spacing: 0.5px;
     }
 
     .brand-desc {
         font-size: 14px;
         line-height: 1.6;
-        color: #a8b8b0;
+        color: #EDEDED;
         margin-bottom: 24px;
         max-width: 320px;
     }
 
     .contact-info p {
         font-size: 14px;
-        color: #a8b8b0;
+        color: #EDEDED;
         margin: 4px 0;
+        font-weight: 500;
     }
 
     /* Columns */
@@ -148,7 +149,7 @@
         font-family: 'Poppins', sans-serif;
         font-size: 16px;
         font-weight: 600;
-        color: #ffffff;
+        color: #EDEDED;
         margin-bottom: 24px;
         margin-top: 0;
     }
@@ -163,28 +164,30 @@
     }
 
     .col-links a {
-        color: #a8b8b0;
+        color: #EDEDED;
         text-decoration: none;
         font-size: 14px;
-        transition: color 0.2s ease;
+        transition: color 0.2s ease, transform 0.2s ease;
         display: flex;
         align-items: center;
         gap: 10px;
+        font-weight: 500;
     }
 
     .col-links a:hover {
-        color: #4ED27C;
+        color: #000000;
+        transform: translateX(4px);
     }
 
     .social-links svg {
-        opacity: 0.8;
+        opacity: 0.9;
     }
 
     /* Bottom Section */
     .footer-divider {
         width: 100%;
         height: 1px;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: #E5C74A; /* Naranja */
         margin-bottom: 30px;
     }
 
@@ -198,8 +201,9 @@
 
     .copyright {
         font-size: 13px;
-        color: #82928a;
+        color: #EDEDED;
         margin: 0;
+        font-weight: 500;
     }
 
     .bottom-links {
@@ -208,14 +212,15 @@
     }
 
     .bottom-links a {
-        color: #82928a;
+        color: #EDEDED;
         text-decoration: none;
         font-size: 13px;
         transition: color 0.2s ease;
+        font-weight: 500;
     }
 
     .bottom-links a:hover {
-        color: #ffffff;
+        color: #000000;
         text-decoration: underline;
     }
 

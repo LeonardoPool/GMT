@@ -1,333 +1,381 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import '../../lib/styles/travelgo.css';
     import LazyImage from '$lib/components/LazyImage.svelte';
     
-    // Import images from assets
+    // Import images
     import imgMay from '$lib/assets/images/MAY.jpg';
-    import imgCen from '$lib/assets/images/CEN.jpg';
-    import imgTul from '$lib/assets/images/TUL.jpg';
-    import imgPal from '$lib/assets/images/PAL.jpg';
-    import imgYuc from '$lib/assets/images/yuc.jpg';
-    import imgMer from '$lib/assets/images/MER.jpg';
-    import imgChia from '$lib/assets/images/CHIA.jpg';
-    import gmtLogo from '$lib/assets/images/GMT LOGO.jpeg';
+    import gmtLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
 
-    // Animation observer logic
-    let observer: IntersectionObserver;
-    
-    onMount(() => {
-        observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    const operatorRegisterUrl = 'https://operadores.gmtmayorista.com/registro';
+    const agencyRegisterUrl = 'https://search-engine-gmt.vercel.app/screens/registro';
+    const operatorLoginUrl = 'https://operadores.gmtmayorista.com/';
+    const platformLoginUrl = 'https://search-engine-gmt.vercel.app/screens/login';
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+    type DropdownMode = 'login' | 'register';
+    let activeDropdown = $state<DropdownMode | null>(null);
 
-        return () => {
-            if (observer) observer.disconnect();
-        };
-    });
+    function toggleDropdown(mode: DropdownMode) {
+        activeDropdown = activeDropdown === mode ? null : mode;
+    }
+
+    function closeDropdown() {
+        activeDropdown = null;
+    }
 </script>
 
-<svelte:head>
-    <title>Blog | El Mundo Maya - Grand Mayan Travel</title>
-    <meta name="description" content="Descubre por qué elegimos el Mundo Maya y la gran experiencia que es conocer su cultura, historia y maravillas naturales." />
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
-</svelte:head>
+<div class="main-wrapper" style="background: white;">
+    <div class="content-wrapper" style="padding-bottom: 0;">
+        <!-- Header Global -->
+        <div class="nav-container" style="background: white; border-bottom: 1px solid #f0f0f0;">
+            <a class="brand-link" href="/">
+                <LazyImage class="brand-logo" src={gmtLogo} alt="Grand Mayan Travel" priority={true} />
+                <span class="logo" style="color: #1a1a1a;">Grand Mayan Travel</span>
+            </a>
+            
+            <div class="nav-pills">
+                <a class="nav-pill blue" href="/faq">
+                    <div class="nav-pill-text">¿Quienes Somos?</div>
+                </a>
+                <a class="nav-pill red" href="/blog" style="background: #FEECEB;">
+                    <div class="nav-pill-text" style="font-weight: 600;">Blog</div>
+                </a>
+                <a class="nav-pill purple" href="/contacto">
+                    <div class="nav-pill-text">Contacto</div>
+                </a>
+                <div class="nav-pill green">
+                    <div class="nav-pill-text">Nuestros socios</div>
+                </div>
+            </div>
+            
+            <div class="nav-links">
+                <div class="nav-link dropdown-container">
+                    <button type="button" class="nav-link-btn" style="color: #1a1a1a;" onclick={(e) => { e.stopPropagation(); toggleDropdown('login'); }}>
+                        Iniciar Sesión
+                        <span class="dropdown-arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu--compact" class:open={activeDropdown === 'login'}>
+                        <div style="padding:5px 12px; font-weight:700; font-size:13px;">Operador de viajes</div>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operador de circuitos</a>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de villas</a>
+                        <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de autos</a>
 
-<div class="blog-wrapper">
-    <!-- Header Minimalista -->
-    <header class="blog-header">
-        <a href="/" class="back-link">
-            <span class="arrow">←</span> Volver al Inicio
-        </a>
-        <div class="brand">
-            <LazyImage src={gmtLogo} alt="GMT Logo" class="brand-logo" />
-            <span>Grand Mayan Travel</span>
+                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Agencia de viajes</div>
+                        <a href={platformLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Agencia de viaje</a>
+
+                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operadora mayorista</div>
+                        <a href={platformLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operadora mayorista</a>
+                    </div>
+                </div>
+                <div class="nav-link dropdown-container">
+                    <button type="button" class="nav-link-btn" style="color: #1a1a1a;" onclick={(e) => { e.stopPropagation(); toggleDropdown('register'); }}>
+                        Solicitar Acceso
+                        <span class="dropdown-arrow">▾</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu--compact" class:open={activeDropdown === 'register'}>
+                        <div style="padding:5px 12px; font-weight:700; font-size:13px;">Operador de viajes</div>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operador de circuitos</a>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de villas</a>
+                        <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de autos</a>
+
+                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Agencia de viajes</div>
+                        <a href={agencyRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Agencia de viaje</a>
+
+                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operadora mayorista</div>
+                        <div class="dropdown-item" style="opacity:0.65; cursor:default; padding-top:8px; padding-bottom:8px;">Operadora mayorista</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+    </div> <!-- Cierre del content-wrapper del header -->
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg">
-            <LazyImage src={imgMay} alt="Ruinas del Mundo Maya" class="hero-img" priority={true} />
+    <!-- Hero Blog Section (FULL WIDTH) -->
+    <section class="blog-hero">
+        <div class="hero-bg-wrapper">
+            <LazyImage src={imgMay} alt="Mundo Maya" class="hero-bg-img" priority={true} />
             <div class="hero-overlay"></div>
         </div>
-        <div class="hero-content animate-on-scroll">
-            <h2 class="subtitle">NUESTRO ORIGEN</h2>
-            <h1 class="title">El Mundo Maya</h1>
-            <p class="description">Un viaje a través del tiempo, la naturaleza salvaje y los ecos de una de las civilizaciones más fascinantes de la historia.</p>
-        </div>
-        <div class="scroll-indicator">
-            <span>Descubre Más</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- ¿Por qué lo elegimos? -->
-    <section class="section why-maya">
-        <div class="container">
-            <div class="grid-2-cols align-center">
-                <div class="content-text animate-on-scroll">
-                    <h2 class="section-title">¿Por qué elegimos el <span>Mundo Maya</span>?</h2>
-                    <p class="body-text">
-                        No fue una elección al azar. El Mundo Maya no es solo un destino, es una <strong>experiencia viva</strong>. Elegimos esta región porque guarda un equilibrio perfecto entre misticismo, arquitectura monumental, y una biodiversidad inigualable que no se encuentra en ningún otro lugar del planeta.
-                    </p>
-                    <p class="body-text">
-                        En Grand Mayan Travel, creemos que el verdadero viaje transforma. Queremos que nuestros viajeros conecten con la raíz profunda de la tierra, que sientan la energía de los templos milenarios y escuchen la selva respirar. El Mundo Maya lo tiene todo: playas turquesas, ciudades coloniales vibrantes, comunidades indígenas que preservan su lengua y selvas exuberantes que ocultan secretos milenarios.
-                    </p>
-                    <div class="stats-row">
-                        <div class="stat-item">
-                            <span class="stat-num">5</span>
-                            <span class="stat-label">Estados<br>Mexicanos</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-num">+40</span>
-                            <span class="stat-label">Zonas<br>Arqueológicas</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-num">∞</span>
-                            <span class="stat-label">Historias por<br>Descubrir</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-image animate-on-scroll delay-1">
-                    <div class="image-stack">
-                        <LazyImage src={imgPal} alt="Palenque" class="stack-img img-back" />
-                        <LazyImage src={imgTul} alt="Tulum" class="stack-img img-front" />
-                    </div>
-                </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Mundo Maya: 5 Países, 9 Destinos y una Historia que Sigue Viva</h1>
+            <h2 class="hero-subtitle">El Mundo Maya no es únicamente un destino turístico.</h2>
+            <div class="hero-meta">
+                <span class="meta-author">by GMT Mayorista</span>
+                <span class="meta-divider">—</span>
+                <span class="meta-icon">⏱</span>
+                <span>12 minute read</span>
+                <span class="meta-divider">—</span>
+                <span class="meta-icon">👁</span>
+                <span>2.5K views</span>
             </div>
         </div>
     </section>
 
-    <!-- La Gran Experiencia -->
-    <section class="section experience-section dark-bg">
-        <div class="container">
-            <div class="text-center animate-on-scroll">
-                <h2 class="section-title light-text">La Gran Experiencia</h2>
-                <p class="body-text mx-auto light-text" style="max-width: 800px; margin-bottom: 3rem;">
-                    Conocer el Mundo Maya es despertar los sentidos. Es sumergirse en aguas cristalinas que los antiguos mayas consideraban portales al inframundo, y caminar por calzadas de piedra blanca (sacbeob) que conectaban imperios bajo el dosel de la selva.
-                </p>
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper" style="padding-top: 0;">
+        <!-- Main Content -->
+        <section class="blog-main">
+            <div class="blog-grid">
+                
+                <!-- Left Sidebar (Stats) -->
+                <aside class="sidebar-left">
+                    <div class="stat-block">
+                        <svg class="stat-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="18" y="3" width="4" height="18"></rect><rect x="10" y="8" width="4" height="13"></rect><rect x="2" y="13" width="4" height="8"></rect></svg>
+                        <span class="stat-label">views</span>
+                        <span class="stat-value">2.5K</span>
+                    </div>
+
+                    <div class="stat-block" style="margin-top: 30px;">
+                        <svg class="stat-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                        <span class="stat-label">shares</span>
+                        <span class="stat-value">996K</span>
+                    </div>
+
+                    <div class="social-vertical">
+                        <div class="social-icon-row">
+                            <a href="/" class="s-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                            <span class="s-count">125</span>
+                        </div>
+                        <div class="social-icon-row">
+                            <a href="/" class="s-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                            <span class="s-count"></span>
+                        </div>
+                        <div class="social-icon-row">
+                            <a href="/" class="s-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></a>
+                            <span class="s-count">425</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Article Content -->
+                <article class="article-content">
+                    <p class="intro">Es una de las civilizaciones más fascinantes de la historia, una red cultural viva que conecta selvas, playas, ciudades coloniales, volcanes, sitios arqueológicos y comunidades que aún conservan tradiciones milenarias.</p>
+
+                    <p>Hoy, el legado maya sigue extendiéndose a través de cinco países: México, Guatemala, Belice, Honduras y El Salvador.</p>
+
+                    <p>En GMT Mayorista creemos que el turismo debe conectar culturas, personas y experiencias auténticas.</p>
+
+                    <p>Por eso nace nuestra visión: integrar el Mundo Maya en una sola gran plataforma turística para agencias de viajes, operadores y profesionales del sector.</p>
+
+                    <h3>5 Países, 9 Destinos Imperdibles</h3>
+                    <p>A continuación, te presentamos algunos de los destinos más representativos del Mundo Maya, donde historia, naturaleza y cultura se unen de forma extraordinaria.</p>
+
+                    <div class="destination-block">
+                        <h4>1. Yucatán — Tradición, Cultura y Gastronomía Maya</h4>
+                        <p>El corazón cultural del Mundo Maya moderno.</p>
+                        <p>Aquí conviven ciudades coloniales, haciendas, cenotes y zonas arqueológicas impresionantes.</p>
+                        <p>Destacan experiencias como:</p>
+                        <ul>
+                            <li>Chichén Itzá</li>
+                            <li>Los cenotes de la región</li>
+                            <li>La gastronomía yucateca</li>
+                            <li>Las ciudades mágicas y pueblos tradicionales</li>
+                        </ul>
+                        <p>Yucatán representa el equilibrio perfecto entre historia ancestral y hospitalidad contemporánea.</p>
+                    </div>
+
+                    <div class="destination-block">
+                        <h4>2. Campeche — Selva, Historia y Ciudades Amuralladas</h4>
+                        <p>Campeche es uno de los secretos mejor guardados de México.</p>
+                        <p>Su riqueza arqueológica y natural lo convierten en una joya del turismo cultural.</p>
+                        <p>Imperdibles:</p>
+                        <ul>
+                            <li>Calakmul</li>
+                            <li>La ciudad amurallada de San Francisco de Campeche</li>
+                            <li>Reservas naturales y comunidades mayas</li>
+                        </ul>
+                        <p>Calakmul fue una de las ciudades mayas más poderosas jamás construidas.</p>
+                    </div>
+
+                    <div class="destination-block">
+                        <h4>3. Quintana Roo — Caribe Maya</h4>
+                        <p>Playas turquesa, cultura ancestral y turismo internacional.</p>
+                        <p>Algunos de sus destinos más emblemáticos:</p>
+                        <ul>
+                            <li>Cancún</li>
+                            <li>Tulum</li>
+                            <li>Bacalar</li>
+                            <li>Cobá</li>
+                        </ul>
+                        <p>El Caribe Maya ofrece una mezcla única entre lujo, aventura y conexión cultural.</p>
+                    </div>
+
+                    <div class="destination-block">
+                        <h4>4. Chiapas — Naturaleza y Misticismo</h4>
+                        <p>Uno de los estados con mayor riqueza cultural y natural de México.</p>
+                        <p>Experiencias destacadas:</p>
+                        <ul>
+                            <li>Palenque</li>
+                            <li>San Cristóbal de las Casas</li>
+                            <li>Cascadas y selvas tropicales</li>
+                            <li>Comunidades indígenas vivas</li>
+                        </ul>
+                        <p>Chiapas conecta profundamente con el lado espiritual y ancestral del Mundo Maya.</p>
+                    </div>
+
+                    <div class="destination-block">
+                        <h4>5. Tabasco — La Puerta del Mundo Maya</h4>
+                        <p>Tabasco es historia, agua y selva.</p>
+                        <p>Aquí se encuentran algunos de los vestigios más antiguos de Mesoamérica.</p>
+                        <p>Destacan:</p>
+                        <ul>
+                            <li>Comalcalco</li>
+                            <li>Rutas de cacao y chocolate</li>
+                            <li>Ríos y reservas ecológicas</li>
+                        </ul>
+                        <p>Una región con enorme potencial turístico y cultural.</p>
+                    </div>
+
+                    <div class="destination-block">
+                        <h4>6. Guatemala — El Alma Arqueológica del Mundo Maya</h4>
+                        <p>Guatemala conserva algunos de los tesoros arqueológicos más impresionantes del planeta.</p>
+                        <p>Sitios imperdibles:</p>
+                        <ul>
+                            <li>Tikal</li>
+                            <li>Antigua Guatemala</li>
+                            <li>Lago de Atitlán</li>
+                        </ul>
+                        <p>Tikal, rodeada por selva tropical, sigue siendo una de las ciudades mayas más impactantes del mundo.</p>
+                    </div>
+
+                    <div class="destination-block">
+                        <h4>7. Belice — Naturaleza, Mar y Cultura Maya</h4>
+                        <p>Belice combina el legado maya con el Caribe y la aventura ecológica.</p>
+                        <p>Experiencias recomendadas:</p>
+                        <ul>
+                            <li>San Pedro</li>
+                            <li>Caye Caulker</li>
+                            <li>Great Blue Hole</li>
+                            <li>Sitios arqueológicos mayas en la selva</li>
+                        </ul>
+                        <p>Un destino ideal para viajeros que buscan experiencias auténticas y exclusivas.</p>
+                    </div>
+
+                    <div class="destination-block">
+                        <h4>8. Honduras — La Grandeza de Copán</h4>
+                        <p>Honduras alberga una de las joyas arqueológicas más importantes de toda la civilización maya.</p>
+                        <p>El gran protagonista:</p>
+                        <ul>
+                            <li>Copán</li>
+                        </ul>
+                        <p>Sus esculturas y estelas son consideradas de las más avanzadas del mundo maya clásico.</p>
+                    </div>
+
+                    <div class="destination-block">
+                        <h4>9. El Salvador — Cultura, Volcanes y Herencia Ancestral</h4>
+                        <p>Aunque menos explorado turísticamente, El Salvador guarda importantes raíces mayas.</p>
+                        <p>Destinos destacados:</p>
+                        <ul>
+                            <li>Joya de Cerén</li>
+                            <li>Ruta de volcanes</li>
+                            <li>Pueblos tradicionales y gastronomía local</li>
+                        </ul>
+                        <p>Un país con enorme potencial para el turismo cultural y de aventura.</p>
+                    </div>
+
+                    <div class="article-divider"></div>
+
+                    <h3>El Futuro del Turismo en el Mundo Maya</h3>
+                    <p>El Mundo Maya representa una oportunidad extraordinaria para conectar destinos, culturas y experiencias en una sola región turística internacional.</p>
+                    <p>En GMT Mayorista trabajamos para construir una plataforma moderna, profesional y especializada que permita a agencias de viajes y operadores turísticos acceder a:</p>
+                    <ul>
+                        <li>Hoteles</li>
+                        <li>DMC's</li>
+                        <li>Circuitos regionales</li>
+                        <li>Experiencias culturales</li>
+                        <li>Transporte</li>
+                        <li>Tours multidestino</li>
+                        <li>Conectividad B2B</li>
+                    </ul>
+
+                    <div class="vision-quote">
+                        Nuestra visión es clara:<br>
+                        Convertirnos en el gran integrador turístico del Mundo Maya.<br>
+                        Porque el Mundo Maya no es solamente historia…<br>
+                        es el futuro del turismo cultural en América Latina.
+                    </div>
+
+                    <div class="article-footer-brand">
+                        <br><br>
+                        <strong>GMT Mayorista</strong><br>
+                        Grand Mayan Travel<br>
+                        5 Países | 9 Destinos | Una sola conexión con el Mundo Maya
+                    </div>
+                </article>
+
+                <!-- Right Sidebar (Follow & Sub) -->
+                <aside class="sidebar-right">
+                    <div class="widget">
+                        <h4 class="widget-title">Follow Us</h4>
+                        <div class="follow-grid">
+                            <div class="follow-item">
+                                <a href="/" class="f-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                                <span class="f-count">10</span>
+                            </div>
+                            <div class="follow-item">
+                                <a href="/" class="f-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="none"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                                <span class="f-count">69k</span>
+                            </div>
+                            <div class="follow-item">
+                                <a href="/" class="f-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                                <span class="f-count">45</span>
+                            </div>
+                            <div class="follow-item">
+                                <a href="/" class="f-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="none"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"></polygon></svg></a>
+                                <span class="f-count">69k</span>
+                            </div>
+                            <div class="follow-item">
+                                <a href="/" class="f-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="none"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2C5.12 19.5 12 19.5 12 19.5s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="white"></polygon></svg></a>
+                                <span class="f-count">69k</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget">
+                        <h4 class="widget-title">Subscription</h4>
+                        <p class="widget-desc">Subscribe to our newsletter and receive a selection of cool articles every weeks</p>
+                        <form class="sub-form" onsubmit={(e) => e.preventDefault()}>
+                            <input type="email" placeholder="Enter your email" required />
+                            <button type="submit">SUBSCRIBE</button>
+                        </form>
+                    </div>
+                </aside>
+
             </div>
-
-            <div class="masonry-grid">
-                <div class="card animate-on-scroll">
-                    <div class="card-img-wrapper">
-                        <LazyImage src={imgCen} alt="Cenotes" class="card-img" />
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Los Cenotes Sagrados</h3>
-                        <p>Ojos de agua cristalina ocultos en la selva, perfectos para un baño místico y refrescante.</p>
-                    </div>
-                </div>
-
-                <div class="card animate-on-scroll delay-1" style="transform: translateY(40px);">
-                    <div class="card-img-wrapper">
-                        <LazyImage src={imgChia} alt="Selva de Chiapas" class="card-img" />
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Naturaleza Indomable</h3>
-                        <p>Las cascadas y ríos turquesas que cruzan la selva Lacandona te reconectan con la vida en su estado más puro.</p>
-                    </div>
-                </div>
-
-                <div class="card animate-on-scroll delay-2">
-                    <div class="card-img-wrapper">
-                        <LazyImage src={imgMer} alt="Arquitectura colonial" class="card-img" />
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Legado Colonial</h3>
-                        <p>Ciudades como Mérida funden la historia prehispánica con la elegancia colonial europea.</p>
-                    </div>
-                </div>
-
-                <div class="card animate-on-scroll delay-3" style="transform: translateY(40px);">
-                    <div class="card-img-wrapper">
-                        <LazyImage src={imgYuc} alt="Gastronomía Yucateca" class="card-img" />
-                        <div class="card-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Sabores Milenarios</h3>
-                        <p>La cochinita pibil, los panuchos y la sopa de lima. Una explosión de sabores que relatan historia en cada bocado.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer CTA -->
-    <section class="section cta-section">
-        <div class="cta-bg">
-            <LazyImage src={imgTul} alt="Tulum atardecer" class="cta-bg-img" />
-            <div class="cta-overlay"></div>
-        </div>
-        <div class="container relative z-10 text-center animate-on-scroll">
-            <h2 class="cta-title">¿Listo para vivir la magia?</h2>
-            <p class="cta-desc">Déjanos diseñar el viaje de tus sueños al corazón del Mundo Maya.</p>
-            <a href="/" class="btn-primary">Empieza tu viaje</a>
-        </div>
-    </section>
+        </section>
+    </div>
 </div>
 
 <style>
-    :global(body) {
-        margin: 0;
-        padding: 0;
-        background-color: #FAFAFA;
-    }
-
-    .blog-wrapper {
-        font-family: 'Outfit', sans-serif;
-        color: #1a1f1c;
-        overflow-x: hidden;
-        background: #FAFAFA;
-    }
-
-    /* Typography */
-    h1, h2, h3 {
-        font-family: 'Playfair Display', serif;
-        margin: 0;
-    }
-
-    .body-text {
-        font-size: 1.125rem;
-        line-height: 1.8;
-        color: #4a5550;
-        margin-bottom: 1.5rem;
-    }
-
-    .light-text {
-        color: #f0f4f2 !important;
-    }
-
-    /* Layout */
-    .container {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 2rem;
-    }
-
-    .section {
-        padding: 8rem 0;
-        position: relative;
-    }
-
-    .grid-2-cols {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-    }
-
-    .align-center {
-        align-items: center;
-    }
-
-    .text-center {
-        text-align: center;
-    }
-
-    .mx-auto {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .relative {
-        position: relative;
-    }
-    
-    .z-10 {
-        z-index: 10;
-    }
-
-    /* Header */
-    .blog-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 1.5rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 100;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
-        backdrop-filter: blur(2px);
-        box-sizing: border-box;
-    }
-
-    .back-link {
-        color: white;
-        text-decoration: none;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1rem;
-        transition: transform 0.3s ease;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .back-link:hover {
-        transform: translateX(-5px);
-    }
-
-    .brand {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        color: white;
-        font-weight: 700;
-        font-size: 1.1rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-
-    :global(.brand-logo) {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-
     /* Hero Section */
-    .hero {
-        height: 100vh;
-        min-height: 600px;
+    .blog-hero {
         position: relative;
+        height: 400px;
+        width: 100%;
         display: flex;
-        align-items: center;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
         text-align: center;
-        color: white;
         overflow: hidden;
     }
 
-    .hero-bg {
+    .hero-bg-wrapper {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 120%; /* Para parallax sutil */
+        height: 100%;
         z-index: 1;
     }
 
-    :global(.hero-img) {
+    :global(.hero-bg-img) {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transform: scale(1.05);
-        animation: slowZoom 20s ease-out infinite alternate;
     }
 
     .hero-overlay {
@@ -336,353 +384,331 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba(10, 25, 19, 0.7) 0%, rgba(0,0,0,0.4) 100%);
+        background: rgba(0, 0, 0, 0.3); /* Transparent dark overlay */
     }
 
     .hero-content {
         position: relative;
         z-index: 2;
-        max-width: 800px;
-        padding: 0 2rem;
+        max-width: 900px;
+        padding: 0 20px;
+        color: white;
+        text-align: left;
     }
 
-    .subtitle {
-        font-family: 'Outfit', sans-serif;
-        font-size: 1rem;
-        font-weight: 600;
-        letter-spacing: 4px;
+    .hero-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 38px;
+        font-weight: 700;
         text-transform: uppercase;
-        color: #A5C89E;
-        margin-bottom: 1.5rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+        line-height: 1.2;
+        color: white !important; /* Forzar el color blanco ante cualquier clase global h1 */
     }
 
-    .title {
-        font-size: 5.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 2rem;
-        text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    .hero-subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 24px;
+        font-weight: 400;
+        margin-bottom: 30px;
+        color: white !important; /* Forzar el color blanco ante cualquier clase global h2 */
     }
 
-    .description {
-        font-size: 1.25rem;
-        font-weight: 300;
-        line-height: 1.6;
-        opacity: 0.9;
+    .hero-meta {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 16px;
+        color: rgba(255, 255, 255, 0.9);
     }
 
-    .scroll-indicator {
-        position: absolute;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
+    .meta-author {
+        font-weight: 500;
+        color: white;
+    }
+
+    .meta-divider {
+        opacity: 0.6;
+    }
+
+    .meta-icon {
+        margin-right: 4px;
+    }
+
+    /* Main Grid */
+    .blog-main {
+        background: #ffffff;
+        padding: 80px 20px;
+    }
+
+    .blog-grid {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 80px 1fr 300px;
+        gap: 60px;
+    }
+
+    /* Left Sidebar */
+    .sidebar-left {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
-        color: white;
-        font-size: 0.875rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
+        padding-top: 10px;
     }
 
-    .scroll-line {
-        width: 1px;
-        height: 60px;
-        background: rgba(255,255,255,0.3);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .scroll-line::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        background: white;
-        animation: scrollLine 2s ease-in-out infinite;
-    }
-
-    /* Why Maya Section */
-    .section-title {
-        font-size: 3.5rem;
-        color: #0a1913;
-        margin-bottom: 2rem;
-        line-height: 1.2;
-    }
-
-    .section-title span {
-        color: #A5C89E;
-        font-style: italic;
-    }
-
-    .stats-row {
-        display: flex;
-        gap: 3rem;
-        margin-top: 3rem;
-        padding-top: 3rem;
-        border-top: 1px solid rgba(0,0,0,0.1);
-    }
-
-    .stat-item {
+    .stat-block {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
+        align-items: center;
+        color: #1a1a1a;
+        margin-bottom: 30px;
     }
 
-    .stat-num {
-        font-family: 'Playfair Display', serif;
-        font-size: 3rem;
-        font-weight: 800;
-        color: #A5C89E;
-        line-height: 1;
+    .stat-icon {
+        margin-bottom: 4px;
+        color: #1a1a1a;
     }
 
     .stat-label {
-        font-size: 0.875rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #828a86;
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        color: #1a1a1a;
+        margin-bottom: 2px;
     }
 
-    .image-stack {
-        position: relative;
-        height: 600px;
-        width: 100%;
+    .stat-value {
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: #1a1a1a;
     }
 
-    :global(.stack-img) {
-        position: absolute;
-        border-radius: 1rem;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        object-fit: cover;
-        transition: transform 0.5s ease;
+    .social-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
     }
 
-    :global(.img-back) {
-        width: 70%;
-        height: 70%;
-        top: 0;
-        right: 0;
-        z-index: 1;
+    .social-icon-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
     }
 
-    :global(.img-front) {
-        width: 65%;
-        height: 65%;
-        bottom: 0;
-        left: 0;
-        z-index: 2;
-        border: 10px solid #FAFAFA;
-    }
-
-    .image-stack:hover :global(.img-back) {
-        transform: translate(-10px, 10px) rotate(-2deg);
-    }
-
-    .image-stack:hover :global(.img-front) {
-        transform: translate(10px, -10px) rotate(2deg);
-    }
-
-    /* Experience Section */
-    .dark-bg {
-        background-color: #0a1913;
-        color: white;
-    }
-
-    .masonry-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        margin-top: 4rem;
-    }
-
-    .card {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.05);
-        border-radius: 1.5rem;
-        overflow: hidden;
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
-        backdrop-filter: blur(10px);
-    }
-
-    .card:hover {
-        transform: translateY(-10px) !important;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-    }
-
-    .card-img-wrapper {
-        position: relative;
-        width: 100%;
-        height: 350px;
-        overflow: hidden;
-    }
-
-    :global(.card-img) {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.7s ease;
-    }
-
-    .card:hover :global(.card-img) {
-        transform: scale(1.08);
-    }
-
-    .card-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        background: linear-gradient(to top, #0a1913 0%, rgba(10,25,19,0) 100%);
-    }
-
-    .card-content {
-        padding: 2.5rem;
-    }
-
-    .card-content h3 {
-        font-size: 2rem;
-        color: #A5C89E;
-        margin-bottom: 1rem;
-    }
-
-    .card-content p {
-        color: #d1d9d6;
-        font-size: 1.125rem;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    /* CTA Section */
-    .cta-section {
-        height: 60vh;
+    .s-icon {
+        color: #1a1a1a;
+        width: 24px;
+        height: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
+        transition: opacity 0.2s;
+    }
+
+    .s-icon:hover {
+        opacity: 0.7;
+    }
+
+    .s-count {
+        font-size: 12px;
+        color: #1a1a1a;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Article Content */
+    .article-content {
+        font-family: 'Inter', sans-serif;
+        color: #333;
+        line-height: 1.8;
+    }
+
+    .intro {
+        font-size: 15px;
+        color: #1a1a1a;
+        margin-bottom: 24px;
+    }
+
+    .article-content p {
+        margin-bottom: 24px;
+        font-size: 15px;
+    }
+
+    .article-content h3 {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 40px 0 20px;
+    }
+
+    .article-content h4 {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 30px 0 16px;
+    }
+
+    .article-content ul {
+        margin: 0 0 24px 20px;
         padding: 0;
     }
 
-    .cta-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+    .article-content li {
+        margin-bottom: 8px;
+        font-size: 15px;
     }
 
-    :global(.cta-bg-img) {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .article-divider {
+        height: 1px;
+        background: transparent;
+        margin: 40px 0;
     }
 
-    .cta-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(10, 25, 19, 0.85);
-        backdrop-filter: blur(4px);
+    .destination-block {
+        margin-bottom: 30px;
     }
 
-    .cta-title {
-        font-size: 4rem;
+    .vision-quote {
+        margin: 40px 0;
+        font-size: 15px;
+        color: #1a1a1a;
+        line-height: 1.8;
+    }
+
+    .article-footer-brand {
+        margin-top: 40px;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    /* Right Sidebar */
+    .sidebar-right {
+        padding-top: 10px;
+    }
+
+    .widget {
+        margin-bottom: 50px;
+    }
+
+    .widget-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 20px;
+    }
+
+    .follow-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
+
+    .follow-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .f-icon {
+        background: #1a1a1a;
         color: white;
-        margin-bottom: 1rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s;
     }
 
-    .cta-desc {
-        font-size: 1.25rem;
-        color: #d1d9d6;
-        margin-bottom: 3rem;
+    .f-icon:hover {
+        opacity: 0.8;
     }
 
-    .btn-primary {
-        display: inline-block;
-        background: #A5C89E;
-        color: #0a1913;
-        font-family: 'Outfit', sans-serif;
+    .f-count {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        color: #1a1a1a;
+    }
+
+    .widget-desc {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        color: #1a1a1a;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    .sub-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .sub-form input {
+        padding: 14px 16px;
+        border: 1px solid #eaeaea;
+        border-radius: 2px;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        outline: none;
+        background: #fafafa;
+    }
+
+    .sub-form input:focus {
+        border-color: #1a1a1a;
+    }
+
+    .sub-form button {
+        background: #1a1a1a;
+        color: white;
+        border: none;
+        padding: 16px;
+        font-family: 'Inter', sans-serif;
         font-weight: 600;
-        font-size: 1.125rem;
-        padding: 1rem 3rem;
-        border-radius: 50px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 20px rgba(165, 200, 158, 0.3);
+        font-size: 12px;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: background 0.3s;
+        border-radius: 2px;
     }
 
-    .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 30px rgba(165, 200, 158, 0.4);
-        background: white;
+    .sub-form button:hover {
+        background: #333;
     }
-
-    /* Animations */
-    @keyframes slowZoom {
-        0% { transform: scale(1); }
-        100% { transform: scale(1.1); }
-    }
-
-    @keyframes scrollLine {
-        0% { top: -50%; }
-        100% { top: 100%; }
-    }
-
-    .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        will-change: opacity, transform;
-    }
-
-    .animate-on-scroll.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .delay-1 { transition-delay: 0.2s; }
-    .delay-2 { transition-delay: 0.4s; }
-    .delay-3 { transition-delay: 0.6s; }
 
     /* Responsive */
     @media (max-width: 1024px) {
-        .title { font-size: 4.5rem; }
-        .grid-2-cols { gap: 2rem; }
-        .image-stack { height: 500px; }
+        .blog-grid {
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        .sidebar-left {
+            display: none;
+        }
     }
 
     @media (max-width: 768px) {
-        .title { font-size: 3.5rem; }
-        .section-title { font-size: 2.5rem; }
-        .grid-2-cols { grid-template-columns: 1fr; }
-        
-        .masonry-grid { 
-            grid-template-columns: 1fr; 
-            gap: 2rem;
+        .hero-title {
+            font-size: 28px;
         }
-        
-        .card.delay-1, .card.delay-3 {
-            transform: translateY(0) !important;
+        .hero-subtitle {
+            font-size: 18px;
         }
-        
-        .image-stack { 
-            height: 400px; 
-            margin-top: 3rem;
+        .blog-grid {
+            grid-template-columns: 1fr;
         }
-        
-        .stats-row {
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .cta-title { font-size: 2.5rem; }
     }
 </style>

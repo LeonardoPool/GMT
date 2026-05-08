@@ -1,6 +1,6 @@
 <script lang="ts">
     import LazyImage from '$lib/components/LazyImage.svelte';
-    import gmtLogo from '$lib/assets/images/GMT LOGO.jpeg';
+    import gmtLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
     
     import camp from '$lib/assets/images/camp.jpg';
     import yuc from '$lib/assets/images/yuc.jpg';
@@ -82,9 +82,9 @@
                 <a class="nav-pill red" href="/blog">
                     <div class="nav-pill-text">Blog</div>
                 </a>
-                <div class="nav-pill purple">
+                <a class="nav-pill purple" href="/contacto">
                     <div class="nav-pill-text">Contacto</div>
-                </div>
+                </a>
                 <div class="nav-pill green">
                     <div class="nav-pill-text">Nuestros socios</div>
                 </div>
