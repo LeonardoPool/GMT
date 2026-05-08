@@ -1,5 +1,4 @@
 <script lang="ts">
-    import '../../lib/styles/travelgo.css';
     import LazyImage from '$lib/components/LazyImage.svelte';
     import LazyVideo from '$lib/components/LazyVideo.svelte';
     import camp from '$lib/assets/images/camp.jpg';
@@ -114,7 +113,7 @@
                 <a class="nav-pill blue" href="/faq">
                     <div class="nav-pill-text">¿Quienes Somos?</div>
                 </a>
-                <a class="nav-pill red" href="#blog">
+                <a class="nav-pill red" href="/blog">
                     <div class="nav-pill-text">Blog</div>
                 </a>
                 <div class="nav-pill purple">
@@ -162,7 +161,7 @@
                             toggleDropdown('register');
                         }}
                     >
-                        Registrarse
+                        Solicitar Acceso
                         <span class="dropdown-arrow">▾</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu--compact" class:open={activeDropdown === 'register'}>
@@ -191,11 +190,19 @@
                     <LazyImage class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[0]} alt="" />
                     <LazyImage class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[1]} alt="" />
                     <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[2]} alt="" />
+                    
+                    <LazyImage class="gallery-img mobile-only" style="width: 180px; height: 180px;" src={heroImagesLeft[0]} alt="" />
+                    <LazyImage class="gallery-img mobile-only" style="width: 137px; height: 137px;" src={heroImagesLeft[1]} alt="" />
+                    <LazyImage class="gallery-img mobile-only" style="width: 96px; height: 96px;" src={heroImagesLeft[2]} alt="" />
                 </div>
                 <div class="gallery-row">
                     <LazyImage class="gallery-img" style="width: 180px; height: 180px;" src={heroImagesLeft[3]} alt="" />
                     <LazyImage class="gallery-img" style="width: 137px; height: 137px;" src={heroImagesLeft[4]} alt="" />
                     <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesLeft[5]} alt="" />
+                    
+                    <LazyImage class="gallery-img mobile-only" style="width: 180px; height: 180px;" src={heroImagesLeft[3]} alt="" />
+                    <LazyImage class="gallery-img mobile-only" style="width: 137px; height: 137px;" src={heroImagesLeft[4]} alt="" />
+                    <LazyImage class="gallery-img mobile-only" style="width: 96px; height: 96px;" src={heroImagesLeft[5]} alt="" />
                 </div>
             </div>
             
@@ -225,29 +232,40 @@
                     <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[2]} alt="" />
                     <LazyImage class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[1]} alt="" />
                     <LazyImage class="gallery-img gallery-img--top-right" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" />
+                    
+                    <LazyImage class="gallery-img mobile-only" style="width: 96px; height: 96px;" src={heroImagesRight[2]} alt="" />
+                    <LazyImage class="gallery-img mirrored-img mobile-only" style="width: 137px; height: 137px;" src={heroImagesRight[1]} alt="" />
+                    <LazyImage class="gallery-img gallery-img--top-right mobile-only" style="width: 180px; height: 180px;" src={heroImagesRight[0]} alt="" />
                 </div>
                 <div class="gallery-row">
                     <LazyImage class="gallery-img" style="width: 96px; height: 96px;" src={heroImagesRight[5]} alt="" />
                     <LazyImage class="gallery-img mirrored-img" style="width: 137px; height: 137px;" src={heroImagesRight[4]} alt="" />
                     <LazyImage class="gallery-img gallery-img--bottom-right" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" />
+                    
+                    <LazyImage class="gallery-img mobile-only" style="width: 96px; height: 96px;" src={heroImagesRight[5]} alt="" />
+                    <LazyImage class="gallery-img mirrored-img mobile-only" style="width: 137px; height: 137px;" src={heroImagesRight[4]} alt="" />
+                    <LazyImage class="gallery-img gallery-img--bottom-right mobile-only" style="width: 180px; height: 180px;" src={heroImagesRight[3]} alt="" />
                 </div>
             </div>
         </div>
 
         <!-- Texto descriptivo centrado debajo del hero -->
-        <div style="text-align: center; padding: 24px 20px 40px; margin-top: 0;">
-            <p style="font-size: 22px; color: #666; font-family: 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.2px; line-height: 1.35;">
+        <div style="text-align: center; padding: 0px 20px 40px; margin-top: -20px;">
+            <p style="font-size: 32px; color: #000; font-family: 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.2px; line-height: 1.35; margin-bottom: 12px;">
                 La plataforma B2B especializada en el Mundo Maya y México. 
+            </p>
+            <p style="font-size: 18px; color: #666; font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.5; max-width: 800px; margin: 0 auto;">
+                GMT Mayorista integra tecnología, conectividad y experiencia turística para simplificar la operación de agencias, operadores y aliados estratégicos.
             </p>
         </div>
     </div>
 
     <!-- Sección Destinos -->
     <div class="featured-section" id="destinos">
-        <div class="featured-header">
-            <div class="featured-header-left">
-                <h2 class="featured-title"><span class="featured-title-accent">5 Países, 9</span> Destinos increíbles del mundo maya</h2>
-                <p class="featured-subtitle">Explora las regiones principales del mundo maya.</p>
+        <div class="featured-header" style="justify-content: center; width: 100%;">
+            <div class="featured-header-left" style="max-width: 100%; text-align: center; align-items: center;">
+                <h2 class="featured-title"><span class="featured-title-accent"></span> Destinos que conectan culturas, experiencias y negocios</h2>
+                <p class="featured-subtitle"></p>
             </div>
 
         </div>
@@ -285,7 +303,7 @@
     </div>
 
     <!-- Explore the World Section -->
-    <div class="explore-section" style="margin-top: 100px;" >
+    <div class="explore-section">
         <div class="explore-row">
             <div class="explore-text">
                 <div class="explore-title">Explora un mundo de posibilidades</div>
@@ -385,7 +403,7 @@
                     <div class="event-month">Publica tus tours</div>
                     <div class="event-info">
                         <div class="event-title">📢</div>
-                        <div class="event-description" style="width: 233px;">Crea y administra tus experiencias turísticas con precios, disponibilidad y reglas claras en un solo sistema.</div>
+                        <div class="event-description">Crea y administra tus experiencias turísticas con precios, disponibilidad y reglas claras en un solo sistema.</div>
                     </div>
                 </div>
 
@@ -393,7 +411,7 @@
                     <div class="event-month">Cotiza y confirma rápido</div>
                     <div class="event-info center">
                         <div class="event-title">🔥</div>
-                        <div class="event-description" style="width: 288px;">Reduce tiempos operativos con flujos inteligentes para cotizar, comparar y confirmar servicios sin procesos manuales.</div>
+                        <div class="event-description">Reduce tiempos operativos con flujos inteligentes para cotizar, comparar y confirmar servicios sin procesos manuales.</div>
                     </div>
                 </div>
 
@@ -401,7 +419,7 @@
                     <div class="event-month">Controla tu operación</div>
                     <div class="event-info right">
                         <div class="event-title">🎖️</div>
-                        <div class="event-description" style="width: 227px;">Visualiza ventas, reservas y reportes en tiempo real para tomar mejores decisiones de negocio.</div>
+                        <div class="event-description">Visualiza ventas, reservas y reportes en tiempo real para tomar mejores decisiones de negocio.</div>
                     </div>
                 </div>
             </div>
@@ -429,23 +447,4 @@
         </div>
     </div>
 
-    <!-- Footer Section -->
-    <div class="footer-section" style="padding: 20px 0; min-height: auto;">
-        <div class="footer-top" style="padding: 0; margin: 0;">
-            <div class="footer-right" style="display: flex !important; flex-direction: row !important; gap: 40px; align-items: center; justify-content: center;">
-                <div class="footer-contact" style="margin: 0;">
-                    <div class="email-icon">
-                        <div class="email-icon-fill"></div>
-                    </div>
-                    <div class="email-text">contacto@gmtmayorista.com</div>
-                </div>
-                <div class="footer-contact" style="margin: 0;">
-                    <div class="email-icon">
-                        <div class="email-icon-fill"></div>
-                    </div>
-                    <div class="email-text">9993886600</div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
