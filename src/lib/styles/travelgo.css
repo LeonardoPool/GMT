@@ -2972,7 +2972,9 @@ body {
 .nav-links .dropdown-menu {
     display: none;
     position: absolute !important;
-    top: calc(100% + 8px) !important;
+    top: 100% !important;
+    border-top: 8px solid transparent;
+    background-clip: padding-box;
     right: 0 !important;
     left: auto !important;
     z-index: 100000 !important;
@@ -2989,7 +2991,7 @@ body {
 @media (max-width: 768px) {
     .nav-links .dropdown-menu {
         position: absolute !important;
-        top: calc(100% + 8px) !important;
+        top: 100% !important;
         right: auto !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
