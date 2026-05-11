@@ -36,8 +36,6 @@
 
 		if (!hasPrepared) {
 			hasPrepared = true;
-			videoElement.preload = 'auto';
-			videoElement.load();
 		}
 
 		await waitForCanPlay();
@@ -64,7 +62,7 @@
 	{muted}
 	{playsinline}
 	{controls}
-	preload="metadata"
+	preload={autoplay ? 'auto' : 'metadata'}
 	onpointerenter={() => void playVideoOnHover()}
 	onpointerleave={pauseVideo}
 	onfocus={() => void playVideoOnHover()}
