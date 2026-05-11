@@ -75,13 +75,13 @@
         font-weight: 800;
         line-height: 1.2;
         margin-bottom: 24px;
-        color: #1a1a1a;
+        color: #ffffff;
     }
 
     .main-desc {
         font-size: 18px;
         line-height: 1.6;
-        color: #222;
+        color: #ffffff;
         margin-bottom: 50px;
         font-weight: 400;
     }
@@ -90,6 +90,8 @@
         font-family: 'Inter', sans-serif;
         font-size: 22px;
         font-weight: 600;
+                color: #ffffff;
+
         margin-bottom: 24px;
     }
 
@@ -97,6 +99,8 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+                color: #ffffff;
+
     }
 
     .info-item {
@@ -105,7 +109,7 @@
         gap: 16px;
         font-size: 16px;
         font-weight: 500;
-        color: #1a1a1a;
+        color: #ffffff;
     }
 
     .info-item svg {

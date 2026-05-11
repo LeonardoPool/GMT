@@ -255,12 +255,12 @@
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 60px;
+        gap: 32px;
         align-items: center;
     }
 
     .about-content {
-        max-width: 500px;
+        max-width: 430px;
     }
 
     .about-subtitle {
@@ -316,16 +316,23 @@
     }
 
     .about-visuals {
-        position: relative;
-        height: 550px;
+        display: grid;
+        grid-template-columns: 180px 220px;
+        grid-template-rows: 128px 128px;
+        gap: 10px;
+        align-items: stretch;
+        width: fit-content;
+        min-height: 266px;
         width: 100%;
+        justify-content: center;
     }
 
     .about-img-box {
-        position: absolute;
-        border-radius: 16px;
+        position: relative;
+        border-radius: 14px;
         overflow: hidden;
         box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        min-height: 0;
     }
 
     :global(.about-img) {
@@ -335,36 +342,36 @@
     }
 
     .img-top {
-        width: 80%;
-        height: 180px;
-        top: 0;
-        right: 0;
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        width: 100%;
+        height: 100%;
         z-index: 1;
     }
 
     .img-middle {
-        width: 75%;
-        height: 180px;
-        top: 200px;
-        left: 25%;
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+        height: 100%;
         z-index: 2;
     }
 
     .img-bottom {
-        width: 60%;
-        height: 220px;
-        bottom: 0;
-        left: 0;
+        grid-column: 2;
+        grid-row: 2;
+        width: 100%;
+        height: 100%;
         z-index: 3;
     }
 
     .experience-badge {
         position: absolute;
-        bottom: -15px;
-        right: -15px;
+        bottom: 10px;
+        right: 10px;
         background: #2e6f5e;
         color: white;
-        padding: 15px 25px;
+        padding: 10px 16px;
         border-radius: 12px;
         text-align: center;
         box-shadow: 0 10px 20px rgba(58, 155, 196, 0.3);
@@ -372,14 +379,14 @@
 
     .badge-num {
         font-family: 'Poppins', sans-serif;
-        font-size: 32px;
+        font-size: 24px;
         font-weight: 700;
         line-height: 1;
     }
 
     .badge-text {
         font-family: 'Inter', sans-serif;
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 500;
     }
 
@@ -617,24 +624,40 @@
             max-width: 100%;
             text-align: center;
         }
+
+        .about-visuals {
+            min-height: 400px;
+        }
         
         .mission-grid {
             grid-template-columns: 1fr;
             gap: 30px;
         }
 
-        .about-visuals {
-            height: 450px;
+        .img-top,
+        .img-middle,
+        .img-bottom {
+            min-height: 0;
         }
-        
-        .img-top { height: 140px; }
-        .img-middle { height: 140px; top: 160px; }
-        .img-bottom { height: 180px; }
     }
 
     @media (max-width: 600px) {
         .about-title { font-size: 36px; }
         .mission-heading { font-size: 28px; }
         .faq-header h2 { font-size: 28px; }
+
+        .about-visuals {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 150px);
+            min-height: unset;
+        }
+
+        .img-top,
+        .img-middle,
+        .img-bottom {
+            grid-column: auto;
+            grid-row: auto;
+            height: 150px;
+        }
     }
 </style>
