@@ -391,7 +391,7 @@
         position: relative;
         z-index: 2;
         max-width: 900px;
-        padding: 0 20px;
+        padding: 70px;
         color: white;
         text-align: left;
     }
