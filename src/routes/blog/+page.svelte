@@ -1,5 +1,4 @@
 <script lang="ts">
-    import '../../lib/styles/travelgo.css';
     import LazyImage from '$lib/components/LazyImage.svelte';
     
     // Import images
@@ -36,7 +35,7 @@
                 <a class="nav-pill blue" href="/faq">
                     <div class="nav-pill-text">¿Quienes Somos?</div>
                 </a>
-                <a class="nav-pill red" href="/blog" >
+                <a class="nav-pill red" href="/blog" data-sveltekit-reload>
                     <div class="nav-pill-text" style="font-weight: 600;">Blog</div>
                 </a>
                 <a class="nav-pill purple" href="/contacto">

@@ -238,7 +238,7 @@
             <a class="nav-pill blue" href="/faq">
                 <div class="nav-pill-text">¿Quienes Somos?</div>
             </a>
-            <a class="nav-pill red" href="/blog">
+            <a class="nav-pill red" href="/blog" data-sveltekit-reload>
                 <div class="nav-pill-text">Blog</div>
             </a>
             <div class="nav-pill purple" style="background: rgba(0,0,0,0.05);">

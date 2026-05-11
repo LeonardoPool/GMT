@@ -79,7 +79,7 @@
                 <a class="nav-pill blue" href="/faq"    >
                     <div class="nav-pill-text" style="font-weight: 600;">¿Quienes Somos?</div>
                 </a>
-                <a class="nav-pill red" href="/blog">
+                <a class="nav-pill red" href="/blog" data-sveltekit-reload>
                     <div class="nav-pill-text">Blog</div>
                 </a>
                 <a class="nav-pill purple" href="/contacto">

@@ -659,8 +659,9 @@ body {
 
 .feature-cards .card-image {
     height: 135px;
-    object-fit: contain;
-    background: #f4f6f8;
+    object-fit: cover;
+    background: #000;
+    border-radius: 12px;
 }
 
 .feature-cards .card-title {
@@ -3054,4 +3055,80 @@ button:focus {
 .f-icon, .f-icon:visited, .f-icon:hover, .f-icon:active, .f-icon:focus {
     color: white !important;
     text-decoration: none !important;
+}
+
+/* === BLOG HERO GLOBAL STYLES === */
+.blog-hero {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.blog-hero .hero-bg-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.blog-hero .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.blog-hero .blog-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 70px;
+    color: white;
+    text-align: left;
+}
+
+.blog-hero .blog-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    color: white !important;
+}
+
+.blog-hero .blog-hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: white !important;
+}
+
+.blog-hero .blog-hero-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-pill.red,
+.nav-pill.red:visited,
+.nav-pill.red:hover,
+.nav-pill.red:active {
+    background: #2E6F5E !important;
 }

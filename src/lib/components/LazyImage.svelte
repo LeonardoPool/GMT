@@ -20,5 +20,6 @@
 	class={className || ''}
 	{style}
 	loading={priority ? 'eager' : 'lazy'}
-	decoding="async"
+		fetchpriority={priority ? 'high' : 'auto'}
+		decoding={priority ? 'sync' : 'async'}
 />

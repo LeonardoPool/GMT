@@ -17,10 +17,10 @@
     import ai from '$lib/assets/images/AI.jpg';
     import tech from '$lib/assets/images/TECH.jpg';
     import concept from '$lib/assets/images/CONCEPT.jpg';
-    import interfaceVid from '$lib/assets/images/interface.mp4';
-    import fasterVid from '$lib/assets/images/faster.mp4';
-    import productividadVid from '$lib/assets/images/Productividad.mp4';
-    import supportVid from '$lib/assets/images/supportvid.mp4';
+    import interfaceVid from '$lib/assets/images/UX.mp4';
+    import fasterVid from '$lib/assets/images/automatizacion.mp4';
+    import productividadVid from '$lib/assets/images/Catalogo.mp4';
+    import supportVid from '$lib/assets/images/Control.mp4';
     import image from '$lib/assets/images/image.png';
     import headerLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
     import heroLogo from '$lib/assets/Logos/LOGOCONLETRAS.jpeg';
@@ -114,7 +114,7 @@
                 <a class="nav-pill blue" href="/faq">
                     <div class="nav-pill-text">¿Quienes Somos?</div>
                 </a>
-                <a class="nav-pill red" href="/blog">
+                <a class="nav-pill red" href="/blog" data-sveltekit-reload>
                     <div class="nav-pill-text">Blog</div>
                 </a>
                 <a class="nav-pill purple" href="/contacto">

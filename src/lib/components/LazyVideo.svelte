@@ -76,8 +76,10 @@
 <style>
 	video {
 		width: 100%;
-		height: auto;
+		height: 100%;
 		display: block;
 		background: #000;
+		object-fit: cover;
+		border-radius: inherit;
 	}
 </style>
