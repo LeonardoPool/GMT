@@ -691,6 +691,7 @@ body {
     display: flex;
     position: relative;
     box-sizing: border-box;
+    isolation: isolate;
 }
 
 .journey-header {
@@ -700,6 +701,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .journey-title {
@@ -747,6 +750,8 @@ body {
     justify-content: space-between;
     align-items: center;
     display: flex;
+    position: relative;
+    z-index: 1;
 }
 
 .nav-arrow {
@@ -834,18 +839,22 @@ body {
 }
 
 .journey-watermark {
-    width: 100%;
+    width: auto;
     position: absolute;
-    left: -65px;
-    top: -10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     color: #EDEDED;
-    font-size: 350px;
+    font-size: clamp(180px, 22vw, 280px);
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     text-transform: capitalize;
     pointer-events: none;
     overflow: hidden;
+    z-index: 0;
+    opacity: 0.55;
+    line-height: 1;
 }
 
 /* Reviews Section */
