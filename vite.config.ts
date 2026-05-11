@@ -12,11 +12,12 @@ export default defineConfig({
 		reportCompressedSize: false,
 		chunkSizeWarningLimit: 500
 	},
-	// Optimizaciones de servidor
+	// Optimizaciones de servidor (desactivar cache agresivo en desarrollo)
 	server: {
 		middlewareMode: false,
 		headers: {
-			'Cache-Control': 'public, max-age=31536000, immutable'
+			// Evita cache agresivo durante desarrollo para que HMR y cambios CSS se reflejen
+			'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate'
 		}
 	}
 });

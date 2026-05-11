@@ -76,7 +76,7 @@
             </a>
             
             <div class="nav-pills">
-                <a class="nav-pill blue" href="/faq" style="background: #E7F3FF;">
+                <a class="nav-pill blue" href="/faq"    >
                     <div class="nav-pill-text" style="font-weight: 600;">¿Quienes Somos?</div>
                 </a>
                 <a class="nav-pill red" href="/blog">

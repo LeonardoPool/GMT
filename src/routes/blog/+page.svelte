@@ -36,7 +36,7 @@
                 <a class="nav-pill blue" href="/faq">
                     <div class="nav-pill-text">¿Quienes Somos?</div>
                 </a>
-                <a class="nav-pill red" href="/blog" style="background: #FEECEB;">
+                <a class="nav-pill red" href="/blog" >
                     <div class="nav-pill-text" style="font-weight: 600;">Blog</div>
                 </a>
                 <a class="nav-pill purple" href="/contacto">
@@ -99,10 +99,10 @@
             <div class="hero-overlay"></div>
         </div>
         
-        <div class="hero-content">
-            <h1 class="hero-title">Mundo Maya: 5 Países, 9 Destinos y una Historia que Sigue Viva</h1>
-            <h2 class="hero-subtitle">El Mundo Maya no es únicamente un destino turístico.</h2>
-            <div class="hero-meta">
+        <div class="blog-hero-content">
+            <h1 class="blog-hero-title">Mundo Maya: 5 Países, 9 Destinos y una Historia que Sigue Viva</h1>
+            <h2 class="blog-hero-subtitle">El Mundo Maya no es únicamente un destino turístico.</h2>
+            <div class="blog-hero-meta">
                 <span class="meta-author">by GMT Mayorista</span>
                 <span class="meta-divider">—</span>
                 <span class="meta-icon">⏱</span>
@@ -387,7 +387,7 @@
         background: rgba(0, 0, 0, 0.3); /* Transparent dark overlay */
     }
 
-    .hero-content {
+    .blog-hero-content {
         position: relative;
         z-index: 2;
         max-width: 900px;
@@ -396,7 +396,7 @@
         text-align: left;
     }
 
-    .hero-title {
+    .blog-hero-title {
         font-family: 'Inter', sans-serif;
         font-size: 38px;
         font-weight: 700;
@@ -404,18 +404,18 @@
         letter-spacing: 0.5px;
         margin-bottom: 12px;
         line-height: 1.2;
-        color: white !important; /* Forzar el color blanco ante cualquier clase global h1 */
+        color: white !important;
     }
 
-    .hero-subtitle {
+    .blog-hero-subtitle {
         font-family: 'Inter', sans-serif;
         font-size: 24px;
         font-weight: 400;
         margin-bottom: 30px;
-        color: white !important; /* Forzar el color blanco ante cualquier clase global h2 */
+        color: white !important;
     }
 
-    .hero-meta {
+    .blog-hero-meta {
         font-family: 'Inter', sans-serif;
         font-size: 11px;
         display: flex;
@@ -688,7 +688,6 @@
     .sub-form button:hover {
         background: #333;
     }
-
     /* Responsive */
     @media (max-width: 1024px) {
         .blog-grid {

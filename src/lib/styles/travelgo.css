@@ -1033,7 +1033,7 @@ body {
 
 .nav-arrow.active {
     background: #E7F3FF;
-}
+    }
 
 /* Footer Section */
 .footer-section {
@@ -3022,3 +3022,34 @@ body {
 
 
 
+
+/* === GLOBAL LINK FIX === */
+a, a:visited, a:hover, a:active, a:focus {
+    color: inherit !important;
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.dropdown-item, .dropdown-item:visited, .dropdown-item:hover, .dropdown-item:active, .dropdown-item:focus {
+    color: #080808 !important;
+    text-decoration: none !important;
+}
+
+.nav-pill, .nav-pill:visited, .nav-pill:hover, .nav-pill:active {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.s-icon, .s-icon:visited, .s-icon:hover, .s-icon:active, .s-icon:focus {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.f-icon, .f-icon:visited, .f-icon:hover, .f-icon:active, .f-icon:focus {
+    color: white !important;
+    text-decoration: none !important;
+}
