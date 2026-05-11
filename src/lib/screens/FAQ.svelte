@@ -128,7 +128,7 @@
                         <a href={agencyRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Agencia de viaje</a>
 
                         <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operadora mayorista</div>
-                        <div class="dropdown-item" style="opacity:0.65; cursor:default; padding-top:8px; padding-bottom:8px;">Operadora mayorista</div>
+                        <a href="/contacto" class="dropdown-item" onclick={closeDropdown}>Operadora mayorista</a>
                     </div>
                 </div>
             </div>
@@ -296,7 +296,7 @@
     }
 
     .about-btn {
-        background: #3A9BC4; /* Azul cian estilo la imagen de referencia */
+        background: #2e6f5e; /* Azul cian estilo la imagen de referencia */
         color: white;
         border: none;
         padding: 14px 28px;
@@ -306,7 +306,7 @@
         font-weight: 600;
         letter-spacing: 1px;
         cursor: pointer;
-        box-shadow: 0 10px 20px rgba(58, 155, 196, 0.2);
+        box-shadow: 0 10px 20px #2e6f5e;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -362,7 +362,7 @@
         position: absolute;
         bottom: -15px;
         right: -15px;
-        background: #3A9BC4;
+        background: #2e6f5e;
         color: white;
         padding: 15px 25px;
         border-radius: 12px;
@@ -427,7 +427,7 @@
 
     .service-pill {
         background: white;
-        color: #2f6df6; /* Azul pill default de travelgo */
+        color: #2e6f5e; /* Azul pill default de travelgo */
         border: 1px solid #E7F3FF;
         padding: 10px 20px;
         border-radius: 50px;
@@ -548,8 +548,8 @@
     }
 
     .faq-item.active {
-        border-color: #3A9BC4;
-        box-shadow: 0 4px 15px rgba(58, 155, 196, 0.1);
+        border-color: #2e6f5e;
+        box-shadow: 0 4px 15px #2e6f5e33;
     }
 
     .faq-question {
@@ -580,7 +580,7 @@
     }
 
     .faq-item.active .faq-icon {
-        background: #E7F3FF;
+        background: #2e6f5e;
     }
 
     .icon-plus, .icon-minus {
