@@ -64,6 +64,37 @@
         "Experiencias",
         "Servicios turísticos especializados"
     ];
+
+    const values = [
+        {
+            title: 'Compromiso',
+            text: 'Trabajamos con responsabilidad y pasión para generar valor real a agencias, proveedores y aliados comerciales.'
+        },
+        {
+            title: 'Innovación',
+            text: 'Desarrollamos soluciones tecnológicas que modernizan y simplifican la comercialización turística.'
+        },
+        {
+            title: 'Confianza',
+            text: 'Construimos relaciones sólidas y transparentes con nuestros clientes, socios y proveedores.'
+        },
+        {
+            title: 'Especialización',
+            text: 'Conocemos profundamente el Mundo Maya, sus destinos, cultura y oportunidades turísticas.'
+        },
+        {
+            title: 'Profesionalismo',
+            text: 'Operamos con altos estándares de calidad, atención y servicio en cada proceso.'
+        },
+        {
+            title: 'Conectividad',
+            text: 'Integramos destinos, empresas y personas para fortalecer el ecosistema turístico regional.'
+        },
+        {
+            title: 'Pasión por el Turismo',
+            text: 'Creemos en el turismo como motor de desarrollo económico, cultural y humano.'
+        }
+    ];
 </script>
 
 <div class="main-wrapper">
@@ -77,7 +108,7 @@
             
             <div class="nav-pills">
                 <a class="nav-pill blue" href="/faq"    >
-                    <div class="nav-pill-text" style="font-weight: 600;">¿Quienes Somos?</div>
+                    <div class="nav-pill-text" style="font-weight: 600;">¿Quiénes Somos?</div>
                 </a>
                 <a class="nav-pill red" href="/blog" data-sveltekit-reload>
                     <div class="nav-pill-text">Blog</div>
@@ -136,9 +167,9 @@
             <div class="about-container">
                 <div class="about-content">
                     <span class="about-subtitle"></span>
-                    <h1 class="about-title">Quienes somos</h1>
+                    <h1 class="about-title">Quiénes somos</h1>
                     <div class="about-text">
-                        <p>GMT Mayorista — Grand Mayan Travel — es más que una plataforma turística B2B: somos una agencia mayorista respaldada por un equipo con más de 25 años de experiencia en la industria. Integramos y distribuimos servicios turísticos en México y el Mundo Maya, comprendiendo a fondo las necesidades operativas, comerciales y tecnológicas de agencias de viajes, operadores, hoteles, DMCs y aliados estratégicos.</p>
+                        <p><strong class="brand-emphasis">GMT Mayorista — Grand Mayan Travel</strong> es más que una plataforma turística B2B: somos una agencia mayorista respaldada por un equipo con más de 25 años de experiencia en la industria. Integramos y distribuimos servicios turísticos en México y el Mundo Maya, comprendiendo a fondo las necesidades operativas, comerciales y tecnológicas de agencias de viajes, operadores, hoteles, DMCs y aliados estratégicos.</p>
                     </div>
                   
                 </div>
@@ -165,10 +196,9 @@
         <!-- Section 2: Modern Mission -->
         <section class="mission-section">
             <div class="mission-container">
-                <h2 class="mission-heading">Nuestra Misión</h2>
-                <p class="mission-lead">
-                    Nuestro objetivo es modernizar la manera en que el turismo se conecta, integrando en una sola plataforma:
-                </p>
+                <div class="section-kicker">Misión — GMT Mayorista</div>
+                <h2 class="mission-heading">Modernizar la conexión del turismo B2B</h2>
+                <p class="mission-lead">Nuestro objetivo es integrar en una sola plataforma los servicios clave para agencias, operadores y aliados comerciales.</p>
                 
                 <div class="services-pills">
                     {#each targetList as target}
@@ -204,7 +234,40 @@
             </div>
         </section>
 
-        <!-- Section 3: FAQ Section -->
+        <!-- Section 3: Vision -->
+        <section class="vision-section">
+            <div class="vision-container">
+                <div class="vision-copy">
+                    <div class="section-kicker">Visión — GMT Mayorista</div>
+                    <h2 class="vision-heading">Ser la operadora mayorista líder del Mundo Maya</h2>
+                </div>
+                <p class="vision-text">
+                    Convertirnos en la operadora mayorista y plataforma de distribución turística líder del Mundo Maya, reconocida internacionalmente por nuestra innovación, conectividad, especialización regional y excelencia comercial, expandiendo nuestra presencia en México, Centroamérica y Latinoamérica.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 4: Values -->
+        <section class="values-section">
+            <div class="values-container">
+                <div class="values-header">
+                    <div class="section-kicker">Valores — GMT Mayorista</div>
+                    <h2 class="values-heading">Principios que guían nuestra operación</h2>
+                </div>
+
+                <div class="values-grid">
+                    {#each values as value, index}
+                        <article class="value-card">
+                            <span class="value-number">{String(index + 1).padStart(2, '0')}</span>
+                            <h3>{value.title}</h3>
+                            <p>{value.text}</p>
+                        </article>
+                    {/each}
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: FAQ Section -->
         <section class="faq-section">
             <div class="faq-header">
                 <h2>Preguntas Frecuentes</h2>
@@ -291,24 +354,9 @@
         margin-bottom: 16px;
     }
 
-    .about-btn {
-        background: #2e6f5e; /* Azul cian estilo la imagen de referencia */
-        color: white;
-        border: none;
-        padding: 14px 28px;
-        border-radius: 8px;
-        font-family: 'Poppins', sans-serif;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        cursor: pointer;
-        box-shadow: 0 10px 20px #2e6f5e;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .about-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 15px 25px rgba(58, 155, 196, 0.3);
+    .brand-emphasis {
+        color: #0c555f;
+        font-weight: 800;
     }
 
     .about-visuals {
@@ -388,24 +436,36 @@
 
     /* Section 2: Mission */
     .mission-section {
-        background: #FAFAFA;
-        padding: 100px 20px;
+        background: #f7faf8;
+        padding: 96px 20px;
         border-top: 1px solid #eaeaea;
         border-bottom: 1px solid #eaeaea;
     }
 
     .mission-container {
-        max-width: 1000px;
+        max-width: 1080px;
         margin: 0 auto;
+    }
+
+    .section-kicker {
+        color: #0c555f;
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 1.8px;
+        margin-bottom: 14px;
+        text-align: center;
+        text-transform: uppercase;
     }
 
     .mission-heading {
         text-align: center;
         font-family: 'Poppins', sans-serif;
-        font-size: 36px;
-        font-weight: 700;
+        font-size: clamp(30px, 4vw, 44px);
+        font-weight: 800;
         color: #1a1a1a;
-        margin-bottom: 24px;
+        line-height: 1.08;
+        margin: 0 0 22px;
     }
 
     .mission-lead {
@@ -414,7 +474,7 @@
         font-size: 18px;
         color: #444;
         line-height: 1.6;
-        margin-bottom: 40px;
+        margin-bottom: 36px;
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
@@ -425,26 +485,34 @@
         flex-wrap: wrap;
         gap: 12px;
         justify-content: center;
-        margin-bottom: 60px;
+        margin-bottom: 52px;
     }
 
     .service-pill {
         background: white;
-        color: #2e6f5e; /* Azul pill default de travelgo */
-        border: 1px solid #E7F3FF;
+        color: #0c555f;
+        border: 1px solid rgba(12, 85, 95, 0.16);
         padding: 10px 20px;
         border-radius: 50px;
         font-family: 'Inter', sans-serif;
-        font-weight: 500;
+        font-weight: 700;
         font-size: 14px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        box-shadow: 0 8px 22px rgba(12, 85, 95, 0.06);
     }
 
     .mission-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        margin-bottom: 50px;
+        gap: 24px;
+        margin-bottom: 44px;
+    }
+
+    .mission-block {
+        background: #fff;
+        border: 1px solid rgba(12, 85, 95, 0.1);
+        border-radius: 8px;
+        padding: 28px;
+        box-shadow: 0 16px 42px rgba(12, 85, 95, 0.06);
     }
 
     .mission-block p {
@@ -455,12 +523,11 @@
     }
 
     .beliefs-card {
-        background: white;
-        padding: 24px;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        background: #f7faf8;
+        padding: 22px;
+        border-radius: 8px;
         margin-top: 24px;
-        border-left: 4px solid #4ED27C; /* Color verde de la pill */
+        border-left: 4px solid #0c555f;
     }
 
     .beliefs-card h4 {
@@ -489,7 +556,7 @@
         content: '✓';
         position: absolute;
         left: 0;
-        color: #4ED27C;
+        color: #0c555f;
         font-weight: bold;
     }
 
@@ -498,13 +565,113 @@
         font-family: 'Poppins', sans-serif;
         font-size: 20px;
         font-weight: 600;
-        color: #1a1a1a;
+        color: #0c555f;
         margin-top: 20px;
         padding-top: 40px;
-        border-top: 1px solid #eaeaea;
+        border-top: 1px solid rgba(12, 85, 95, 0.14);
     }
 
-    /* Section 3: FAQ */
+    .vision-section {
+        background: #ffffff;
+        padding: 86px 20px;
+    }
+
+    .vision-container {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(280px, 0.8fr) minmax(320px, 1.2fr);
+        gap: 48px;
+        align-items: center;
+        padding: 42px;
+        border: 1px solid rgba(12, 85, 95, 0.14);
+        border-radius: 8px;
+        background: linear-gradient(135deg, #ffffff 0%, #f6fbf8 100%);
+        box-shadow: 0 18px 48px rgba(12, 85, 95, 0.08);
+    }
+
+    .vision-container .section-kicker {
+        text-align: left;
+    }
+
+    .vision-heading,
+    .values-heading {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 800;
+        line-height: 1.1;
+        color: #1a1a1a;
+        margin: 0;
+    }
+
+    .vision-text {
+        color: #555;
+        font-family: 'Inter', sans-serif;
+        font-size: 17px;
+        line-height: 1.75;
+        margin: 0;
+    }
+
+    .values-section {
+        background: #f7faf8;
+        padding: 92px 20px 104px;
+        border-top: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .values-container {
+        max-width: 1120px;
+        margin: 0 auto;
+    }
+
+    .values-header {
+        max-width: 720px;
+        margin: 0 auto 44px;
+        text-align: center;
+    }
+
+    .values-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .value-card {
+        background: #fff;
+        border: 1px solid rgba(12, 85, 95, 0.1);
+        border-radius: 8px;
+        min-height: 210px;
+        padding: 24px;
+        box-shadow: 0 14px 36px rgba(12, 85, 95, 0.06);
+    }
+
+    .value-number {
+        display: block;
+        color: #0c555f;
+        font-family: 'Poppins', sans-serif;
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 18px;
+    }
+
+    .value-card h3 {
+        color: #1a1a1a;
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin: 0 0 12px;
+    }
+
+    .value-card p {
+        color: #626262;
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    /* Section 5: FAQ */
     .faq-section {
         padding: 100px 20px;
         max-width: 900px;
@@ -610,7 +777,7 @@
     }
 
     /* Responsive adjustments */
-    @media (max-width: 1px) {
+    @media (max-width: 900px) {
         .about-container {
             grid-template-columns: 1fr;
             gap: 40px;
@@ -630,6 +797,24 @@
             gap: 30px;
         }
 
+        .vision-container {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .vision-container .section-kicker {
+            text-align: center;
+        }
+
+        .vision-copy,
+        .vision-text {
+            text-align: center;
+        }
+
+        .values-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
         .img-top,
         .img-middle,
         .img-bottom {
@@ -637,9 +822,11 @@
         }
     }
 
-    @media (max-width: 1px) {
+    @media (max-width: 640px) {
         .about-title { font-size: 36px; }
         .mission-heading { font-size: 28px; }
+        .vision-heading,
+        .values-heading { font-size: 28px; }
         .faq-header h2 { font-size: 28px; }
 
         .about-visuals {
@@ -654,6 +841,26 @@
             grid-column: auto;
             grid-row: auto;
             height: 150px;
+        }
+
+        .mission-section,
+        .vision-section,
+        .values-section,
+        .faq-section {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .vision-container {
+            padding: 28px 22px;
+        }
+
+        .values-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .value-card {
+            min-height: auto;
         }
     }
 </style>
