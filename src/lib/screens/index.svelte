@@ -25,31 +25,38 @@
     import headerLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
     import heroLogo from '$lib/assets/Logos/LOGOCONLETRAS.jpeg';
 
+    import mexicoFlag from '$lib/assets/images/banderas/mexico.png';
+    import guateFlag from '$lib/assets/images/banderas/guate.png';
+    import honduFlag from '$lib/assets/images/banderas/hondu.png';
+    import salvaFlag from '$lib/assets/images/banderas/salva.png';
+    import beliFlag from '$lib/assets/images/banderas/beli.png';
+
     const heroImagesLeft = [camp, cen, chia, cr, gua, hon];
     const heroImagesRight = [camp, cen, chia, cr, gua, hon];
 
     type DestinationCard = {
         name: string;
         img: string;
+        flag?: string;
     };
 
     const destinationCards: DestinationCard[] = [
-        { name: 'Yucatán', img: yuc },
-        { name: 'Guatemala', img: gua },
-        { name: 'Campeche', img: camp },
-        { name: 'Honduras', img: hon },
-        { name: 'Quintana Roo', img: tul },
-        { name: 'Belice', img: cr },
-        { name: 'Chiapas', img: chia },
-        { name: 'El Salvador', img: may },
-        { name: 'Tabasco', img: pal },
+        { name: 'Yucatán', img: yuc, flag: mexicoFlag },
+        { name: 'Guatemala', img: gua, flag: guateFlag },
+        { name: 'Campeche', img: camp, flag: mexicoFlag },
+        { name: 'Honduras', img: hon, flag: honduFlag },
+        { name: 'Quintana Roo', img: tul, flag: mexicoFlag },
+        { name: 'Belice', img: cr, flag: beliFlag },
+        { name: 'Chiapas', img: chia, flag: mexicoFlag },
+        { name: 'El Salvador', img: may, flag: salvaFlag },
+        { name: 'Tabasco', img: pal, flag: mexicoFlag },
     ];
 
     const featuredCarouselCards = [...destinationCards, ...destinationCards];
     const operatorRegisterUrl = 'https://operadores.gmtmayorista.com/registro';
     const agencyRegisterUrl = 'https://search-engine-gmt.vercel.app/screens/registro';
-    const operatorLoginUrl = 'https://operadores.gmtmayorista.com/';
-    const platformLoginUrl = 'https://search-engine-gmt.vercel.app/screens/login';
+    const operatorLoginUrl = 'https://operadores.gmtmayorista.com';
+    const platformLoginUrl = 'https://search-engine-gmt.vercel.app/';
 
     type DropdownMode = 'login' | 'register';
 
@@ -120,9 +127,9 @@
                 <a class="nav-pill purple" href="/contacto">
                     <div class="nav-pill-text">Contacto</div>
                 </a>
-                <div class="nav-pill green">
+                <!-- <div class="nav-pill green">
                     <div class="nav-pill-text">Nuestros socios</div>
-                </div>
+                </div> -->
             </div>
             
             <div class="nav-links">
@@ -275,6 +282,9 @@
             <div class="featured-track featured-track--auto">
                 {#each featuredCarouselCards as dest}
                     <article class="featured-card">
+                        {#if dest.flag}
+                            <img src={dest.flag} alt="{dest.name} flag" style="position: absolute; top: 16px; left: 16px; width: 36px; height: 26px; border-radius: 4px; object-fit: cover; z-index: 3; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+                        {/if}
                         <LazyImage class="featured-card-image" src={dest.img} alt={dest.name} />
                         <div class="featured-card-shade"></div>
                         <div class="featured-card-overlay featured-card-overlay--minimal">
@@ -290,17 +300,7 @@
             <span></span>
         </div>
 
-        <div class="featured-footer">
-            <div class="featured-partners-label">Our property partners</div>
-            <a class="featured-partners-link" href="#partners">
-                View all partners
-                <span aria-hidden="true">›</span>
-            </a>
-        </div>
 
-        <div class="featured-partners" id="partners">
-            <div class="featured-partner">Kavia Hotels</div>
-        </div>
     </div>
 
     <!-- Explore the World Section -->
@@ -433,19 +433,6 @@
         <div class="journey-watermark">GMT</div>
     </div>
 
-    <!-- Reviews Section -->
-    <div class="reviews-section">
-        <div class="review-left">
-            <div class="review-right-content">
-                <div class="review-right-title">Inicia tu registro en GMT</div>
-                <div class="review-right-text">Gracias por confiar en GMT. Nos alegra que estés aquí. Al crear tu cuenta, podrás acceder a una plataforma diseñada para ayudarte a gestionar tus servicios de forma clara, eficiente y segura. Estamos listos para acompañarte en cada paso del proceso.</div>
-                <a class="btn-link" href="https://operadores.gmtmayorista.com/registro" target="_blank" rel="noreferrer" style="margin-top: 20px;">Iniciar registro</a>
-            </div>
-        </div>
 
-        <div class="review-right">
-            <LazyImage class="review-image" src={image} alt="Traveler" style="width: 100%; height: 100%; object-fit: cover;" />
-        </div>
-    </div>
 
 </div>

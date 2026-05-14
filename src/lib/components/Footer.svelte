@@ -17,6 +17,7 @@
                 <div class="contact-info">
                     <p>contacto@gmtmayorista.com</p>
                     <p>+52 9993886600</p>
+                    <p>+52 5629898474</p>
                 </div>
             </div>
 
@@ -80,6 +81,7 @@
         </div>
     </div>
 </footer>
+
 
 <style>
     .global-footer {

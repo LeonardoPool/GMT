@@ -1719,9 +1719,6 @@ body {
     flex: 0 0 280px;
 }
 
-.featured-carousel--auto:hover .featured-track--auto {
-    animation-play-state: paused;
-}
 
 @keyframes featured-infinite-scroll {
     from {
