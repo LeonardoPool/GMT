@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { tick } from 'svelte';
+	import { onMount, tick } from 'svelte';
 
 	interface Props {
 		src: string;
@@ -17,6 +17,7 @@
 	let videoElement: HTMLVideoElement;
 	let hasPrepared = false;
 	let shouldPlay = false;
+	let mounted = false;
 
 	function waitForCanPlay() {
 		return new Promise<void>((resolve) => {
@@ -51,6 +52,18 @@
 		if (!videoElement) return;
 		videoElement.pause();
 	}
+
+	onMount(() => {
+		mounted = true;
+
+		if (autoplay) {
+			void playVideoOnHover();
+		}
+
+		return () => {
+			mounted = false;
+		};
+	});
 </script>
 
 <video
@@ -58,6 +71,7 @@
 	{src}
 	class={className || ''}
 	{style}
+	autoplay={autoplay}
 	{loop}
 	{muted}
 	{playsinline}

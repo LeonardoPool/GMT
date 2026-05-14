@@ -1,10 +1,13 @@
 <script lang="ts">
     import LazyImage from '$lib/components/LazyImage.svelte';
+    import LazyVideo from '$lib/components/LazyVideo.svelte';
     import gmtLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
     
     import camp from '$lib/assets/images/camp.jpg';
     import yuc from '$lib/assets/images/yuc.jpg';
     import tul from '$lib/assets/images/TUL.jpg';
+    import misionVideo from '$lib/assets/images/FAQ/mision.mp4';
+    import visionVideo from '$lib/assets/images/FAQ/vision.mp4';
 
     const operatorRegisterUrl = 'https://operadores.gmtmayorista.com/registro';
     const agencyRegisterUrl = 'https://search-engine-gmt.vercel.app/screens/registro';
@@ -54,15 +57,6 @@
             question: "¿Puedo automatizar procesos en GMT?",
             answer: "Sí, GMT incluye automatización inteligente con flujos asistidos para cotizar, comparar y confirmar servicios de forma más rápida y eficiente."
         }
-    ];
-
-    const targetList = [
-        "Hoteles",
-        "Tours",
-        "Traslados",
-        "Circuitos",
-        "Experiencias",
-        "Servicios turísticos especializados"
     ];
 
     const values = [
@@ -193,57 +187,30 @@
             </div>
         </section>
 
-        <!-- Section 2: Modern Mission -->
-        <section class="mission-section">
-            <div class="mission-container">
-                <div class="section-kicker">Misión — GMT Mayorista</div>
-                <h2 class="mission-heading">Modernizar la conexión del turismo B2B</h2>
-                <p class="mission-lead">Nuestro objetivo es integrar en una sola plataforma los servicios clave para agencias, operadores y aliados comerciales.</p>
-                
-                <div class="services-pills">
-                    {#each targetList as target}
-                        <div class="service-pill">{target}</div>
-                    {/each}
-                </div>
-
-                <div class="mission-grid">
-                    <div class="mission-block">
-                        <p>GMT combina tecnología, conectividad y conocimiento del sector para ofrecer soluciones más ágiles, eficientes y escalables para el turismo B2B.</p>
-                        <br>
-                        <p>Actualmente trabajamos con una visión regional enfocada en el <strong>Mundo Maya: México, Guatemala, Belice, Honduras y El Salvador</strong>, promoviendo destinos, aliados comerciales y experiencias que representan la riqueza cultural, natural e histórica de nuestra región.</p>
+        <!-- Section 2: Mission & Vision Combined -->
+        <section class="mision-vision-section">
+            <div class="mission-vision-container">
+                <div class="mv-row">
+                    <div class="mv-text">
+                        <div class="mv-kicker">Misión — GMT Mayorista</div>
+                        <h2 class="mv-title">Conectar agencias de viajes con el Mundo Maya y México</h2>
+                        <p class="mv-description">Conectar agencias de viajes con los mejores productos y experiencias turísticas del Mundo Maya y México, mediante una plataforma tecnológica moderna, eficiente y especializada, ofreciendo soluciones B2B confiables para impulsar el crecimiento de nuestros socios comerciales.</p>
                     </div>
-                    
-                    <div class="mission-block">
-                        <p>Más que una operadora mayorista tradicional, buscamos convertirnos en una nueva generación de plataforma Travel Tech enfocada en conectar negocios, destinos y oportunidades turísticas en Latinoamérica.</p>
-                        
-                        <div class="beliefs-card">
-                            <h4>Creemos en:</h4>
-                            <ul>
-                                <li>La innovación aplicada al turismo</li>
-                                <li>Las relaciones comerciales sólidas</li>
-                                <li>La evolución tecnológica del sector</li>
-                                <li>El crecimiento conjunto entre aliados estratégicos</li>
-                            </ul>
-                        </div>
+                    <div class="mv-videos">
+                        <LazyVideo src={misionVideo} class="mv-video" />
                     </div>
                 </div>
-                
-                <div class="mission-footer-text">
-                    GMT Mayorista representa experiencia, evolución y visión de futuro para la industria turística.
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 3: Vision -->
-        <section class="vision-section">
-            <div class="vision-container">
-                <div class="vision-copy">
-                    <div class="section-kicker">Visión — GMT Mayorista</div>
-                    <h2 class="vision-heading">Ser la operadora mayorista líder del Mundo Maya</h2>
+                <div class="mv-row reverse">
+                    <div class="mv-videos">
+                        <LazyVideo src={visionVideo} class="mv-video" />
+                    </div>
+                    <div class="mv-text">
+                        <div class="mv-kicker">Visión — GMT Mayorista</div>
+                        <h2 class="mv-title">Ser la operadora mayorista líder del Mundo Maya</h2>
+                        <p class="mv-description">Convertirnos en la operadora mayorista y plataforma de distribución turística líder del Mundo Maya, reconocida internacionalmente por nuestra innovación, conectividad, especialización regional y excelencia comercial, expandiendo nuestra presencia en México, Centroamérica y Latinoamérica.</p>
+                    </div>
                 </div>
-                <p class="vision-text">
-                    Convertirnos en la operadora mayorista y plataforma de distribución turística líder del Mundo Maya, reconocida internacionalmente por nuestra innovación, conectividad, especialización regional y excelencia comercial, expandiendo nuestra presencia en México, Centroamérica y Latinoamérica.
-                </p>
             </div>
         </section>
 
@@ -305,7 +272,7 @@
     /* Section 1: About Hero */
     .about-hero-section {
         width: 100%;
-        padding: 80px 20px;
+        padding: 64px 20px 56px;
         background: #ffffff;
     }
 
@@ -434,181 +401,92 @@
         font-weight: 500;
     }
 
-    /* Section 2: Mission */
-    .mission-section {
-        background: #f7faf8;
-        padding: 96px 20px;
-        border-top: 1px solid #eaeaea;
-        border-bottom: 1px solid #eaeaea;
+    /* Section 2: Mission & Vision */
+    .mision-vision-section {
+        background: #ffffff;
+        padding: 56px 20px 72px;
+        width: 100%;
     }
 
-    .mission-container {
-        max-width: 1080px;
+    .mission-vision-container {
+        max-width: 1200px;
         margin: 0 auto;
     }
 
-    .section-kicker {
+    .mv-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        margin-bottom: 56px;
+    }
+
+    .mv-row.reverse {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .mv-row.reverse .mv-videos {
+        order: -1;
+    }
+
+    .mv-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mv-kicker {
         color: #0c555f;
         font-family: 'Inter', sans-serif;
         font-size: 13px;
         font-weight: 800;
         letter-spacing: 1.8px;
         margin-bottom: 14px;
-        text-align: center;
         text-transform: uppercase;
     }
 
-    .mission-heading {
-        text-align: center;
+    .mv-title {
         font-family: 'Poppins', sans-serif;
-        font-size: clamp(30px, 4vw, 44px);
+        font-size: clamp(32px, 4vw, 44px);
         font-weight: 800;
         color: #1a1a1a;
-        line-height: 1.08;
-        margin: 0 0 22px;
+        line-height: 1.1;
+        margin: 0 0 20px 0;
     }
 
-    .mission-lead {
-        text-align: center;
+    .mv-description {
         font-family: 'Inter', sans-serif;
-        font-size: 18px;
-        color: #444;
-        line-height: 1.6;
-        margin-bottom: 36px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .services-pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-        margin-bottom: 52px;
-    }
-
-    .service-pill {
-        background: white;
-        color: #0c555f;
-        border: 1px solid rgba(12, 85, 95, 0.16);
-        padding: 10px 20px;
-        border-radius: 50px;
-        font-family: 'Inter', sans-serif;
-        font-weight: 700;
-        font-size: 14px;
-        box-shadow: 0 8px 22px rgba(12, 85, 95, 0.06);
-    }
-
-    .mission-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        margin-bottom: 44px;
-    }
-
-    .mission-block {
-        background: #fff;
-        border: 1px solid rgba(12, 85, 95, 0.1);
-        border-radius: 8px;
-        padding: 28px;
-        box-shadow: 0 16px 42px rgba(12, 85, 95, 0.06);
-    }
-
-    .mission-block p {
-        font-family: 'Inter', sans-serif;
-        font-size: 15px;
-        line-height: 1.7;
-        color: #666;
-    }
-
-    .beliefs-card {
-        background: #f7faf8;
-        padding: 22px;
-        border-radius: 8px;
-        margin-top: 24px;
-        border-left: 4px solid #0c555f;
-    }
-
-    .beliefs-card h4 {
-        font-family: 'Poppins', sans-serif;
         font-size: 16px;
-        margin-bottom: 12px;
-        color: #1a1a1a;
-    }
-
-    .beliefs-card ul {
-        list-style: none;
-        padding: 0;
+        color: #555;
+        line-height: 1.7;
         margin: 0;
     }
 
-    .beliefs-card ul li {
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        color: #555;
-        margin-bottom: 8px;
-        padding-left: 20px;
-        position: relative;
+    .mv-videos {
+        width: 100%;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 16px 40px rgba(12, 85, 95, 0.12);
     }
 
-    .beliefs-card ul li::before {
-        content: '✓';
-        position: absolute;
-        left: 0;
-        color: #0c555f;
-        font-weight: bold;
+    .mv-video {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 14px;
     }
 
-    .mission-footer-text {
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        font-size: 20px;
-        font-weight: 600;
-        color: #0c555f;
-        margin-top: 20px;
-        padding-top: 40px;
-        border-top: 1px solid rgba(12, 85, 95, 0.14);
+    :global(.mv-video video) {
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
     }
 
-    .vision-section {
-        background: #ffffff;
-        padding: 86px 20px;
-    }
-
-    .vision-container {
-        max-width: 1080px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: minmax(280px, 0.8fr) minmax(320px, 1.2fr);
-        gap: 48px;
-        align-items: center;
-        padding: 42px;
-        border: 1px solid rgba(12, 85, 95, 0.14);
-        border-radius: 8px;
-        background: linear-gradient(135deg, #ffffff 0%, #f6fbf8 100%);
-        box-shadow: 0 18px 48px rgba(12, 85, 95, 0.08);
-    }
-
-    .vision-container .section-kicker {
-        text-align: left;
-    }
-
-    .vision-heading,
     .values-heading {
         font-family: 'Poppins', sans-serif;
         font-size: clamp(28px, 4vw, 42px);
         font-weight: 800;
         line-height: 1.1;
         color: #1a1a1a;
-        margin: 0;
-    }
-
-    .vision-text {
-        color: #555;
-        font-family: 'Inter', sans-serif;
-        font-size: 17px;
-        line-height: 1.75;
         margin: 0;
     }
 
@@ -783,6 +661,10 @@
             gap: 40px;
         }
 
+        .about-hero-section {
+            padding-bottom: 44px;
+        }
+
         .about-content {
             max-width: 100%;
             text-align: center;
@@ -791,24 +673,15 @@
         .about-visuals {
             min-height: 400px;
         }
-        
-        .mission-grid {
+
+        .mv-row {
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 32px;
+            margin-bottom: 40px;
         }
 
-        .vision-container {
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        .vision-container .section-kicker {
-            text-align: center;
-        }
-
-        .vision-copy,
-        .vision-text {
-            text-align: center;
+        .mv-row.reverse .mv-videos {
+            order: 0;
         }
 
         .values-grid {
@@ -824,8 +697,7 @@
 
     @media (max-width: 640px) {
         .about-title { font-size: 36px; }
-        .mission-heading { font-size: 28px; }
-        .vision-heading,
+        .mv-title { font-size: 28px; }
         .values-heading { font-size: 28px; }
         .faq-header h2 { font-size: 28px; }
 
@@ -843,16 +715,11 @@
             height: 150px;
         }
 
-        .mission-section,
-        .vision-section,
+        .mision-vision-section,
         .values-section,
         .faq-section {
             padding-left: 16px;
             padding-right: 16px;
-        }
-
-        .vision-container {
-            padding: 28px 22px;
         }
 
         .values-grid {
