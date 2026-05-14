@@ -127,9 +127,6 @@
                 <a class="nav-pill purple" href="/contacto">
                     <div class="nav-pill-text">Contacto</div>
                 </a>
-                <!-- <div class="nav-pill green">
-                    <div class="nav-pill-text">Nuestros socios</div>
-                </div> -->
             </div>
             
             <div class="nav-links">
@@ -309,7 +306,7 @@
             <div class="explore-text">
                 <div class="explore-title">Explora un mundo de posibilidades</div>
                 <div class="explore-description">En GMT Mayorista ofrecemos una plataforma diseñada para operadores turísticos, DMC’s y agencias de viaje que buscan simplificar su operación y ampliar su alcance comercial. Centraliza tours, traslados, hoteles y servicios en un solo sistema, optimizando la gestión, la venta y el control de tu negocio turístico. Somos tu aliado tecnológico para crecer, automatizar procesos y adaptarte a las nuevas demandas del mercado.</div>
-            </div>
+            </div>  
             <div class="explore-images">
                 <LazyImage class="explore-img" style="width: 435px; height: 249px;" src={art} alt="Explore Art" />
                 <LazyImage class="explore-img" style="width: 346px; height: 249px;" src={ai} alt="Explore AI" />
@@ -332,7 +329,7 @@
         <div class="dreams-header">
             <div class="dreams-title-section">
                 <div class="dreams-title">Conoce nuestra Plataforma</div>
-                <div class="dreams-subtitle">En GMT nos apasiona el marcado turístico es por eso que creamos una herramienta tecnológica basada en nuestra pasión por el turísmo creada por y para ti.</div>
+                <div class="dreams-subtitle">En GMT vivimos el turismo con pasión, y esa misma energía nos inspiró a crear una herramienta tecnológica diseñada por nosotros y pensada especialmente para ti.</div>
             </div>
             <div class="dreams-tags">
                 <div class="tag"><div class="tag-text">Flexible</div></div>

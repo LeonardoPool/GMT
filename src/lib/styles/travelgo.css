@@ -796,11 +796,14 @@ body {
 
 .event-month {
     color: black;
-    font-size: 42px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 36px;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     text-transform: capitalize;
-    line-height: 50.40px;
+    line-height: 1.12;
+    text-wrap: balance;
 }
 
 .event-info {
@@ -2234,6 +2237,7 @@ body {
     
     .event-month {
         font-size: 20px;
+        line-height: 1.18;
         text-align: center;
     }
     
@@ -2489,6 +2493,7 @@ body {
     
     .event-month {
         font-size: 18px;
+        line-height: 1.18;
     }
     
     .event-title {

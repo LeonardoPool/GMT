@@ -41,9 +41,6 @@
                 <a class="nav-pill purple" href="/contacto">
                     <div class="nav-pill-text">Contacto</div>
                 </a>
-                <div class="nav-pill green">
-                    <div class="nav-pill-text">Nuestros socios</div>
-                </div>
             </div>
             
             <div class="nav-links">

@@ -248,9 +248,6 @@
             <div class="nav-pill purple" style="background: rgba(0,0,0,0.05);">
                 <div class="nav-pill-text" style="font-weight: 600;">Contacto</div>
             </div>
-            <div class="nav-pill green">
-                <div class="nav-pill-text">Nuestros socios</div>
-            </div>
         </div>
         
         <div class="nav-links">
@@ -334,7 +331,7 @@
                     </div>
                     
                     <div class="input-group">
-                        <input type="tel" placeholder="Escribe tu número de teléfono" required pattern="[0-9]{10,14}" title="Por favor ingresa un número válido (ej. 10 dígitos)" />
+                        <input type="tel" placeholder="Escribe tu número de teléfono" required pattern="[0-9]&#123;10,14&#125;" title="Por favor ingresa un número válido (ej. 10 dígitos)" />
                         <span class="input-hint">Ingresa tu teléfono a 10 dígitos.</span>
                     </div>
 

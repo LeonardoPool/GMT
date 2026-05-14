@@ -12,7 +12,7 @@
                     <span class="brand-name">GMT Mayorista</span>
                 </div>
                 <p class="brand-desc">
-                    Wanderlust meets wander well – Experience seamless travel with our Servicios.
+                    Viajes bien planeados, operación simple y soporte cercano para agencias, operadores y aliados turísticos.
                 </p>
                 <div class="contact-info">
                     <p>contacto@gmtmayorista.com</p>
@@ -23,29 +23,29 @@
 
             <!-- Company Column -->
             <div class="footer-col">
-                <h4 class="col-title">Company</h4>
+                <h4 class="col-title">Empresa</h4>
                 <ul class="col-links">
-                    <li><a href="/">About Us</a></li>
+                    <li><a href="/">Quiénes somos</a></li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="/">Customers</a></li>
-                    <li><a href="/">Packages</a></li>
-                    <li><a href="/">Community</a></li>
+                    <li><a href="/">Clientes</a></li>
+                    <li><a href="/">Paquetes</a></li>
+                    <li><a href="/">Comunidad</a></li>
                 </ul>
             </div>
 
             <!-- Help Column -->
             <div class="footer-col">
-                <h4 class="col-title">Help</h4>
+                <h4 class="col-title">Ayuda</h4>
                 <ul class="col-links">
-                    <li><a href="/">Support</a></li>
-                    <li><a href="/faq">FAQs</a></li>
-                    <li><a href="/">Refund Policy</a></li>
+                    <li><a href="/">Soporte</a></li>
+                    <li><a href="/faq">Preguntas frecuentes</a></li>
+                    <li><a href="/">Política de reembolsos</a></li>
                 </ul>
             </div>
 
             <!-- Follow Us Column -->
             <div class="footer-col">
-                <h4 class="col-title">Follow Us</h4>
+                <h4 class="col-title">Síguenos</h4>
                 <ul class="col-links social-links">
                     <li>
                         <a href="/">
@@ -72,11 +72,11 @@
         <div class="footer-divider"></div>
 
         <div class="footer-bottom">
-            <p class="copyright">2026 GMT Mayorista. All right reserved. HANDCRAFTED</p>
+            <p class="copyright">2026 GMT Mayorista. Todos los derechos reservados.</p>
             <div class="bottom-links">
-                <a href="/">Privacy Policy</a>
-                <a href="/">Terms of Service</a>
-                <a href="/">Cookies Settings</a>
+                <a href="/">Política de privacidad</a>
+                <a href="/">Términos de servicio</a>
+                <a href="/">Configuración de cookies</a>
             </div>
         </div>
     </div>

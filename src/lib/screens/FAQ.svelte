@@ -85,9 +85,6 @@
                 <a class="nav-pill purple" href="/contacto">
                     <div class="nav-pill-text">Contacto</div>
                 </a>
-                <div class="nav-pill green">
-                    <div class="nav-pill-text">Nuestros socios</div>
-                </div>
             </div>
             
             <div class="nav-links">
@@ -141,8 +138,7 @@
                     <span class="about-subtitle"></span>
                     <h1 class="about-title">Quienes somos</h1>
                     <div class="about-text">
-                        <p><strong>GMT Mayorista — Grand Mayan Travel</strong> — es una plataforma turística B2B especializada en la integración y distribución de servicios turísticos en México y el Mundo Maya.</p>
-                        <p>Nacemos de más de 25 años de experiencia real dentro de la industria turística, entendiendo las necesidades operativas, comerciales y tecnológicas de agencias de viajes, operadores, hoteles, DMCs y aliados estratégicos.</p>
+                        <p>GMT Mayorista — Grand Mayan Travel — es más que una plataforma turística B2B: somos una agencia mayorista respaldada por un equipo con más de 25 años de experiencia en la industria. Integramos y distribuimos servicios turísticos en México y el Mundo Maya, comprendiendo a fondo las necesidades operativas, comerciales y tecnológicas de agencias de viajes, operadores, hoteles, DMCs y aliados estratégicos.</p>
                     </div>
                   
                 </div>
