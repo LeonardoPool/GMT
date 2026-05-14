@@ -191,24 +191,24 @@
         <section class="mision-vision-section">
             <div class="mission-vision-container">
                 <div class="mv-row">
+                    <div class="mv-videos">
+                        <LazyVideo src={misionVideo} class="mv-video" />
+                    </div>
                     <div class="mv-text">
                         <div class="mv-kicker">Misión — GMT Mayorista</div>
                         <h2 class="mv-title">Conectar agencias de viajes con el Mundo Maya y México</h2>
                         <p class="mv-description">Conectar agencias de viajes con los mejores productos y experiencias turísticas del Mundo Maya y México, mediante una plataforma tecnológica moderna, eficiente y especializada, ofreciendo soluciones B2B confiables para impulsar el crecimiento de nuestros socios comerciales.</p>
                     </div>
-                    <div class="mv-videos">
-                        <LazyVideo src={misionVideo} class="mv-video" />
-                    </div>
                 </div>
 
-                <div class="mv-row reverse">
-                    <div class="mv-videos">
-                        <LazyVideo src={visionVideo} class="mv-video" />
-                    </div>
+                <div class="mv-row">
                     <div class="mv-text">
                         <div class="mv-kicker">Visión — GMT Mayorista</div>
                         <h2 class="mv-title">Ser la operadora mayorista líder del Mundo Maya</h2>
                         <p class="mv-description">Convertirnos en la operadora mayorista y plataforma de distribución turística líder del Mundo Maya, reconocida internacionalmente por nuestra innovación, conectividad, especialización regional y excelencia comercial, expandiendo nuestra presencia en México, Centroamérica y Latinoamérica.</p>
+                    </div>
+                    <div class="mv-videos">
+                        <LazyVideo src={visionVideo} class="mv-video" />
                     </div>
                 </div>
             </div>
@@ -272,7 +272,7 @@
     /* Section 1: About Hero */
     .about-hero-section {
         width: 100%;
-        padding: 64px 20px 56px;
+        /*padding: 56px 20px 40px;*/
         background: #ffffff;
     }
 
@@ -404,7 +404,7 @@
     /* Section 2: Mission & Vision */
     .mision-vision-section {
         background: #ffffff;
-        padding: 56px 20px 72px;
+        /* padding: 44px 20px 72px; */
         width: 100%;
     }
 
@@ -418,15 +418,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 48px;
         align-items: center;
-        margin-bottom: 56px;
-    }
-
-    .mv-row.reverse {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .mv-row.reverse .mv-videos {
-        order: -1;
+        margin-bottom: 48px;
     }
 
     .mv-text {
@@ -468,14 +460,14 @@
         box-shadow: 0 16px 40px rgba(12, 85, 95, 0.12);
     }
 
-    .mv-video {
+    :global(.mv-video) {
         width: 100%;
         height: auto;
         display: block;
         border-radius: 14px;
     }
 
-    :global(.mv-video video) {
+    :global(.mv-video) {
         width: 100%;
         height: auto;
         border-radius: 14px;
@@ -662,7 +654,7 @@
         }
 
         .about-hero-section {
-            padding-bottom: 44px;
+            padding-bottom: 32px;
         }
 
         .about-content {
@@ -677,11 +669,7 @@
         .mv-row {
             grid-template-columns: 1fr;
             gap: 32px;
-            margin-bottom: 40px;
-        }
-
-        .mv-row.reverse .mv-videos {
-            order: 0;
+            margin-bottom: 32px;
         }
 
         .values-grid {
