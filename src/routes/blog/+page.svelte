@@ -688,7 +688,7 @@
         background: #333;
     }
     /* Responsive */
-    @media (max-width: 1024px) {
+    @media (max-width: 1px) {
         .blog-grid {
             grid-template-columns: 1fr 300px;
             gap: 40px;
@@ -698,7 +698,7 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1px) {
         .hero-title {
             font-size: 28px;
         }

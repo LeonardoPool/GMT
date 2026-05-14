@@ -204,7 +204,7 @@
     }
 
     /* Responsive */
-    @media (max-width: 900px) {
+    @media (max-width: 1px) {
         .contact-layout {
             grid-template-columns: 1fr;
             gap: 40px;

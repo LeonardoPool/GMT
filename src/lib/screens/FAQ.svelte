@@ -614,7 +614,7 @@
     }
 
     /* Responsive adjustments */
-    @media (max-width: 900px) {
+    @media (max-width: 1px) {
         .about-container {
             grid-template-columns: 1fr;
             gap: 40px;
@@ -641,7 +641,7 @@
         }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 1px) {
         .about-title { font-size: 36px; }
         .mission-heading { font-size: 28px; }
         .faq-header h2 { font-size: 28px; }

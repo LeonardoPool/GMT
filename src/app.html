@@ -2,7 +2,19 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=1440" />
+		<style>
+			html {
+				zoom: calc(100vw / 1440);
+				overflow-x: hidden;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				min-width: 1440px;
+				overflow-x: hidden;
+			}
+		</style>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

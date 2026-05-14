@@ -227,7 +227,7 @@
     }
 
     /* Responsive */
-    @media (max-width: 1024px) {
+    @media (max-width: 1px) {
         .footer-grid {
             grid-template-columns: 1.5fr 1fr 1fr;
         }
@@ -238,7 +238,7 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1px) {
         .footer-grid {
             grid-template-columns: 1fr;
             gap: 40px;
