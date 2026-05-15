@@ -4,12 +4,20 @@
 		role: string;
 		initials: string;
 		detail: string;
+		email?: string;
+	};
+
+	type DepartmentMember = {
+		name: string;
+		position: string;
+		email: string;
 	};
 
 	type Department = {
 		title: string;
 		lead: string;
-		members: string[];
+		email: string;
+		members: DepartmentMember[];
 	};
 
 	const teamMembers: TeamMember[] = [
@@ -17,36 +25,40 @@
 			name: 'Andrés Esquivel',
 			role: 'Director General',
 			initials: 'AE',
-			detail: 'Dirección estratégica y relación con aliados.'
+			detail: 'Dirección estratégica y relación con aliados.',
+			email: 'director@gmtmayorista.com'
 		},
 		{
 			name: 'Leonardo Pool',
-			role: 'Jefe del departamento de desarrollo',
+			role: 'Jefe del departamento de sistemas',
 			initials: 'LP',
-			detail: 'Arquitectura de producto y evolución de la plataforma.'
+			detail: 'Arquitectura de sistemas y evolución tecnológica.',
+			email: 'sistemas@gmtmayorista.com'
 		},
 		{
 			name: 'Cristofer Padilla',
-			role: 'Desarrollador web',
+			role: 'Jefe del departamento de soporte',
 			initials: 'CP',
-			detail: 'Implementación visual y soporte técnico del front-end.'
+			detail: 'Gestión de soporte técnico y atención al cliente.',
+			email: 'soporte@gmtmayorista.com'
 		},
 		{
 			name: 'Alex Yah',
 			role: 'Desarrollador web',
 			initials: 'AY',
-			detail: 'Optimización de interfaz y nuevas funcionalidades.'
+			detail: 'Optimización de interfaz y nuevas funcionalidades.',
+			email: 'desarrolloweb@gmtmayorista.com'
 		},
 		{
 			name: 'Karla Nahuat',
-			role: 'Administrativo',
+			role: 'Directora Administrativa',
 			initials: 'KN',
-			detail: 'Seguimiento operativo, control y atención administrativa.'
+			detail: 'Seguimiento operativo, control y atención administrativa.',
+			email: 'administracion@gmtmayorista.com'
 		}
 	];
 
 	const contactData = [
-		{ label: 'Correo', value: 'contacto@gmtmayorista.com' },
 		{ label: 'Teléfono', value: '+52 999 388 6600' },
 		{ label: 'WhatsApp', value: '+52 562 989 8474' },
 		{ label: 'Ubicación', value: 'Mérida, Yucatán' }
@@ -56,17 +68,35 @@
 		{
 			title: 'Dirección General',
 			lead: 'Andrés Esquivel',
-			members: ['Andrés Esquivel']
+			email: 'director@gmtmayorista.com',
+			members: [
+				{ name: 'Andrés Esquivel', position: 'Director General', email: 'director@gmtmayorista.com' }
+			]
 		},
 		{
-			title: 'Departamento de desarrollo',
+			title: 'Departamento de sistemas',
 			lead: 'Leonardo Pool',
-			members: ['Leonardo Pool', 'Cristofer Padilla', 'Alex Yah']
+			email: 'sistemas@gmtmayorista.com',
+			members: [
+				{ name: 'Leonardo Pool', position: 'Jefe del departamento de sistemas', email: 'sistemas@gmtmayorista.com' },
+				{ name: 'Alex Yah', position: 'Desarrollador web', email: 'desarrolloweb@gmtmayorista.com' }
+			]
+		},
+		{
+			title: 'Departamento de soporte',
+			lead: 'Cristofer Padilla',
+			email: 'soporte@gmtmayorista.com',
+			members: [
+				{ name: 'Cristofer Padilla', position: 'Jefe del departamento de soporte', email: 'soporte@gmtmayorista.com' }
+			]
 		},
 		{
 			title: 'Administrativo',
 			lead: 'Karla Nahuat',
-			members: ['Karla Nahuat']
+			email: 'administracion@gmtmayorista.com',
+			members: [
+				{ name: 'Karla Nahuat', position: 'Directora Administrativa', email: 'administracion@gmtmayorista.com' }
+			]
 		}
 	];
 </script>
@@ -116,7 +146,7 @@
 			<p class="eyebrow">Contacto por departamento</p>
 			<h2>Datos de contacto</h2>
 			<p>
-				Por ahora todos los departamentos comparten los mismos datos, y más adelante podemos separarlos si hace falta.
+				Selecciona un departamento para ver el contacto de nuestro equipo especializado.
 			</p>
 		</div>
 
@@ -133,13 +163,23 @@
 					<div class="department-content">
 						<div class="department-members">
 							{#each department.members as member}
-								<span>{member}</span>
+								<div class="member-badge">
+									<div class="member-info">
+										<span class="member-name">{member.name}</span>
+										<span class="member-position">{member.position}</span>
+									</div>
+									<span class="member-email">{member.email}</span>
+								</div>
 							{/each}
 						</div>
 
 						<div class="contact-data-card contact-data-card--inline">
-							<h2>Datos de contacto</h2>
+							<h2>Contacto general</h2>
 							<div class="contact-data-list">
+								<div class="contact-data-item">
+									<span class="contact-label">Correo</span>
+									<span class="contact-value">{department.email}</span>
+								</div>
 								{#each contactData as item}
 									<div class="contact-data-item">
 										<span class="contact-label">{item.label}</span>
@@ -461,18 +501,48 @@
 	.department-members {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 10px;
+		gap: 12px;
 	}
 
-	.department-members span {
-		display: inline-flex;
-		align-items: center;
-		padding: 8px 12px;
-		border-radius: 999px;
+	.member-badge {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		padding: 12px 16px;
+		border-radius: 12px;
 		background: rgba(46, 111, 94, 0.08);
+		border: 1px solid rgba(46, 111, 94, 0.12);
+	}
+
+	.member-info {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.member-name {
+		display: block;
+		font-size: 14px;
+		font-weight: 700;
 		color: #1a1a1a;
+		line-height: 1.3;
+	}
+
+	.member-position {
+		display: block;
+		font-size: 12px;
+		color: #666;
+		font-weight: 500;
+		line-height: 1.3;
+	}
+
+	.member-email {
+		display: block;
 		font-size: 13px;
+		color: #2e6f5e;
 		font-weight: 600;
+		word-break: break-all;
+		line-height: 1.3;
 	}
 
 	.contact-data-card--inline {
