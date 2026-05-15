@@ -25,11 +25,8 @@
             <div class="footer-col">
                 <h4 class="col-title">Empresa</h4>
                 <ul class="col-links">
-                    <li><a href="/">Quiénes somos</a></li>
+                    <li><a href="/faq">Quiénes somos</a></li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="/">Clientes</a></li>
-                    <li><a href="/">Paquetes</a></li>
-                    <li><a href="/">Comunidad</a></li>
                 </ul>
             </div>
 
@@ -48,21 +45,21 @@
                 <h4 class="col-title">Síguenos</h4>
                 <ul class="col-links social-links">
                     <li>
-                        <a href="/">
+                        <a href="https://www.facebook.com/profile.php?id=61589218301151" target="_blank" rel="noreferrer">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="/">
+                        <a href="https://www.instagram.com/gmtmayorista/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noreferrer">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                             Instagram
                         </a>
                     </li>
                     <li>
-                        <a href="https://X.com/gmtmayoristamid?s=21">
+                        <a href="https://x.com/GMTMayoristaMID?s=20" target="_blank" rel="noreferrer">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-                            Twitter
+                            X
                         </a>
                     </li>
                 </ul>

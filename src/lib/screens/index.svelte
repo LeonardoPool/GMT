@@ -181,7 +181,7 @@
                         <a href={agencyRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Agencia de viaje</a>
 
                         <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operadora mayorista</div>
-                        <a href="/contacto" class="dropdown-item" onclick={closeDropdown}>Operadora mayorista</a>
+                        <a href="/contacto/operadora-mayorista" class="dropdown-item" onclick={closeDropdown}>Operadora mayorista</a>
                     </div>
                 </div>
             </div>
