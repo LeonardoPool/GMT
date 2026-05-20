@@ -10,12 +10,31 @@
     type DropdownMode = 'login' | 'register';
 
     let activeDropdown = $state<DropdownMode | null>(null);
+    const HOVER_CLOSE_DELAY = 700;
+    let closeDropdownTimer: number | null = null;
 
-    function toggleDropdown(mode: DropdownMode) {
-        activeDropdown = activeDropdown === mode ? null : mode;
+    function clearCloseDropdownTimer() {
+        if (closeDropdownTimer !== null) {
+            window.clearTimeout(closeDropdownTimer);
+            closeDropdownTimer = null;
+        }
+    }
+
+    function openDropdown(mode: DropdownMode) {
+        clearCloseDropdownTimer();
+        activeDropdown = mode;
+    }
+
+    function scheduleCloseDropdown() {
+        clearCloseDropdownTimer();
+        closeDropdownTimer = window.setTimeout(() => {
+            activeDropdown = null;
+            closeDropdownTimer = null;
+        }, HOVER_CLOSE_DELAY);
     }
 
     function closeDropdown() {
+        clearCloseDropdownTimer();
         activeDropdown = null;
     }
 </script>
@@ -40,12 +59,27 @@
         </div>
 
         <div class="nav-links">
-            <div class="nav-link dropdown-container">
-                <button type="button" class="nav-link-btn" onclick={(e) => { e.stopPropagation(); toggleDropdown('login'); }}>
+            <div
+                class="nav-link dropdown-container"
+                role="presentation"
+                onmouseenter={() => openDropdown('login')}
+                onmouseleave={scheduleCloseDropdown}
+                onfocusin={() => openDropdown('login')}
+                onfocusout={scheduleCloseDropdown}
+            >
+                <button type="button" class="nav-link-btn" onclick={(e) => { e.stopPropagation(); openDropdown('login'); }}>
                     Iniciar Sesión
                     <span class="dropdown-arrow">▾</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu--compact" class:open={activeDropdown === 'login'}>
+                <div
+                    class="dropdown-menu dropdown-menu--compact"
+                    role="presentation"
+                    class:open={activeDropdown === 'login'}
+                    onmouseenter={clearCloseDropdownTimer}
+                    onmouseleave={scheduleCloseDropdown}
+                    onfocusin={clearCloseDropdownTimer}
+                    onfocusout={scheduleCloseDropdown}
+                >
                     <div style="padding:5px 12px; font-weight:700; font-size:13px;">Operador de viajes</div>
                     <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
                     <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
@@ -61,12 +95,27 @@
                 </div>
             </div>
 
-            <div class="nav-link dropdown-container">
-                <button type="button" class="nav-link-btn" onclick={(e) => { e.stopPropagation(); toggleDropdown('register'); }}>
+            <div
+                class="nav-link dropdown-container"
+                role="presentation"
+                onmouseenter={() => openDropdown('register')}
+                onmouseleave={scheduleCloseDropdown}
+                onfocusin={() => openDropdown('register')}
+                onfocusout={scheduleCloseDropdown}
+            >
+                <button type="button" class="nav-link-btn" onclick={(e) => { e.stopPropagation(); openDropdown('register'); }}>
                     Solicitar Acceso
                     <span class="dropdown-arrow">▾</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu--compact" class:open={activeDropdown === 'register'}>
+                <div
+                    class="dropdown-menu dropdown-menu--compact"
+                    role="presentation"
+                    class:open={activeDropdown === 'register'}
+                    onmouseenter={clearCloseDropdownTimer}
+                    onmouseleave={scheduleCloseDropdown}
+                    onfocusin={clearCloseDropdownTimer}
+                    onfocusout={scheduleCloseDropdown}
+                >
                     <div style="padding:5px 12px; font-weight:700; font-size:13px;">Operador de viajes</div>
                     <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
                     <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
