@@ -3,21 +3,9 @@
 		name: string;
 		role: string;
 		initials: string;
-		detail: string;
+		detail?: string;
 		email?: string;
-	};
-
-	type DepartmentMember = {
-		name: string;
-		position: string;
-		email: string;
-	};
-
-	type Department = {
-		title: string;
-		lead: string;
-		email: string;
-		members: DepartmentMember[];
+		phone?: string;
 	};
 
 	const teamMembers: TeamMember[] = [
@@ -26,14 +14,16 @@
 			role: 'Director General',
 			initials: 'AE',
 			detail: 'Dirección estratégica y relación con aliados.',
-			email: 'director@gmtmayorista.com'
+			email: 'director@gmtmayorista.com',
+			phone: '+52 999 388 6600'
 		},
 		{
 			name: 'Leonardo Pool',
 			role: 'Jefe del departamento de sistemas',
 			initials: 'LP',
 			detail: 'Arquitectura de sistemas y evolución tecnológica.',
-			email: 'sistemas@gmtmayorista.com'
+			email: 'sistemas@gmtmayorista.com',
+			phone: '+52 999 309 8011'
 		},
 		{
 			name: 'Cristofer Padilla',
@@ -58,46 +48,10 @@
 		}
 	];
 
-	const contactData = [
+	const salesContactData = [
 		{ label: 'Teléfono', value: '+52 999 388 6600' },
 		{ label: 'WhatsApp', value: '+52 562 989 8474' },
-		{ label: 'Ubicación', value: 'Mérida, Yucatán' }
-	];
-
-	const departments: Department[] = [
-		{
-			title: 'Dirección General',
-			lead: 'Andrés Esquivel',
-			email: 'director@gmtmayorista.com',
-			members: [
-				{ name: 'Andrés Esquivel', position: 'Director General', email: 'director@gmtmayorista.com' }
-			]
-		},
-		{
-			title: 'Departamento de sistemas',
-			lead: 'Leonardo Pool',
-			email: 'sistemas@gmtmayorista.com',
-			members: [
-				{ name: 'Leonardo Pool', position: 'Jefe del departamento de sistemas', email: 'sistemas@gmtmayorista.com' },
-				{ name: 'Alex Yah', position: 'Desarrollador web', email: 'desarrolloweb@gmtmayorista.com' }
-			]
-		},
-		{
-			title: 'Departamento de soporte',
-			lead: 'Cristofer Padilla',
-			email: 'soporte@gmtmayorista.com',
-			members: [
-				{ name: 'Cristofer Padilla', position: 'Jefe del departamento de soporte', email: 'soporte@gmtmayorista.com' }
-			]
-		},
-		{
-			title: 'Administrativo',
-			lead: 'Karla Nahuat',
-			email: 'administracion@gmtmayorista.com',
-			members: [
-				{ name: 'Karla Nahuat', position: 'Directora Administrativa', email: 'administracion@gmtmayorista.com' }
-			]
-		}
+		{ label: 'Correo', value: 'ventas@gmtmayorista.com' }
 	];
 </script>
 
@@ -121,7 +75,18 @@
 				<p class="member-tag">Dirección principal</p>
 				<h2>{teamMembers[0].name}</h2>
 				<p class="member-role">{teamMembers[0].role}</p>
-				<p class="member-detail">{teamMembers[0].detail}</p>
+				{#if teamMembers[0].email || teamMembers[0].phone}
+					<div class="member-contact">
+						{#if teamMembers[0].email}
+							<span class="contact-label">Correo</span>
+							<span class="contact-value member-contact-value">{teamMembers[0].email}</span>
+						{/if}
+						{#if teamMembers[0].phone}
+							<span class="contact-label">Teléfono</span>
+							<span class="contact-value member-contact-value">{teamMembers[0].phone}</span>
+						{/if}
+					</div>
+				{/if}
 			</div>
 		</article>
 
@@ -134,63 +99,42 @@
 					<div class="member-copy">
 						<h3>{member.name}</h3>
 						<p class="member-role">{member.role}</p>
-						<p class="member-detail">{member.detail}</p>
+						{#if member.email || member.phone}
+							<div class="member-contact">
+								{#if member.email}
+									<span class="contact-label">Correo</span>
+									<span class="contact-value member-contact-value">{member.email}</span>
+								{/if}
+								{#if member.phone}
+									<span class="contact-label">Teléfono</span>
+									<span class="contact-value member-contact-value">{member.phone}</span>
+								{/if}
+							</div>
+						{/if}
 					</div>
 				</article>
 			{/each}
 		</div>
 	</section>
 
-	<section class="departments-section">
-		<div class="departments-header">
-			<p class="eyebrow">Contacto por departamento</p>
-			<h2>Datos de contacto</h2>
+	<section class="sales-section">
+		<div class="sales-header">
+			<p class="eyebrow">Ventas</p>
+			<h2>Contacto con el departamento de ventas</h2>
 			<p>
-				Selecciona un departamento para ver el contacto de nuestro equipo especializado.
+				Si quieres resolver dudas comerciales o recibir una propuesta, este es el canal directo para ventas.
 			</p>
 		</div>
 
-		<div class="departments-list">
-			{#each departments as department, index}
-				<details class="department-item" open={index === 0}>
-					<summary>
-						<div>
-							<span class="department-title">{department.title}</span>
-							<span class="department-lead">Líder: {department.lead}</span>
-						</div>
-						<span class="department-arrow">▾</span>
-					</summary>
-					<div class="department-content">
-						<div class="department-members">
-							{#each department.members as member}
-								<div class="member-badge">
-									<div class="member-info">
-										<span class="member-name">{member.name}</span>
-										<span class="member-position">{member.position}</span>
-									</div>
-									<span class="member-email">{member.email}</span>
-								</div>
-							{/each}
-						</div>
-
-						<div class="contact-data-card contact-data-card--inline">
-							<h2>Contacto general</h2>
-							<div class="contact-data-list">
-								<div class="contact-data-item">
-									<span class="contact-label">Correo</span>
-									<span class="contact-value">{department.email}</span>
-								</div>
-								{#each contactData as item}
-									<div class="contact-data-item">
-										<span class="contact-label">{item.label}</span>
-										<span class="contact-value">{item.value}</span>
-									</div>
-								{/each}
-							</div>
-						</div>
+		<div class="contact-data-card sales-card">
+			<div class="contact-data-list">
+				{#each salesContactData as item}
+					<div class="contact-data-item">
+						<span class="contact-label">{item.label}</span>
+						<span class="contact-value">{item.value}</span>
 					</div>
-				</details>
-			{/each}
+				{/each}
+			</div>
 		</div>
 	</section>
 </div>
@@ -256,14 +200,6 @@
 		box-shadow: 0 18px 40px rgba(12, 85, 95, 0.08);
 	}
 
-	.contact-data-card h2 {
-		font-family: 'Poppins', sans-serif;
-		font-size: 22px;
-		font-weight: 700;
-		margin: 0 0 20px;
-		color: #1a1a1a;
-	}
-
 	.contact-data-list {
 		display: grid;
 		gap: 14px;
@@ -279,7 +215,7 @@
 	}
 
 	.contact-label {
-		font-size: 12px;
+		font-size: 10px; /* reduced */
 		font-weight: 800;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
@@ -287,9 +223,23 @@
 	}
 
 	.contact-value {
-		font-size: 15px;
+		font-size: 13px; /* reduced */
 		font-weight: 600;
 		color: #1e2320;
+	}
+
+	.member-contact {
+		display: grid;
+		gap: 6px;
+		margin-top: 10px;
+		padding: 10px 12px; /* slightly tighter */
+		border-radius: 16px;
+		background: rgba(46, 111, 94, 0.06);
+		border: 1px solid rgba(46, 111, 94, 0.1);
+	}
+
+	.member-contact-value {
+		word-break: break-word;
 	}
 
 	.team-section {
@@ -321,14 +271,14 @@
 	}
 
 	.member-card {
-		padding: 16px;
+		padding: 12px;
 		overflow: hidden;
 	}
 
 	.member-portrait {
 		width: 100%;
 		aspect-ratio: 3 / 4;
-		border-radius: 22px;
+		border-radius: 18px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -338,6 +288,7 @@
 			radial-gradient(circle at top, rgba(255,255,255,0.3), transparent 42%),
 			linear-gradient(160deg, #2e6f5e 0%, #87b79f 48%, #eaf3ee 100%);
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+		max-height: 260px;
 	}
 
 	.member-portrait::before {
@@ -352,20 +303,20 @@
 		position: relative;
 		z-index: 1;
 		font-family: 'Poppins', sans-serif;
-		font-size: 52px;
+		font-size: 42px;
 		font-weight: 800;
 		color: rgba(255, 255, 255, 0.9);
-		text-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+		text-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 		letter-spacing: 0.05em;
 	}
 
 	.member-portrait--featured {
 		aspect-ratio: 3 / 4;
-		max-height: 360px;
+		max-height: 300px;
 	}
 
 	.member-copy {
-		padding: 16px 8px 4px;
+		padding: 12px 8px 8px;
 	}
 
 	.member-copy--featured {
@@ -401,12 +352,7 @@
 		margin: 0 0 10px;
 	}
 
-	.member-detail {
-		color: #5f6561;
-		font-size: 14px;
-		line-height: 1.6;
-		margin: 0;
-	}
+	/* member detail removed from cards; kept as optional data in the model */
 
 	.team-grid {
 		display: grid;
@@ -414,142 +360,31 @@
 		gap: 16px;
 	}
 
-	.departments-section {
+	.sales-section {
 		padding-top: 8px;
 	}
 
-	.departments-header {
+	.sales-header {
 		max-width: 760px;
 		margin-bottom: 20px;
 	}
 
-	.departments-header h2 {
+	.sales-header h2 {
 		font-family: 'Poppins', sans-serif;
 		font-size: clamp(24px, 3vw, 34px);
 		margin: 0 0 10px;
 		color: #1a1a1a;
 	}
 
-	.departments-header p {
+	.sales-header p {
 		color: #5f6561;
 		line-height: 1.65;
 		margin: 0;
 	}
 
-	.departments-list {
-		display: grid;
-		gap: 14px;
-	}
-
-	.department-item {
-		border: 1px solid rgba(46, 111, 94, 0.12);
-		border-radius: 22px;
-		background: #ffffff;
-		box-shadow: 0 16px 36px rgba(12, 85, 95, 0.06);
-		overflow: hidden;
-	}
-
-	.department-item summary {
-		list-style: none;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 20px;
-		padding: 20px 22px;
-		cursor: pointer;
-	}
-
-	.department-item summary::-webkit-details-marker {
-		display: none;
-	}
-
-	.department-title {
-		display: block;
-		font-family: 'Poppins', sans-serif;
-		font-size: 18px;
-		font-weight: 700;
-		color: #1a1a1a;
-	}
-
-	.department-lead {
-		display: block;
-		margin-top: 4px;
-		color: #2e6f5e;
-		font-size: 13px;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
-	}
-
-	.department-arrow {
-		color: #2e6f5e;
-		font-size: 20px;
-		font-weight: 700;
-		transition: transform 0.2s ease;
-	}
-
-	.department-item[open] .department-arrow {
-		transform: rotate(180deg);
-	}
-
-	.department-content {
-		display: grid;
-		gap: 18px;
-		padding: 0 22px 22px;
-	}
-
-	.department-members {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 12px;
-	}
-
-	.member-badge {
-		display: flex;
-		flex-direction: column;
-		gap: 6px;
-		padding: 12px 16px;
-		border-radius: 12px;
-		background: rgba(46, 111, 94, 0.08);
-		border: 1px solid rgba(46, 111, 94, 0.12);
-	}
-
-	.member-info {
-		display: flex;
-		flex-direction: column;
-		gap: 2px;
-	}
-
-	.member-name {
-		display: block;
-		font-size: 14px;
-		font-weight: 700;
-		color: #1a1a1a;
-		line-height: 1.3;
-	}
-
-	.member-position {
-		display: block;
-		font-size: 12px;
-		color: #666;
-		font-weight: 500;
-		line-height: 1.3;
-	}
-
-	.member-email {
-		display: block;
-		font-size: 13px;
-		color: #2e6f5e;
-		font-weight: 600;
-		word-break: break-all;
-		line-height: 1.3;
-	}
-
-	.contact-data-card--inline {
-		padding: 20px;
-		border-radius: 20px;
+	.sales-card {
+		max-width: 760px;
 		box-shadow: none;
-		background: #ffffff;
 	}
 
 	@media (max-width: 1100px) {
@@ -590,14 +425,6 @@
 
 		.contact-data-card {
 			padding: 22px;
-		}
-
-		.department-item summary {
-			padding: 18px 16px;
-		}
-
-		.department-content {
-			padding: 0 16px 18px;
 		}
 	}
 </style>
