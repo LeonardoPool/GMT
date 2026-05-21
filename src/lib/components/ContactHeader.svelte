@@ -1,6 +1,7 @@
 <script lang="ts">
     import LazyImage from '$lib/components/LazyImage.svelte';
     import gmtLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
+    import { page } from '$app/stores';
 
     const operatorRegisterUrl = 'https://operadores.gmtmayorista.com/registro';
     const agencyRegisterUrl = 'https://search-engine-gmt.vercel.app/screens/registro';
@@ -47,13 +48,16 @@
         </a>
 
         <div class="nav-pills">
-            <a class="nav-pill blue" href="/faq">
+            <a class="nav-pill green" href="/" class:is-active={($page.url.pathname === '/') }>
+                <div class="nav-pill-text">Inicio</div>
+            </a>
+            <a class="nav-pill blue" href="/faq" class:is-active={($page.url.pathname.startsWith('/faq'))}>
                 <div class="nav-pill-text">¿Quienes Somos?</div>
             </a>
-            <a class="nav-pill red" href="/blog" data-sveltekit-reload>
+            <a class="nav-pill red" href="/blog" data-sveltekit-reload class:is-active={($page.url.pathname.startsWith('/blog'))}>
                 <div class="nav-pill-text">Blog</div>
             </a>
-            <a class="nav-pill purple is-active" href="/contacto">
+            <a class="nav-pill purple" href="/contacto" class:is-active={($page.url.pathname.startsWith('/contacto'))}>
                 <div class="nav-pill-text" style="font-weight: 600;">Contacto</div>
             </a>
         </div>
@@ -142,13 +146,5 @@
 
     .contact-nav :global(.nav-link-btn) {
         color: #1a1a1a;
-    }
-
-    .contact-nav :global(.nav-pill.purple.is-active) {
-        background: rgba(46, 111, 94, 0.12);
-    }
-
-    .contact-nav :global(.nav-pill.purple.is-active .nav-pill-text) {
-        color: #2e6f5e;
     }
 </style>

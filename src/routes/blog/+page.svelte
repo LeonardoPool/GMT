@@ -1,5 +1,6 @@
 <script lang="ts">
     import LazyImage from '$lib/components/LazyImage.svelte';
+    import { page } from '$app/stores';
     
     // Import images
     import imgMay from '$lib/assets/images/MAY.jpg';
@@ -51,13 +52,16 @@
             </a>
             
             <div class="nav-pills">
-                <a class="nav-pill blue" href="/faq">
+                <a class="nav-pill green" href="/" class:is-active={($page.url.pathname === '/') }>
+                    <div class="nav-pill-text">Inicio</div>
+                </a>
+                <a class="nav-pill blue" href="/faq" class:is-active={($page.url.pathname.startsWith('/faq'))}>
                     <div class="nav-pill-text">¿Quienes Somos?</div>
                 </a>
-                <a class="nav-pill red" href="/blog" data-sveltekit-reload>
+                <a class="nav-pill red" href="/blog" data-sveltekit-reload class:is-active={($page.url.pathname.startsWith('/blog'))}>
                     <div class="nav-pill-text" style="font-weight: 600;">Blog</div>
                 </a>
-                <a class="nav-pill purple" href="/contacto">
+                <a class="nav-pill purple" href="/contacto" class:is-active={($page.url.pathname.startsWith('/contacto'))}>
                     <div class="nav-pill-text">Contacto</div>
                 </a>
             </div>

@@ -14,16 +14,14 @@
 			role: 'Director General',
 			initials: 'AE',
 			detail: 'Dirección estratégica y relación con aliados.',
-			email: 'director@gmtmayorista.com',
-			phone: '+52 999 388 6600'
+			email: 'director@gmtmayorista.com'
 		},
 		{
 			name: 'Leonardo Pool',
 			role: 'Jefe del departamento de sistemas',
 			initials: 'LP',
 			detail: 'Arquitectura de sistemas y evolución tecnológica.',
-			email: 'sistemas@gmtmayorista.com',
-			phone: '+52 999 309 8011'
+			email: 'sistemas@gmtmayorista.com'
 		},
 		{
 			name: 'Cristofer Padilla',
@@ -47,6 +45,14 @@
 			email: 'administracion@gmtmayorista.com'
 		}
 	];
+
+	// Additional department/contact cards as requested
+	teamMembers.push(
+		{ name: 'Departamento de grupos', role: 'Departamento', initials: 'DG' },
+		{ name: 'Departamento de bodas', role: 'Departamento', initials: 'DB' },
+		{ name: 'Departamento de vuelos', role: 'Departamento', initials: 'DV' },
+		{ name: 'Ventas individuales', role: 'Ventas', initials: 'VI' }
+	);
 
 	const salesContactData = [
 		{ label: 'Teléfono', value: '+52 999 388 6600' },
