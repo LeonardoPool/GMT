@@ -5,8 +5,8 @@
 		<meta name="viewport" content="width=1440" />
 		<style>
 			html {
-				zoom: calc(100vw / 1440);
 				overflow-x: hidden;
+				overflow-y: scroll; /* Previene loops de redimensionamiento al mantener la barra de scroll visible */
 			}
 			body {
 				margin: 0;
@@ -15,6 +15,32 @@
 				overflow-x: hidden;
 			}
 		</style>
+		<script>
+			(function () {
+				function applyZoom() {
+					var html = document.documentElement;
+					// Si ya hay un zoom aplicado en HTML, su clientWidth interno cambia.
+					// Multiplicar por el zoom actual nos devuelve el ancho real de la ventana sin scrollbars.
+					var currentZoom = html.style.zoom ? parseFloat(html.style.zoom) : 1;
+					var actualWidth = Math.round(html.clientWidth * currentZoom);
+
+					// Móviles/tablets usan el <meta viewport width="1440"> y escalan nativamente.
+					// En esos casos actualWidth será exactamente 1440. En escritorio será distinto.
+					if (actualWidth > 0 && Math.abs(actualWidth - 1440) > 1) {
+						// Aplicamos el zoom sobre el HTML (es seguro porque siempre existe incluso en el <head>)
+						html.style.zoom = actualWidth / 1440;
+					} else {
+						// Móvil o ventana exacta
+						html.style.zoom = '';
+					}
+				}
+
+				// Aplicar al inicializar
+				applyZoom();
+				// Re-calcular si la ventana cambia de tamaño o si cambia la escala del sistema operativo
+				window.addEventListener('resize', applyZoom);
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Inter:wght@400;500&family=Poppins:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Inter:wght@400;500&family=Poppins:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
 * {
     margin: 0;
@@ -277,7 +277,7 @@ body {
 }
 
 .gallery.mirrored {
-    /* Eliminamos la rotación para que las imágenes del lado derecho no estén invertidas */
+    /* Eliminamos la rotaciÃ³n para que las imÃ¡genes del lado derecho no estÃ©n invertidas */
     transform: none;
 }
 
@@ -325,7 +325,7 @@ body {
 }
 
 .gallery-img.mirrored-img {
-    /* Sin rotación para mantener la orientación correcta */
+    /* Sin rotaciÃ³n para mantener la orientaciÃ³n correcta */
     transform: none;
 }
 
@@ -1249,7 +1249,7 @@ body {
     text-transform: capitalize;
 }
 
-/* Responsive tweaks para dispositivos móviles */
+/* Responsive tweaks para dispositivos mÃ³viles */
 @media (max-width: 1px) {
     .hero-title { font-size: 48px; }
     .explore-title { font-size: 42px; }
