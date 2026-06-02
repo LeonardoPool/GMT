@@ -14,6 +14,8 @@
     import mer from '$lib/assets/images/MER.jpg';
     import pal from '$lib/assets/images/PAL.jpg';
     import tul from '$lib/assets/images/TUL.jpg';
+    import belz from '$lib/assets/images/BELZ.jpg';
+    import tlum from '$lib/assets/images/TLUM.jpg';
     import art from '$lib/assets/images/ART.jpg';
     import ai from '$lib/assets/images/AI.jpg';
     import tech from '$lib/assets/images/TECH.jpg';
@@ -33,7 +35,7 @@
     import beliFlag from '$lib/assets/images/banderas/beli.png';
 
     const heroImagesLeft = [camp, cen, chia, cr, gua, hon];
-    const heroImagesRight = [camp, cen, chia, cr, gua, hon];
+    const heroImagesRight = [tul, pal, may, belz, tlum, belz];
 
     type DestinationCard = {
         name: string;
