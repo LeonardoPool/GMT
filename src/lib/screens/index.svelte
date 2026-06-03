@@ -27,6 +27,8 @@
     import image from '$lib/assets/images/image.png';
     import headerLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
     import heroLogo from '$lib/assets/Logos/LOGOCONLETRAS.jpeg';
+    import BlurText from '$lib/components/BlurText.svelte';
+    import StarBorder from '$lib/components/StarBorder.svelte';
 
     import mexicoFlag from '$lib/assets/images/banderas/mexico.png';
     import guateFlag from '$lib/assets/images/banderas/guate.png';
@@ -140,18 +142,47 @@
             </a>
             
             <div class="nav-pills">
-                <a class="nav-pill green" href="/" class:is-active={($page.url.pathname === '/') }>
+                <StarBorder
+                    as="a"
+                    class="nav-pill green {$page.url.pathname === '/' ? 'is-active' : ''}"
+                    href="/"
+                    color={$page.url.pathname === '/' ? '#2E6F5E' : '#ffffff'}
+                    speed="6s"
+                    thickness={2}
+                >
                     <div class="nav-pill-text">Inicio</div>
-                </a>
-                <a class="nav-pill blue" href="/faq" class:is-active={($page.url.pathname.startsWith('/faq'))}>
+                </StarBorder>
+                <StarBorder
+                    as="a"
+                    class="nav-pill blue {$page.url.pathname.startsWith('/faq') ? 'is-active' : ''}"
+                    href="/faq"
+                    color={$page.url.pathname.startsWith('/faq') ? '#2E6F5E' : '#ffffff'}
+                    speed="6s"
+                    thickness={2}
+                >
                     <div class="nav-pill-text">¿Quienes Somos?</div>
-                </a>
-                <a class="nav-pill red" href="/blog" data-sveltekit-reload class:is-active={($page.url.pathname.startsWith('/blog'))}>
+                </StarBorder>
+                <StarBorder
+                    as="a"
+                    class="nav-pill red {$page.url.pathname.startsWith('/blog') ? 'is-active' : ''}"
+                    href="/blog"
+                    data-sveltekit-reload
+                    color={$page.url.pathname.startsWith('/blog') ? '#2E6F5E' : '#ffffff'}
+                    speed="6s"
+                    thickness={2}
+                >
                     <div class="nav-pill-text">Blog</div>
-                </a>
-                <a class="nav-pill purple" href="/contacto" class:is-active={($page.url.pathname.startsWith('/contacto'))}>
+                </StarBorder>
+                <StarBorder
+                    as="a"
+                    class="nav-pill purple {$page.url.pathname.startsWith('/contacto') ? 'is-active' : ''}"
+                    href="/contacto"
+                    color={$page.url.pathname.startsWith('/contacto') ? '#2E6F5E' : '#ffffff'}
+                    speed="6s"
+                    thickness={2}
+                >
                     <div class="nav-pill-text">Contacto</div>
-                </a>
+                </StarBorder>
             </div>
             
             <div class="nav-links">
@@ -311,9 +342,13 @@
 
         <!-- Texto descriptivo centrado debajo del hero -->
         <div style="text-align: center; padding: 0px 20px 40px; margin-top: -20px;">
-            <p style="font-size: 32px; color: #000; font-family: 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.2px; line-height: 1.35; margin-bottom: 12px;">
-                La plataforma B2B especializada en el Mundo Maya y México. 
-            </p>
+            <BlurText
+                text="La plataforma B2B especializada en el Mundo Maya y México."
+                delay={280}
+                animateBy="words"
+                direction="top"
+                style="font-size: 32px; color: #000; font-family: 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.2px; line-height: 1.35; margin-bottom: 12px; justify-content: center; width: 100%; text-align: center;"
+            />
             <p style="font-size: 18px; color: #666; font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.5; max-width: 800px; margin: 0 auto;">
                 GMT Mayorista integra tecnología, conectividad y experiencia turística para simplificar la operación de agencias, operadores y aliados estratégicos.
             </p>
@@ -324,7 +359,15 @@
     <div class="featured-section" id="destinos">
         <div class="featured-header" style="justify-content: center; width: 100%;">
             <div class="featured-header-left" style="max-width: 100%; text-align: center; align-items: center;">
-                <h2 class="featured-title"><span class="featured-title-accent"></span> Destinos que conectan culturas, experiencias y negocios</h2>
+                <BlurText
+                    as="h2"
+                    text="Destinos que conectan culturas, experiencias y negocios"
+                    class="featured-title"
+                    delay={280}
+                    animateBy="words"
+                    direction="top"
+                    style="justify-content: center; width: 100%; text-align: center;"
+                />
                 <p class="featured-subtitle"></p>
             </div>
 

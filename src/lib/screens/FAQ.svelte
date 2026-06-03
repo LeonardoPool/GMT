@@ -3,6 +3,7 @@
     import LazyVideo from '$lib/components/LazyVideo.svelte';
     import gmtLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
     import { page } from '$app/stores';
+    import StarBorder from '$lib/components/StarBorder.svelte';
     
     import camp from '$lib/assets/images/camp.jpg';
     import yuc from '$lib/assets/images/yuc.jpg';
@@ -121,18 +122,47 @@
             </a>
             
             <div class="nav-pills">
-                <a class="nav-pill green" href="/" class:is-active={($page.url.pathname === '/') }>
+                <StarBorder
+                    as="a"
+                    class="nav-pill green {$page.url.pathname === '/' ? 'is-active' : ''}"
+                    href="/"
+                    color={$page.url.pathname === '/' ? '#2E6F5E' : '#ffffff'}
+                    speed="6s"
+                    thickness={2}
+                >
                     <div class="nav-pill-text">Inicio</div>
-                </a>
-                <a class="nav-pill blue" href="/faq" class:is-active={($page.url.pathname.startsWith('/faq'))}>
+                </StarBorder>
+                <StarBorder
+                    as="a"
+                    class="nav-pill blue {$page.url.pathname.startsWith('/faq') ? 'is-active' : ''}"
+                    href="/faq"
+                    color={$page.url.pathname.startsWith('/faq') ? '#2E6F5E' : '#ffffff'}
+                    speed="6s"
+                    thickness={2}
+                >
                     <div class="nav-pill-text" style="font-weight: 600;">¿Quiénes Somos?</div>
-                </a>
-                <a class="nav-pill red" href="/blog" data-sveltekit-reload class:is-active={($page.url.pathname.startsWith('/blog'))}>
+                </StarBorder>
+                <StarBorder
+                    as="a"
+                    class="nav-pill red {$page.url.pathname.startsWith('/blog') ? 'is-active' : ''}"
+                    href="/blog"
+                    data-sveltekit-reload
+                    color={$page.url.pathname.startsWith('/blog') ? '#2E6F5E' : '#ffffff'}
+                    speed="6s"
+                    thickness={2}
+                >
                     <div class="nav-pill-text">Blog</div>
-                </a>
-                <a class="nav-pill purple" href="/contacto" class:is-active={($page.url.pathname.startsWith('/contacto'))}>
+                </StarBorder>
+                <StarBorder
+                    as="a"
+                    class="nav-pill purple {$page.url.pathname.startsWith('/contacto') ? 'is-active' : ''}"
+                    href="/contacto"
+                    color={$page.url.pathname.startsWith('/contacto') ? '#2E6F5E' : '#ffffff'}
+                    speed="6s"
+                    thickness={2}
+                >
                     <div class="nav-pill-text">Contacto</div>
-                </a>
+                </StarBorder>
             </div>
             
             <div class="nav-links">
