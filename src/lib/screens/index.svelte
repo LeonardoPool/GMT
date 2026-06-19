@@ -490,15 +490,11 @@
         </div>
 
         <div class="journey-events">
-            <div class="nav-arrow">
-                <div style="width: 32px; height: 32px;"></div>
-            </div>
-
             <div class="events-container">
                 <div class="event-card">
                     <div class="event-month">Publica tus tours</div>
                     <div class="event-info">
-                        <div class="event-title">📢</div>
+                        <div class="event-title"></div>
                         <div class="event-description">Crea y administra tus experiencias turísticas con precios, disponibilidad y reglas claras en un solo sistema.</div>
                     </div>
                 </div>
@@ -506,7 +502,7 @@
                 <div class="event-card center">
                     <div class="event-month">Cotiza y confirma rápido</div>
                     <div class="event-info center">
-                        <div class="event-title">🔥</div>
+                        <div class="event-title"></div>
                         <div class="event-description">Reduce tiempos operativos con flujos inteligentes para cotizar, comparar y confirmar servicios sin procesos manuales.</div>
                     </div>
                 </div>
@@ -514,14 +510,10 @@
                 <div class="event-card right">
                     <div class="event-month">Controla tu operación</div>
                     <div class="event-info right">
-                        <div class="event-title">🎖️</div>
+                        <div class="event-title"></div>
                         <div class="event-description">Visualiza ventas, reservas y reportes en tiempo real para tomar mejores decisiones de negocio.</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="nav-arrow rotated">
-                <div style="width: 32px; height: 32px;"></div>
             </div>
         </div>
 

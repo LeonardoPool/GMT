@@ -14,7 +14,7 @@
 			role: 'Director General',
 			initials: 'AE',
 			detail: 'Dirección estratégica y relación con aliados.',
-			email: 'director@gmtmayorista.com'
+			email: 'direccion@gmtmayorista.com'
 		},
 		{
 			name: 'Leonardo Pool',
@@ -53,12 +53,6 @@
 		{ name: 'Departamento de vuelos', role: 'Departamento', initials: 'DV' },
 		{ name: 'Ventas individuales', role: 'Ventas', initials: 'VI' }
 	);
-
-	const salesContactData = [
-		{ label: 'Teléfono', value: '+52 999 388 6600' },
-		{ label: 'WhatsApp', value: '+52 562 989 8474' },
-		{ label: 'Correo', value: 'ventas@gmtmayorista.com' }
-	];
 </script>
 
 <div class="contact-page">
@@ -122,27 +116,6 @@
 			{/each}
 		</div>
 	</section>
-
-	<section class="sales-section">
-		<div class="sales-header">
-			<p class="eyebrow">Ventas</p>
-			<h2>Contacto con el departamento de ventas</h2>
-			<p>
-				Si quieres resolver dudas comerciales o recibir una propuesta, este es el canal directo para ventas.
-			</p>
-		</div>
-
-		<div class="contact-data-card sales-card">
-			<div class="contact-data-list">
-				{#each salesContactData as item}
-					<div class="contact-data-item">
-						<span class="contact-label">{item.label}</span>
-						<span class="contact-value">{item.value}</span>
-					</div>
-				{/each}
-			</div>
-		</div>
-	</section>
 </div>
 
 <style>
@@ -196,28 +169,6 @@
 		line-height: 1.75;
 		color: #5f6561;
 		margin: 0 auto;
-	}
-
-	.contact-data-card {
-		background: linear-gradient(180deg, #f7faf8 0%, #ffffff 100%);
-		border: 1px solid rgba(46, 111, 94, 0.12);
-		border-radius: 24px;
-		padding: 28px;
-		box-shadow: 0 18px 40px rgba(12, 85, 95, 0.08);
-	}
-
-	.contact-data-list {
-		display: grid;
-		gap: 14px;
-	}
-
-	.contact-data-item {
-		display: grid;
-		gap: 6px;
-		padding: 14px 16px;
-		background: #ffffff;
-		border-radius: 16px;
-		border: 1px solid rgba(46, 111, 94, 0.08);
 	}
 
 	.contact-label {
@@ -366,33 +317,6 @@
 		gap: 16px;
 	}
 
-	.sales-section {
-		padding-top: 8px;
-	}
-
-	.sales-header {
-		max-width: 760px;
-		margin-bottom: 20px;
-	}
-
-	.sales-header h2 {
-		font-family: 'Poppins', sans-serif;
-		font-size: clamp(24px, 3vw, 34px);
-		margin: 0 0 10px;
-		color: #1a1a1a;
-	}
-
-	.sales-header p {
-		color: #5f6561;
-		line-height: 1.65;
-		margin: 0;
-	}
-
-	.sales-card {
-		max-width: 760px;
-		box-shadow: none;
-	}
-
 	@media (max-width: 1100px) {
 		.contact-hero {
 			grid-template-columns: 1fr;
@@ -427,10 +351,6 @@
 
 		.team-grid {
 			grid-template-columns: 1fr;
-		}
-
-		.contact-data-card {
-			padding: 22px;
 		}
 	}
 </style>

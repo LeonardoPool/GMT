@@ -16,7 +16,7 @@
                 </p>
                 <div class="contact-info">
                     <p>contacto@gmtmayorista.com</p>
-                    <p>+52 5629898474</p>
+                    <p>+52 9994553876</p>
                 </div>
             </div>
 

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import Footer from '$lib/components/Footer.svelte';
-	import GradualBlur from '$lib/components/GradualBlur.svelte';
 	import '../lib/styles/travelgo.css';
 	import { onMount } from 'svelte';
 
@@ -22,5 +21,3 @@
 	</div>
 	<Footer />
 </div>
-
-<GradualBlur target="page" position="bottom" height="100px" zIndex={50} animated="scroll" responsive={true} />

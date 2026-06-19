@@ -19,10 +19,10 @@
 			(function () {
 				function applyZoom() {
 					var html = document.documentElement;
-					// Si ya hay un zoom aplicado en HTML, su clientWidth interno cambia.
-					// Multiplicar por el zoom actual nos devuelve el ancho real de la ventana sin scrollbars.
-					var currentZoom = html.style.zoom ? parseFloat(html.style.zoom) : 1;
-					var actualWidth = Math.round(html.clientWidth * currentZoom);
+					
+					// Reseteamos temporalmente el zoom para obtener el ancho real sin escalar de forma determinista
+					html.style.zoom = '';
+					var actualWidth = html.clientWidth;
 
 					// Móviles/tablets usan el <meta viewport width="1440"> y escalan nativamente.
 					// En esos casos actualWidth será exactamente 1440. En escritorio será distinto.
@@ -37,8 +37,18 @@
 
 				// Aplicar al inicializar
 				applyZoom();
+
+				// Re-calcular cuando el DOM esté listo o se haya cargado completamente,
+				// para asegurar que clientWidth sea no-cero y refleje el ancho real.
+				document.addEventListener('DOMContentLoaded', applyZoom);
+				window.addEventListener('load', applyZoom);
+
 				// Re-calcular si la ventana cambia de tamaño o si cambia la escala del sistema operativo
 				window.addEventListener('resize', applyZoom);
+
+				// Una salvaguarda adicional por si el layout se renderiza tarde
+				setTimeout(applyZoom, 50);
+				setTimeout(applyZoom, 300);
 			})();
 		</script>
 		%sveltekit.head%
