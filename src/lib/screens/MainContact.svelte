@@ -1,4 +1,6 @@
 <script lang="ts">
+	import gmtLogo from '$lib/assets/Logos/LOGONUEVOGMT.jpeg';
+
 	type TeamMember = {
 		name: string;
 		role: string;
@@ -6,6 +8,7 @@
 		detail?: string;
 		email?: string;
 		phone?: string;
+		image?: string;
 	};
 
 	const teamMembers: TeamMember[] = [
@@ -14,44 +17,49 @@
 			role: 'Director General',
 			initials: 'AE',
 			detail: 'Dirección estratégica y relación con aliados.',
-			email: 'direccion@gmtmayorista.com'
+			email: 'director@gmtmayorista.com',
+			image: gmtLogo
 		},
 		{
 			name: 'Leonardo Pool',
 			role: 'Jefe del departamento de sistemas',
 			initials: 'LP',
 			detail: 'Arquitectura de sistemas y evolución tecnológica.',
-			email: 'sistemas@gmtmayorista.com'
+			email: 'sistemas@gmtmayorista.com',
+			image: gmtLogo
 		},
 		{
 			name: 'Cristofer Padilla',
 			role: 'Jefe del departamento de soporte',
 			initials: 'CP',
 			detail: 'Gestión de soporte técnico y atención al cliente.',
-			email: 'soporte@gmtmayorista.com'
+			email: 'soporte@gmtmayorista.com',
+			image: gmtLogo
 		},
 		{
 			name: 'Alex Yah',
 			role: 'Desarrollador web',
 			initials: 'AY',
 			detail: 'Optimización de interfaz y nuevas funcionalidades.',
-			email: 'desarrolloweb@gmtmayorista.com'
+			email: 'desarrolloweb@gmtmayorista.com',
+			image: gmtLogo
 		},
 		{
 			name: 'Karla Nahuat',
 			role: 'Directora Administrativa',
 			initials: 'KN',
 			detail: 'Seguimiento operativo, control y atención administrativa.',
-			email: 'administracion@gmtmayorista.com'
+			email: 'administracion@gmtmayorista.com',
+			image: gmtLogo
 		}
 	];
 
 	// Additional department/contact cards as requested
 	teamMembers.push(
-		{ name: 'Departamento de grupos', role: 'Departamento', initials: 'DG' },
-		{ name: 'Departamento de bodas', role: 'Departamento', initials: 'DB' },
-		{ name: 'Departamento de vuelos', role: 'Departamento', initials: 'DV' },
-		{ name: 'Ventas individuales', role: 'Ventas', initials: 'VI' }
+		{ name: 'Departamento de grupos', role: 'Departamento', initials: 'DG', email: 'grupos@gmtmayorista.com', image: gmtLogo },
+		{ name: 'Departamento de bodas', role: 'Departamento', initials: 'DB', email: 'bodas@gmtmayorista.com', image: gmtLogo },
+		{ name: 'Departamento de vuelos', role: 'Departamento', initials: 'DV', email: 'vuelos@gmtmayorista.com', image: gmtLogo },
+		{ name: 'Ventas individuales', role: 'Ventas', initials: 'VI', email: 'ventas@gmtmayorista.com', image: gmtLogo }
 	);
 </script>
 
@@ -69,7 +77,11 @@
 	<section class="team-section">
 		<article class="featured-member">
 			<div class="member-portrait member-portrait--featured">
-				<span>{teamMembers[0].initials}</span>
+				{#if teamMembers[0].image}
+					<img src={teamMembers[0].image} alt={teamMembers[0].name} class="portrait-img" />
+				{:else}
+					<span>{teamMembers[0].initials}</span>
+				{/if}
 			</div>
 			<div class="member-copy member-copy--featured">
 				<p class="member-tag">Dirección principal</p>
@@ -94,7 +106,11 @@
 			{#each teamMembers.slice(1) as member}
 				<article class="member-card">
 					<div class="member-portrait">
-						<span>{member.initials}</span>
+						{#if member.image}
+							<img src={member.image} alt={member.name} class="portrait-img" />
+						{:else}
+							<span>{member.initials}</span>
+						{/if}
 					</div>
 					<div class="member-copy">
 						<h3>{member.name}</h3>
@@ -265,6 +281,15 @@
 		color: rgba(255, 255, 255, 0.9);
 		text-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 		letter-spacing: 0.05em;
+	}
+
+	.portrait-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		background: #ffffff;
+		position: absolute;
+		inset: 0;
 	}
 
 	.member-portrait--featured {
