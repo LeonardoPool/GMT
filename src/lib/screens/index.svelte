@@ -214,17 +214,17 @@
                         onfocusin={clearCloseDropdownTimer}
                         onfocusout={scheduleCloseDropdown}
                     >
-                        <div style="padding:5px 12px; font-weight:700; font-size:13px;">Operador de viajes</div>
+                        <div class="dropdown-header">Operador de viajes</div>
                         <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
                         <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
                         <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operador de circuitos</a>
                         <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de villas</a>
                         <a href={operatorLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de autos</a>
 
-                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Agencia de viajes</div>
+                        <div class="dropdown-header">Agencia de viajes</div>
                         <a href={platformLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Agencia de viaje</a>
 
-                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operadora mayorista</div>
+                        <div class="dropdown-header">Operadora mayorista</div>
                         <a href={platformLoginUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operadora mayorista</a>
                     </div>
                 </div>
@@ -256,17 +256,17 @@
                         onfocusin={clearCloseDropdownTimer}
                         onfocusout={scheduleCloseDropdown}
                     >
-                        <div style="padding:5px 12px; font-weight:700; font-size:13px;">Operador de viajes</div>
+                        <div class="dropdown-header">Operador de viajes</div>
                         <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Hotelero</a>
                         <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Tour Operador</a>
                         <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Operador de circuitos</a>
                         <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de villas</a>
                         <a href={operatorRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Renta de autos</a>
 
-                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Agencia de viajes</div>
+                        <div class="dropdown-header">Agencia de viajes</div>
                         <a href={agencyRegisterUrl} target="_blank" rel="noreferrer" class="dropdown-item" onclick={closeDropdown}>Agencia de viaje</a>
 
-                        <div style="padding:5px 12px; font-weight:700; margin-top:6px; font-size:13px;">Operadora mayorista</div>
+                        <div class="dropdown-header">Operadora mayorista</div>
                         <a href="/contacto/operadora-mayorista" class="dropdown-item" onclick={closeDropdown}>Operadora mayorista</a>
                     </div>
                 </div>
